@@ -1,4 +1,4 @@
-package edu.stev.cursach.service.group.impls;
+package edu.stev.cursach.service.group.interfaces;
 
 import edu.stev.cursach.model.Group;
 

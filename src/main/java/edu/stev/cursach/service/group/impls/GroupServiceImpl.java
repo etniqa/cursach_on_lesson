@@ -1,8 +1,8 @@
-package edu.stev.cursach.service.group.interfaces;
+package edu.stev.cursach.service.group.impls;
 
 import edu.stev.cursach.dao.group.impls.GroupDaoImplFake;
 import edu.stev.cursach.model.Group;
-import edu.stev.cursach.service.group.impls.IGroupService;
+import edu.stev.cursach.service.group.interfaces.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
