@@ -1,0 +1,11 @@
+package edu.stev.cursach.dao.cmnInterfaces;
+
+import java.util.List;
+public interface IDao<T> {
+    T save (T element); //create
+    T get(String id); //read
+    List<T> getAll();
+    T edit(T element); //update
+    T delete(T element); //delete
+}
+

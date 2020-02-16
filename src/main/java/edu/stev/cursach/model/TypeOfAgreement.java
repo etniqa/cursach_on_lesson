@@ -5,14 +5,18 @@ import java.time.LocalDateTime;
 public class TypeOfAgreement extends NecessaryFields {
     private LocalDateTime dateBeg;
     private LocalDateTime dateEnd;
-    private CanLead leader;
+    private CanLead chief;
+    private Organization organizationWhichSign;
     private int cost; //counting at the end
 
-    public TypeOfAgreement(String name, String description, LocalDateTime creationDate, LocalDateTime dateModified, LocalDateTime dateBeg, LocalDateTime dateEnd, CanLead leader) {
+    public TypeOfAgreement(String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
+                           LocalDateTime dateBeg, LocalDateTime dateEnd, CanLead chief,
+                           Organization organizationWhichSign) {
         super(name, description, creationDate, dateModified);
         this.dateBeg = dateBeg;
         this.dateEnd = dateEnd;
-        this.leader = leader;
+        this.chief = chief;
+        this.organizationWhichSign = organizationWhichSign;
     }
 
     public LocalDateTime getDateBeg() {
@@ -31,12 +35,20 @@ public class TypeOfAgreement extends NecessaryFields {
         this.dateEnd = dateEnd;
     }
 
-    public CanLead getLeader() {
-        return leader;
+    public CanLead getChief() {
+        return chief;
     }
 
-    public void setLeader(CanLead leader) {
-        this.leader = leader;
+    public void setChief(CanLead chief) {
+        this.chief = chief;
+    }
+
+    public Organization getOrganizationWhichSign() {
+        return organizationWhichSign;
+    }
+
+    public void setOrganizationWhichSign(Organization organizationWhichSign) {
+        this.organizationWhichSign = organizationWhichSign;
     }
 
     public int getCost() {

@@ -9,44 +9,77 @@ import java.util.List;
 
 @Component
 public class DataSet {
-    private Contract contractWithEvernote = new Contract("With Evernote", "description", LocalDateTime.now(),
-            null, LocalDateTime.now(), null, null);
-    private Organization softServeOrganiz = new Organization("SoftServe", "from Chernivtsi. There is no head organization", LocalDateTime.now(),
+    private Organization continuumOrganization = new Organization("Continuum", "from Chernivtsi. There is no head organization", LocalDateTime.now(),
             null, null);
-    private Department designDepartmentSoftServe = new Department("Department of design", "description", LocalDateTime.now(),
-            null, softServeOrganiz, null);
-    private Designer danyaDesigner = new Designer("Polyarush D.", "description about Danya", LocalDateTime.now(),
-            null, designDepartmentSoftServe, contractWithEvernote, contractWithEvernote, 5);
+    private Department motorcycleRepairDepartment = new Department("Department of bike`s repair", "in Continuum", LocalDateTime.now(),
+            null, continuumOrganization, null);
+    private Department carRepairDepartment = new Department("Department of car`s repair", "in Continuum",
+            LocalDateTime.now(), null, continuumOrganization, null);
+    private Contract withVolkswagenContract = new Contract("With Volkswagen", "in car`s repair", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization); //leader will be Baranov S.
+    private Contract withHondaContract = new Contract("With Honda", "in bike`s repair", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization);//leader will be Ghubya M.
+    private Project warrantyRepairProject = new Project("Warranty repair", "with Volkswagen", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization);//leader - Batyev A.
+    private Project wheelExchangeProject = new Project("Happy wheel", "for Honda and Volkswagen", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization);//leader - Rydyaga D.
+    private Organization bmxForLifeOrganization = new Organization("bmx for life", "in Continuum", LocalDateTime.now(),
+            null, continuumOrganization);
+    //workers
+    //leaders
+    private Designer rydyagaDesigner = new Designer("Rudyaga D.", "from Chernivtsi", LocalDateTime.now(),
+            null, motorcycleRepairDepartment, wheelExchangeProject, 3);
+    private Engineer baranovEngineer = new Engineer("Baranov S.", "from Novosnistrovsk", LocalDateTime.now(),
+            null, carRepairDepartment, wheelExchangeProject);
+    private Engineer batyevEngineer = new Engineer("Batyeb A.", "from Chernivtsi", LocalDateTime.now(),
+            null, carRepairDepartment, warrantyRepairProject);
+    private Engineer ghybyaEngineer = new Engineer("Ghybya M.", "from Chernivtsi", LocalDateTime.now(),
+            null, motorcycleRepairDepartment, wheelExchangeProject);
+    //just workers
+    private Assistant voznyukAssistant = new Assistant("Voznyuk K.", "helper", LocalDateTime.now(),
+            null, motorcycleRepairDepartment, warrantyRepairProject);
+    private Designer vodyancukDesigner = new Designer("Vodyanchuk V.", "from village", LocalDateTime.now(),
+            null, carRepairDepartment, warrantyRepairProject, 5);
+    private Equipment electropumpEquipment = new Equipment("t-2000 electroppump", "", LocalDateTime.now(),
+            null, motorcycleRepairDepartment, wheelExchangeProject);
+    private Equipment diskRepairEquipment = new Equipment("Disk repair tool ALFA-tau 3.0", "", LocalDateTime.now(),
+            null, carRepairDepartment, warrantyRepairProject);
+    private Technician morozTechnician = new Technician("Moroz V.", "help to Max", LocalDateTime.now(), null,
+            motorcycleRepairDepartment, wheelExchangeProject, diskRepairEquipment, electropumpEquipment);
+    private Equipment electrojackEquipment = new Equipment("Electrojack Braun 5645", "", LocalDateTime.now(),
+            null, carRepairDepartment, warrantyRepairProject);
+    private Technician andriichukTechnician = new Technician("Andriichuk D.", "help to Max", LocalDateTime.now(), null,
+            carRepairDepartment, warrantyRepairProject, electrojackEquipment);
 
-    private Project projectWithApple = new Project("Apple project", "project with Apple",
-            LocalDateTime.now(), null, LocalDateTime.now(), null, null);
-    private Organization bizicoOrganiz = new Organization("Bizico", "suborganizaton of SoftServe",
-            LocalDateTime.now(), null, softServeOrganiz);
-    private Department departmentDesignBizico = new Department("Bizico design department", "",
-            LocalDateTime.now(), null, bizicoOrganiz, null);
-    private Engineer steveDesigner = new Engineer("Baranov S.", "form Novodnistrovsk!!!", LocalDateTime.now(),
-            null, departmentDesignBizico, projectWithApple, projectWithApple);
-
-    private Equipment motherboard = new Equipment("Motherboard", "motherboard",
-            LocalDateTime.now(), null, departmentDesignBizico, projectWithApple);
-    private Equipment processor = new Equipment("Processor", "proc", LocalDateTime.now(),
-            null, departmentDesignBizico, projectWithApple);
-    private Technician maxTechnician = new Technician("Max", "Lovely homeboy", LocalDateTime.now(), null,
-            departmentDesignBizico, projectWithApple, motherboard, processor);
-
-
-    public void initialize(){
-        this.danyaDesigner.setDepartmentWhereWorks(designDepartmentSoftServe);
-        this.designDepartmentSoftServe.setHeadOfDepartment(danyaDesigner);
-
-        this.projectWithApple.setLeader(steveDesigner);
-        this.departmentDesignBizico.setHeadOfDepartment(steveDesigner);
-    }
+    private List<AgreementBelongToAgreement> agreementBelongToAgreementList = Arrays.asList(
+            new AgreementBelongToAgreement(warrantyRepairProject, withVolkswagenContract),
+            new AgreementBelongToAgreement(wheelExchangeProject, withVolkswagenContract),
+            new AgreementBelongToAgreement(wheelExchangeProject, withHondaContract)
+    );
     private List<Worker> workerList = Arrays.asList(
-            danyaDesigner,
-            steveDesigner,
-            maxTechnician
+            rydyagaDesigner,
+            baranovEngineer,
+            batyevEngineer,
+            ghybyaEngineer,
+            voznyukAssistant,
+            vodyancukDesigner,
+            morozTechnician,
+            andriichukTechnician
             );
+    private List<TypeOfAgreement> typeOfAgreements = Arrays.asList(
+            withVolkswagenContract,
+            withHondaContract,
+            warrantyRepairProject,
+            wheelExchangeProject
+    );
+
+    public List<TypeOfAgreement> getTypeOfAgreements() {
+        return typeOfAgreements;
+    }
+
+    public List<AgreementBelongToAgreement> getAgreementBelongToAgreementList() {
+        return agreementBelongToAgreementList;
+    }
 
     public List<Worker> getWorkerList() {
         return workerList;
