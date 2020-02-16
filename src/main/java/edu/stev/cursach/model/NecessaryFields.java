@@ -2,7 +2,7 @@ package edu.stev.cursach.model;
 
 import java.time.LocalDateTime;
 
-public class Group {
+public class NecessaryFields {
     //necessary field in every class
     private String id;
     private String name;
@@ -10,23 +10,15 @@ public class Group {
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
 
-    public Group(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified) {
-        this.id = id;
+    public NecessaryFields(String name, String description, LocalDateTime creationDate, LocalDateTime dateModified) {
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
     }
 
-    @Override
-    public String toString() {
-        return "Group{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", creationDate=" + creationDate +
-                ", dateModified=" + dateModified +
-                '}';
+    public NecessaryFields() {
+
     }
 
     public String getId() {

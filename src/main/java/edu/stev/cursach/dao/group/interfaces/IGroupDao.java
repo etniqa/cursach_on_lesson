@@ -1,7 +1,5 @@
 package edu.stev.cursach.dao.group.interfaces;
 
-import edu.stev.cursach.model.Group;
-
 import java.util.List;
 
 public interface IGroupDao {

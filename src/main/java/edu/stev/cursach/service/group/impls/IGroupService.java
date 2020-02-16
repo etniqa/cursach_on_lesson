@@ -1,7 +1,5 @@
 package edu.stev.cursach.service.group.impls;
 
-import edu.stev.cursach.model.Group;
-
 import java.util.List;
 
 //declaration 5 meths of CRUD

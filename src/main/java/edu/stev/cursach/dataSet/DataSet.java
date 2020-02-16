@@ -1,6 +1,5 @@
 package edu.stev.cursach.dataSet;
 
-import edu.stev.cursach.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
