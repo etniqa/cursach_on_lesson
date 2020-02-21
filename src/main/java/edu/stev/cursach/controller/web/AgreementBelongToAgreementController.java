@@ -17,5 +17,4 @@ public class AgreementBelongToAgreementController {
     List<AgreementBelongToAgreement> getAll(){
         return this.agreementBelongToAgreementService.getAll();
     }
-
 }

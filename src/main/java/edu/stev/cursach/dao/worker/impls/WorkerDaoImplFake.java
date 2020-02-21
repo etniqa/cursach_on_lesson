@@ -18,7 +18,7 @@ public class WorkerDaoImplFake implements IDao<Worker> {
     }
 
     @Override
-    public Worker get(String is) {
+    public Worker get(String id) {
         return null;
     }
 
