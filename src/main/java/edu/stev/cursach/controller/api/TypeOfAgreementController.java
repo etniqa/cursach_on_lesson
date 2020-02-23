@@ -1,4 +1,4 @@
-package edu.stev.cursach.controller.web;
+package edu.stev.cursach.controller.api;
 
 import edu.stev.cursach.model.TypeOfAgreement;
 import edu.stev.cursach.service.typeOfAgreement.impls.TypeOfAgreementServiceImpl;

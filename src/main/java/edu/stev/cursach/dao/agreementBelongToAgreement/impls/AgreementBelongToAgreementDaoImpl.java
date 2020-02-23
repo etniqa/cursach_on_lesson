@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Component
-public class AgreementBelongToAgreementDaoImplFake implements IDao<AgreementBelongToAgreement> {
+public class AgreementBelongToAgreementDaoImpl implements IDao<AgreementBelongToAgreement> {
     @Autowired
     DataSet dataSet;
 

@@ -1,6 +1,6 @@
 package edu.stev.cursach.service.agreementBelongToAgreement.impls;
 
-import edu.stev.cursach.dao.agreementBelongToAgreement.impls.AgreementBelongToAgreementDaoImplFake;
+import edu.stev.cursach.dao.agreementBelongToAgreement.impls.AgreementBelongToAgreementDaoImpl;
 import edu.stev.cursach.model.AgreementBelongToAgreement;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class AgreementBelongToAgreementServiceImpl implements IService<AgreementBelongToAgreement> {
     @Autowired
-    AgreementBelongToAgreementDaoImplFake dao;
+    AgreementBelongToAgreementDaoImpl dao;
 
     @Override
     public AgreementBelongToAgreement save(AgreementBelongToAgreement element) {

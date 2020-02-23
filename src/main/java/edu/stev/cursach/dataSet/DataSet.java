@@ -72,6 +72,19 @@ public class DataSet {
             warrantyRepairProject,
             wheelExchangeProject
     );
+    private List<Organization> organizations = Arrays.asList(
+            continuumOrganization,
+            bmxForLifeOrganization
+    );
+    private List<Department> departments = Arrays.asList(
+            motorcycleRepairDepartment,
+            carRepairDepartment
+    );
+    private List<Equipment> equipments = Arrays.asList(
+            diskRepairEquipment,
+            electrojackEquipment,
+            electropumpEquipment
+    );
 
     public List<TypeOfAgreement> getTypeOfAgreements() {
         return typeOfAgreements;
@@ -83,5 +96,17 @@ public class DataSet {
 
     public List<Worker> getWorkerList() {
         return workerList;
+    }
+
+    public List<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public List<Equipment> getEquipments() {
+        return equipments;
     }
 }

@@ -1,4 +1,4 @@
-package edu.stev.cursach.controller.web;
+package edu.stev.cursach.controller.api;
 
 import edu.stev.cursach.model.Worker;
 import edu.stev.cursach.service.worker.impls.WorkerServiceImpl;
