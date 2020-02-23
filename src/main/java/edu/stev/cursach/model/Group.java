@@ -1,5 +1,6 @@
 package edu.stev.cursach.model;
 
+import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
 
 public class Group {
