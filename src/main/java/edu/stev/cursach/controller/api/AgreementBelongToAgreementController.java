@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/aggreement_belong_to_agreement")
+@RequestMapping("/api/agreement_belong_to_agreement")
 public class AgreementBelongToAgreementController {
     @Autowired
     AgreementBelongToAgreementServiceImpl agreementBelongToAgreementService;
