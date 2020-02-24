@@ -1,10 +1,14 @@
 package edu.stev.cursach.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
-
+@Document
 public class Group {
     //necessary field in every class
+    @Id
     private String id;
     private String name;
     private String description;
