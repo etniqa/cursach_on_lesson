@@ -94,6 +94,7 @@ public class DataSet {
             electropumpEquipment
     );
 
+
     public List<TypeOfAgreement> getTypeOfAgreements() {
         return typeOfAgreements;
     }
