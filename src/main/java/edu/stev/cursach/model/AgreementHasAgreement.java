@@ -3,7 +3,7 @@ package edu.stev.cursach.model;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class AgreementBelongToAgreement {
+public class AgreementHasAgreement {
     static int maxInt;
     static String maxIntString;
     static {
@@ -30,9 +30,9 @@ public class AgreementBelongToAgreement {
         this.secAgreement = secAgreement;
     }
 
-    public AgreementBelongToAgreement(String id, String name, String description, LocalDateTime creationDate,
-                                      LocalDateTime dateModified, TypeOfAgreement firstAgreement,
-                                      TypeOfAgreement secAgreement) {
+    public AgreementHasAgreement(String id, String name, String description, LocalDateTime creationDate,
+                                 LocalDateTime dateModified, TypeOfAgreement firstAgreement,
+                                 TypeOfAgreement secAgreement) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -98,7 +98,7 @@ public class AgreementBelongToAgreement {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AgreementBelongToAgreement that = (AgreementBelongToAgreement) o;
+        AgreementHasAgreement that = (AgreementHasAgreement) o;
         return getId().equals(that.getId());
     }
 

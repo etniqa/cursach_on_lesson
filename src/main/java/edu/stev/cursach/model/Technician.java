@@ -9,12 +9,9 @@ public class Technician extends Worker {
         maxInt = 0;
     }
 
-    private Equipment[] whatKnowHowToUse;
-
     public Technician(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
-                      Department departmentWhereWorks, TypeOfAgreement agreementWhereIsWorking, Equipment... whatKnowHowToUse) {
+                      Department departmentWhereWorks, TypeOfAgreement agreementWhereIsWorking) {
         super(id, name, description, creationDate, dateModified, departmentWhereWorks, agreementWhereIsWorking);
-        this.whatKnowHowToUse = whatKnowHowToUse;
     }
 
     public static int getMaxIntAndIncrement() {

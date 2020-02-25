@@ -35,14 +35,14 @@ public class DataSet {
     private Designer rydyagaDesigner = new Designer(Worker.getMaxIntStringAndIncrement(), "Rudyaga D.", "from Chernivtsi", LocalDateTime.now(),
             null, motorcycleRepairDepartment, wheelExchangeProject, 3);
     private Engineer baranovEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Baranov S.", "from Novosnistrovsk", LocalDateTime.now(),
-            null, carRepairDepartment, wheelExchangeProject);
+            null, carRepairDepartment, wheelExchangeProject, 1);
     private Engineer batyevEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Batyeb A.", "from Chernivtsi", LocalDateTime.now(),
-            null, carRepairDepartment, warrantyRepairProject);
+            null, carRepairDepartment, warrantyRepairProject, 2);
     private Engineer ghybyaEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Ghybya M.", "from Chernivtsi", LocalDateTime.now(),
-            null, motorcycleRepairDepartment, wheelExchangeProject);
+            null, motorcycleRepairDepartment, wheelExchangeProject, 3);
     //just workers
     private Assistant voznyukAssistant = new Assistant(Worker.getMaxIntStringAndIncrement(), "Voznyuk K.", "helper", LocalDateTime.now(),
-            null, motorcycleRepairDepartment, warrantyRepairProject);
+            null, motorcycleRepairDepartment, warrantyRepairProject, 4);
     private Designer vodyancukDesigner = new Designer(Worker.getMaxIntStringAndIncrement(), "Vodyanchuk V.", "from village", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject, 5);
     private Equipment electropumpEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "t-2000 electroppump", "", LocalDateTime.now(),
@@ -50,18 +50,18 @@ public class DataSet {
     private Equipment diskRepairEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "Disk repair tool ALFA-tau 3.0", "", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject);
     private Technician morozTechnician = new Technician(Worker.getMaxIntStringAndIncrement(), "Moroz V.", "help to Max", LocalDateTime.now(), null,
-            motorcycleRepairDepartment, wheelExchangeProject, diskRepairEquipment, electropumpEquipment);
+            motorcycleRepairDepartment, wheelExchangeProject);//diskRepairEquipment, electropumpEquipment
     private Equipment electrojackEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "Electrojack Braun 5645", "", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject);
     private Technician andriichukTechnician = new Technician(Worker.getMaxIntStringAndIncrement(), "Andriichuk D.", "help to Max", LocalDateTime.now(), null,
-            carRepairDepartment, warrantyRepairProject, electrojackEquipment);
+            carRepairDepartment, warrantyRepairProject);//electrojackEquipment
 
-    private List<AgreementBelongToAgreement> agreementBelongToAgreementList = Arrays.asList(
-            new AgreementBelongToAgreement(AgreementBelongToAgreement.getMaxIntStringAndIncrement(), "name",
+    private List<AgreementHasAgreement> agreementHasAgreementList = Arrays.asList(
+            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
                     "description", LocalDateTime.now(), null,  warrantyRepairProject, withVolkswagenContract),
-            new AgreementBelongToAgreement(AgreementBelongToAgreement.getMaxIntStringAndIncrement(), "name",
+            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
                     "description", LocalDateTime.now(), null,wheelExchangeProject, withVolkswagenContract),
-            new AgreementBelongToAgreement(AgreementBelongToAgreement.getMaxIntStringAndIncrement(), "name",
+            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
                     "description", LocalDateTime.now(), null,wheelExchangeProject, withHondaContract)
     );
     private List<Worker> workerList = Arrays.asList(
@@ -98,8 +98,8 @@ public class DataSet {
         return typeOfAgreements;
     }
 
-    public List<AgreementBelongToAgreement> getAgreementBelongToAgreementList() {
-        return agreementBelongToAgreementList;
+    public List<AgreementHasAgreement> getAgreementHasAgreementList() {
+        return agreementHasAgreementList;
     }
 
     public List<Worker> getWorkerList() {

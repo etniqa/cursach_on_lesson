@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/equipment")
-public class    EquipmentController {
+public class EquipmentApiController {
     @Autowired
     EquipmentServiceImpls equipmentServiceImpls;
 

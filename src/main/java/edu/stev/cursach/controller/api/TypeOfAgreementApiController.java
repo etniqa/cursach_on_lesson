@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/type_of_agreement")
-public class TypeOfAgreementController {
+public class TypeOfAgreementApiController {
     @Autowired
     TypeOfAgreementServiceImpl typeOfAgreementService;
 
