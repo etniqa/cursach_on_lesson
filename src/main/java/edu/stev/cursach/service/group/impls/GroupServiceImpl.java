@@ -1,16 +1,27 @@
 package edu.stev.cursach.service.group.impls;
 
 import edu.stev.cursach.dao.group.impls.GroupDaoImplFake;
+import edu.stev.cursach.dao.group.repository.GroupRepository;
 import edu.stev.cursach.model.Group;
 import edu.stev.cursach.service.group.interfaces.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class GroupServiceImpl implements IGroupService {
     @Autowired
     GroupDaoImplFake dao;
+
+    @Autowired
+    GroupRepository groupRepository;
+
+    @PostConstruct
+    void init (){
+        List<Group> list = dao.getAll();
+        groupRepository.saveAll(list);
+    }
 
     @Override
     public Group save(Group group) {
