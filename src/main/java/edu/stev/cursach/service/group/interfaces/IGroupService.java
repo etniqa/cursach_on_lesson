@@ -10,5 +10,5 @@ public interface IGroupService {
     Group get(String is); //read
     List<Group> getAll();
     Group edit(Group group); //update
-    Group delete(Group group); //delete
+    Group delete(String id); //delete
 }

@@ -13,11 +13,17 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>description</th>
+            <th>description</th>
+            <th>delete</th>
+            <th>description</th>
         </tr>
         <#list groups as group>
             <tr>
                 <td>${group.id}</td>
                 <td>${group.name}</td>
+                <td>${group.description}</td>
+                <td><a href='/web/group/delete/${group.id}'><button>delete</button></a></td>
             </tr>
         </#list>
     </table>
