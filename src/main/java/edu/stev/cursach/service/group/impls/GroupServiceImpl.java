@@ -11,16 +11,16 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 @Service
 public class GroupServiceImpl implements IGroupService {
-    @Autowired
-    GroupDaoImplFake dao;
+//    @Autowired
+//    GroupDaoImplFake dao;
 
     @Autowired
     GroupRepository repository;
 
     @PostConstruct
     void init (){
-        List<Group> list = dao.getAll();
-        repository.saveAll(list); //save table from list to mongodb
+//        List<Group> list = dao.getAll();
+//        repository.saveAll(list); //save table from list to mongodb
     }
 
     @Override
