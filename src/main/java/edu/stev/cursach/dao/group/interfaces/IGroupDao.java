@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface IGroupDao {
     Group save (Group group); //create
-    Group get(String is); //read
+    Group get(String id); //read
     List<Group> getAll();
     Group edit(Group group); //update
-    Group delete(Group group); //delete
+    boolean delete(String id); //delete
 }

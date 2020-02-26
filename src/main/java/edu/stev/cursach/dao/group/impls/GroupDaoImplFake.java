@@ -16,26 +16,28 @@ public class GroupDaoImplFake implements IGroupDao {
 
     @Override
     public Group save(Group group) {
-        return null;
+        dataSet.getGroups().add(group);
+        return group;
     }
-
     @Override
-    public Group get(String is) {
-        return null;
+    public Group get(String id) {
+        List<Group> allGroups = this.dataSet.getGroups();
+        Group groupWhichNeedToDelete = allGroups.stream().filter(
+                group -> group.getId().equals(id)).findFirst().orElse(null);
+        return groupWhichNeedToDelete;
     }
-
     @Override
     public List<Group> getAll() {
         return this.dataSet.getGroups();
     }
-
     @Override
     public Group edit(Group group) {
         return null;
     }
-
     @Override
-    public Group delete(Group group) {
-        return null;
+    public boolean delete(String id) {
+        Group groupWhichNeedToDelete = this.get(id);
+        List<Group> groups = this.dataSet.getGroups();
+        return this.dataSet.getGroups().remove(groupWhichNeedToDelete);
     }
 }

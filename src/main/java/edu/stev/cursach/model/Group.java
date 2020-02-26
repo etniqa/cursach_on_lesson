@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
+import java.util.Objects;
+
 @Document
 public class Group {
     //necessary field in every class
@@ -21,6 +23,19 @@ public class Group {
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Group group = (Group) o;
+        return Objects.equals(getId(), group.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override

@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 //always return string
 @Controller
 @RequestMapping("/web/group")
@@ -24,6 +26,9 @@ public class GroupWebController {
     String delete(Model model,
                   @PathVariable("id") String id) {
         groupService.delete(id);
+//        System.out.println("here");
+        List<Group> groups = groupService.getAll();
+        groups.stream().forEach(group -> System.out.println(group));
         model.addAttribute("groups", groupService.getAll());
         return "groupList";
     }
