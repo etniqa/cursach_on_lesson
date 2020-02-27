@@ -5,8 +5,9 @@ import edu.stev.cursach.service.group.impls.GroupServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -16,20 +17,17 @@ import java.util.List;
 public class GroupWebController {
     @Autowired
     private GroupServiceImpl groupService;
-    @RequestMapping("/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     String getAll(Model model){
         model.addAttribute("groups", groupService.getAll()); //groups is the same in
         return "groupList"; //string is the same should be groupList.ftl
     }
 
-    @RequestMapping("/delete/{id}")
-    String delete(Model model,
-                  @PathVariable("id") String id) {
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    String delete(Model model, @PathVariable("id") String id) {
         groupService.delete(id);
-//        System.out.println("here");
-        List<Group> groups = groupService.getAll();
-        groups.stream().forEach(group -> System.out.println(group));
-        model.addAttribute("groups", groupService.getAll());
-        return "groupList";
+        return "redirect:/web/group/list";
     }
+
+
 }

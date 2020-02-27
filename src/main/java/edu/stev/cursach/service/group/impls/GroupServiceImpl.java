@@ -1,7 +1,6 @@
 package edu.stev.cursach.service.group.impls;
 
 import edu.stev.cursach.dao.group.impls.GroupDaoImplFake;
-import edu.stev.cursach.dao.group.repository.GroupRepository;
 import edu.stev.cursach.model.Group;
 import edu.stev.cursach.service.group.interfaces.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class GroupServiceImpl implements IGroupService {
 
     @Override
     public Group save(Group group) {
-
+        dao.save(group);
         return null;
     }
 
@@ -31,14 +30,13 @@ public class GroupServiceImpl implements IGroupService {
     }
 
     @Override
-    public Group edit(Group group) {
-        return null;
+    public int edit(String id, Group group) {
+        return this.dao.edit(id, group);
     }
 
     @Override
     public boolean delete(String id) {
-        //TODO implement method
-        return this.dao.delete(id);
+        return this.dao.delete(id) > 0;
     }
 
 }

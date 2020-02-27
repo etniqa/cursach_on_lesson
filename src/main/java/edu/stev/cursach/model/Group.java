@@ -1,23 +1,20 @@
 package edu.stev.cursach.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Document
 public class Group {
     //necessary field in every class
-    @Id
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
 
-    public Group(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified) {
+    public Group(@JsonProperty("id") String id,
+                 @JsonProperty("name") String name, String description, LocalDateTime creationDate, LocalDateTime dateModified) {
         this.id = id;
         this.name = name;
         this.description = description;

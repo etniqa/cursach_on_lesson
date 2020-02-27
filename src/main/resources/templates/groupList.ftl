@@ -20,9 +20,9 @@
         </tr>
         <#list groups as group>
             <tr>
-                <td>${group.id}</td>
-                <td>${group.name}</td>
-                <td>${group.description}</td>
+                <td>${(group.id)!"null"}</td>
+                <td>${(group.name)!"null"}</td>
+                <td>${(group.description)!"null"}</td>
                 <td><a href='/web/group/delete/${group.id}'><button>delete</button></a></td>
             </tr>
         </#list>

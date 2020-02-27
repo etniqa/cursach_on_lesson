@@ -8,13 +8,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class DataSet {
-    boolean wasInit = false;
-
-    Group first = new Group("1", "243", "good boys and girls", LocalDateTime.now(), null);
-    Group second = new Group("2", "243sk", "good boys", LocalDateTime.now(), null);
+    Group first = new Group(UUID.randomUUID().toString(), "243", "good boys and girls", LocalDateTime.now(), null);
+    Group second = new Group(UUID.randomUUID().toString(), "243sk", "good boys", LocalDateTime.now(), null);
     private ArrayList<Group> groups = new ArrayList<>(Arrays.asList(first, second));
 
     public ArrayList<Group> getGroups() {
@@ -23,5 +22,9 @@ public class DataSet {
 
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
+    }
+
+    public void setGroup(int index, Group newGroup){
+        this.groups.set(index, newGroup);
     }
 }

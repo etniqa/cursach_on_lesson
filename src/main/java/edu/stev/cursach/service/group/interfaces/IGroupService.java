@@ -9,6 +9,6 @@ public interface IGroupService {
     Group save (Group group); //create
     Group get(String id); //read
     List<Group> getAll();
-    Group edit(Group group); //update
+    int edit(String id, Group group); //update
     boolean delete(String id); //delete
 }

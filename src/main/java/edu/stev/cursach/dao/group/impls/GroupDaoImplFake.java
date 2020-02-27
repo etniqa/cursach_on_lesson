@@ -6,9 +6,8 @@ import edu.stev.cursach.model.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
+
 @Component
 public class GroupDaoImplFake implements IGroupDao {
     @Autowired
@@ -22,22 +21,30 @@ public class GroupDaoImplFake implements IGroupDao {
     @Override
     public Group get(String id) {
         List<Group> allGroups = this.dataSet.getGroups();
-        Group groupWhichNeedToDelete = allGroups.stream().filter(
+        Group groupWhichNeedToEdit = allGroups.stream().filter(
                 group -> group.getId().equals(id)).findFirst().orElse(null);
-        return groupWhichNeedToDelete;
+        return groupWhichNeedToEdit;
     }
     @Override
     public List<Group> getAll() {
         return this.dataSet.getGroups();
     }
+
     @Override
-    public Group edit(Group group) {
-        return null;
+    public int edit(String id, Group group) {
+        int indexOfGroupWhatWeWantToEdit = this.getAll().indexOf(this.get(id));
+        if (indexOfGroupWhatWeWantToEdit >= 0){
+            this.dataSet.setGroup(indexOfGroupWhatWeWantToEdit, group);
+        } else {
+            return 0;
+        }
+        return 1;
     }
+
     @Override
-    public boolean delete(String id) {
+    public int delete(String id) {
         Group groupWhichNeedToDelete = this.get(id);
         List<Group> groups = this.dataSet.getGroups();
-        return this.dataSet.getGroups().remove(groupWhichNeedToDelete);
+        return this.dataSet.getGroups().remove(groupWhichNeedToDelete) ? 1 : 0;
     }
 }
