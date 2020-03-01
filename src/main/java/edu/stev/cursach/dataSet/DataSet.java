@@ -4,21 +4,26 @@ import edu.stev.cursach.model.Group;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class DataSet {
-    private List<Group> groups = Arrays.asList(
-            new Group("1", "Baranov S.", "good boy", LocalDateTime.now(), null),
-            new Group("2", "Gubya M.", "pretty boy", LocalDateTime.now(), null)
-    );
+    Group first = new Group(UUID.randomUUID().toString(), "243", "good boys and girls", LocalDateTime.now(), LocalDateTime.now());
+    Group second = new Group(UUID.randomUUID().toString(), "243sk", "good boys", LocalDateTime.now(), LocalDateTime.now());
+    private ArrayList<Group> groups = new ArrayList<>(Arrays.asList(first, second));
 
-    public List<Group> getGroups() {
+    public ArrayList<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
+    }
+
+    public void setGroup(int index, Group newGroup){
+        this.groups.set(index, newGroup);
     }
 }

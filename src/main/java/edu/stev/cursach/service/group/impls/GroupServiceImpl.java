@@ -8,29 +8,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
+
 @Service
 public class GroupServiceImpl implements IGroupService {
-//    @Autowired
-//    GroupDaoImplFake dao;
+    @Autowired
+    GroupDaoImplFake dao;
 
     @Autowired
     GroupRepository repository;
 
     @PostConstruct
     void init (){
-//        List<Group> list = dao.getAll();
-//        repository.saveAll(list); //save table from list to mongodb
+        List<Group> list = dao.getAll();
+        repository.deleteAll();
+        repository.saveAll(list); //save table from list to mongodb
     }
 
     @Override
     public Group save(Group group) {
-        return null;
+        group.setId(UUID.randomUUID().toString());
+        group.setDateModified(LocalDateTime.now());
+        group.setCreationDate(LocalDateTime.now());
+        return repository.save(group);
     }
 
     @Override
-    public Group get(String is) {
-        return null;
+    public Group get(String id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
@@ -40,7 +47,8 @@ public class GroupServiceImpl implements IGroupService {
 
     @Override
     public Group edit(Group group) {
-        return null;
+        group.setDateModified(LocalDateTime.now());
+        return repository.save(group);
     }
 
     @Override
@@ -48,5 +56,4 @@ public class GroupServiceImpl implements IGroupService {
         repository.deleteById(id);
         return repository.findById(id).orElse(null);
     }
-
 }
