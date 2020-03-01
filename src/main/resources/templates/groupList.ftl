@@ -14,9 +14,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>description</th>
-            <th>description</th>
             <th>delete</th>
-            <th>description</th>
         </tr>
         <#list groups as group>
             <tr>

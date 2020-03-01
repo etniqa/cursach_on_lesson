@@ -28,6 +28,4 @@ public class GroupWebController {
         groupService.delete(id);
         return "redirect:/web/group/list";
     }
-
-
 }

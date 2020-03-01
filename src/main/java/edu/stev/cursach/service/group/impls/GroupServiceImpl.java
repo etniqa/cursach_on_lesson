@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
 import java.util.List;
 @Service
 public class GroupServiceImpl implements IGroupService {
@@ -15,6 +16,8 @@ public class GroupServiceImpl implements IGroupService {
 
     @Override
     public Group save(Group group) {
+        group.setCreationDate(LocalDateTime.now());
+        group.setDateModified(LocalDateTime.now());
         dao.save(group);
         return null;
     }

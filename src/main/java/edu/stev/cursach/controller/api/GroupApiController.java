@@ -3,7 +3,6 @@ package edu.stev.cursach.controller.api;
 import edu.stev.cursach.model.Group;
 import edu.stev.cursach.service.group.impls.GroupServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,10 +16,10 @@ public class GroupApiController {
 
     //value = link where function will work
     //method = http request< when function will be work
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    List<Group> getAll(){
+    @RequestMapping(value = "/get/list", method = RequestMethod.GET)
+    void getAll(){
         System.out.println("here");
-        return groupService.getAll();
+        groupService.getAll();
     }
 
     //can send here JSON-class from postman
@@ -29,6 +28,7 @@ public class GroupApiController {
         System.out.println("catch object from JSON");
         group.setId(UUID.randomUUID().toString());
         groupService.save(group);
+        this.getAll();
     }
 
     //it says that I have link with /api/group/{id} which reference to this function (make from postman
@@ -42,13 +42,14 @@ public class GroupApiController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    String deleteGroup(@PathVariable("id") String id) {
+    void deleteGroup(@PathVariable("id") String id) {
         groupService.delete(id);
-        return "redirect:/api/group/list";
+        this.getAll();
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.PUT)
     void editGroup(@PathVariable("id") String id, @RequestBody Group group){
         this.groupService.edit(id, group);
+        this.getAll();
     }
 }
