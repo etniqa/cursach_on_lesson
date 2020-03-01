@@ -46,14 +46,22 @@ public class GroupServiceImpl implements IGroupService {
     }
 
     @Override
-    public Group edit(Group group) {
-        group.setDateModified(LocalDateTime.now());
-        return repository.save(group);
+    public Group edit(Group groupFromRequest) {
+        //TODO change all fields to null, which wasn`t in requestBody in api.controller
+        groupFromRequest.setDateModified(LocalDateTime.now());
+        Group groupFromDB = repository.findById(groupFromRequest.getId()).orElse(null);
+        groupFromRequest = this.refillFields(groupFromRequest, groupFromDB);
+        return repository.save(groupFromRequest);
     }
 
     @Override
     public Group delete(String id) {
         repository.deleteById(id);
         return repository.findById(id).orElse(null);
+    }
+
+
+    Group refillFields(Group groupFromRequest, Group groupFromDB){
+        return null;
     }
 }

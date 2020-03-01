@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/group")
@@ -36,8 +35,10 @@ public class GroupApiController {
         this.getAll();
     }
 
+    //TODO doesn`t work (500 response)
     @RequestMapping(value = "/edit", method = RequestMethod.PUT)
-    Group editGroup(@PathVariable("id") String id, @RequestBody Group group){
+    Group editGroup(@RequestBody Group group){
+        System.out.println("here");
         return this.groupService.edit(group);
     }
 }
