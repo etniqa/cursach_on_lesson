@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.service.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
+import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

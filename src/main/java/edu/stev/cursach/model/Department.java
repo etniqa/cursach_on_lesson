@@ -18,17 +18,15 @@ public class Department {
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
     private Organization organization;
-    private Worker headOfDepartment;
 
     public Department(String id, String name, String description, LocalDateTime creationDate,
-                      LocalDateTime dateModified, Organization organization, Worker headOfDepartment) {
+                      LocalDateTime dateModified, Organization organization) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
         this.organization = organization;
-        this.headOfDepartment = headOfDepartment;
     }
     public static int getMaxIntAndIncrement() {
         return maxInt++;
@@ -90,14 +88,6 @@ public class Department {
         this.organization = organization;
     }
 
-    public Worker getHeadOfDepartment() {
-        return headOfDepartment;
-    }
-
-    public void setHeadOfDepartment(Worker headOfDepartment) {
-        this.headOfDepartment = headOfDepartment;
-    }
-
     @Override
     public String toString() {
         return "Department{" +
@@ -107,7 +97,6 @@ public class Department {
                 ", creationDate=" + creationDate +
                 ", dateModified=" + dateModified +
                 ", organization=" + organization +
-                ", headOfDepartment=" + headOfDepartment +
                 '}';
     }
 }

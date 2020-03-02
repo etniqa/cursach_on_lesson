@@ -18,32 +18,33 @@ public class AgreementHasAgreement {
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
-    private TypeOfAgreement firstAgreement;
-    private TypeOfAgreement secAgreement;
-    public TypeOfAgreement getFirstAgreement() {
-        return firstAgreement;
+
+    private TypeOfAgreement headAgreement;
+    private TypeOfAgreement otherAgreement;
+    public TypeOfAgreement getHeadAgreement() {
+        return headAgreement;
     }
-    public void setFirstAgreement(TypeOfAgreement firstAgreement) {
-        this.firstAgreement = firstAgreement;
+    public void setHeadAgreement(TypeOfAgreement headAgreement) {
+        this.headAgreement = headAgreement;
     }
-    public TypeOfAgreement getSecAgreement() {
-        return secAgreement;
+    public TypeOfAgreement getOtherAgreement() {
+        return otherAgreement;
     }
 
-    public void setSecAgreement(TypeOfAgreement secAgreement) {
-        this.secAgreement = secAgreement;
+    public void setOtherAgreement(TypeOfAgreement otherAgreement) {
+        this.otherAgreement = otherAgreement;
     }
 
     public AgreementHasAgreement(String id, String name, String description, LocalDateTime creationDate,
-                                 LocalDateTime dateModified, TypeOfAgreement firstAgreement,
-                                 TypeOfAgreement secAgreement) {
+                                 LocalDateTime dateModified, TypeOfAgreement headAgreement,
+                                 TypeOfAgreement otherAgreement) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
-        this.firstAgreement = firstAgreement;
-        this.secAgreement = secAgreement;
+        this.headAgreement = headAgreement;
+        this.otherAgreement = otherAgreement;
     }
 
     public static int getMaxIntAndIncrement() {
@@ -108,7 +109,7 @@ public class AgreementHasAgreement {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getDescription(), getCreationDate(), getDateModified(), getFirstAgreement(), getSecAgreement());
+        return Objects.hash(getName(), getDescription(), getCreationDate(), getDateModified(), getHeadAgreement(), getOtherAgreement());
     }
 
     @Override
@@ -119,8 +120,8 @@ public class AgreementHasAgreement {
                 ", description='" + description + '\'' +
                 ", creationDate=" + creationDate +
                 ", dateModified=" + dateModified +
-                ", firstAgreement=" + firstAgreement +
-                ", secAgreement=" + secAgreement +
+                ", firstAgreement=" + headAgreement +
+                ", secAgreement=" + otherAgreement +
                 '}';
     }
 }

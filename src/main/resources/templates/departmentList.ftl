@@ -26,7 +26,6 @@
         <td>${(department.creationDate)!"null"}</td>
         <td>${(department.dateModified)!"null"}</td>
         <td>${(department.organization.name)!"null"}</td>
-        <td>${(department.headOfDepartment.name)!"null"}</td>
     </tr>
     </#list>
 </table>

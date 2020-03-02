@@ -15,8 +15,8 @@
         <th>description</th>
         <th>creationDate</th>
         <th>dateModified</th>
-        <th>organization</th>
-        <th>headOfDepartment</th>
+        <th>Header agreement</th>
+        <th>other agreement</th>
     </tr>
     <#list agreementBelongToAgreements as agreementBelongToAgreement>
     <tr>
@@ -25,8 +25,8 @@
         <td>${(agreementBelongToAgreement.description)!"null"}</td>
         <td>${(agreementBelongToAgreement.creationDate)!"null"}</td>
         <td>${(agreementBelongToAgreement.dateModified)!"null"}</td>
-        <td>${(agreementBelongToAgreement.firstAgreement.name)!"null"}</td>
-        <td>${(agreementBelongToAgreement.secondAgreement.name)!"null"}</td>
+        <td>${(agreementBelongToAgreement.headAgreement.name)!"null"}</td>
+        <td>${(agreementBelongToAgreement.otherAgreement.name)!"null"}</td>
     </tr>
 </#list>
 </table>

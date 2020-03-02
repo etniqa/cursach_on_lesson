@@ -19,13 +19,12 @@ public class TypeOfAgreement {
     private LocalDateTime dateModified;
     private LocalDateTime dateBeg;
     private LocalDateTime dateEnd;
-    private CanLead chief;
     private Organization organizationWhichSign;
     private int cost; //counting at the end
 
     public TypeOfAgreement(String id, String name, String description, LocalDateTime creationDate,
                            LocalDateTime dateModified, LocalDateTime dateBeg, LocalDateTime dateEnd,
-                           CanLead chief, Organization organizationWhichSign, int cost) {
+                           Organization organizationWhichSign, int cost) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -33,7 +32,6 @@ public class TypeOfAgreement {
         this.dateModified = dateModified;
         this.dateBeg = dateBeg;
         this.dateEnd = dateEnd;
-        this.chief = chief;
         this.organizationWhichSign = organizationWhichSign;
         this.cost = cost;
     }
@@ -96,14 +94,6 @@ public class TypeOfAgreement {
 
     public void setDateEnd(LocalDateTime dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public CanLead getChief() {
-        return chief;
-    }
-
-    public void setChief(CanLead chief) {
-        this.chief = chief;
     }
 
     public Organization getOrganizationWhichSign() {

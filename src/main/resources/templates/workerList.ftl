@@ -26,7 +26,7 @@
             <td>${(worker.creationDate)!"null"}</td>
             <td>${(worker.dateModified)!"null"}</td>
             <td>${(worker.departmentWhereWorks.name)!"null"}</td>
-            <td>${(worker.agreementWhereIsWOrking.name)!"null"}</td>
+            <td>${(worker.agreementWhereIsWorking.name)!"null"}</td>
         </tr>
     </#list>
 </table>
