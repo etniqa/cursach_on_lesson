@@ -29,11 +29,12 @@ public class TechnicianHasEquipmentServiceImpl implements IService<TechnicianHas
 
     @Override
     public TechnicianHasEquipment edit(TechnicianHasEquipment element) {
-        return dao.edit(element);
+//        return dao.edit(element);
+    return null;
     }
 
     @Override
-    public TechnicianHasEquipment delete(TechnicianHasEquipment element) {
-        return dao.delete(element);
+    public TechnicianHasEquipment delete(String id) {
+        return dao.delete(id);
     }
 }

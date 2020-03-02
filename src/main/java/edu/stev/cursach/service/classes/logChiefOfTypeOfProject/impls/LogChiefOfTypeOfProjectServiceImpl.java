@@ -33,7 +33,7 @@ public class LogChiefOfTypeOfProjectServiceImpl implements IService<LogChiefOfTy
     }
 
     @Override
-    public LogChiefOfTypeOfProject delete(LogChiefOfTypeOfProject element) {
-        return null;
+    public LogChiefOfTypeOfProject delete(String id) {
+        return dao.delete(id);
     }
 }

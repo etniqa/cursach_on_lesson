@@ -34,7 +34,7 @@ public class TypeOfAgreementServiceImpl implements IService<TypeOfAgreement> {
     }
 
     @Override
-    public TypeOfAgreement delete(TypeOfAgreement element) {
-        return null;
+    public TypeOfAgreement delete(String id) {
+        return dao.delete(id);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class OrganizationServiceImpl implements IService<Organization> {
     @Autowired
-    OrganizationDaoImpl organizationDao;
+    OrganizationDaoImpl dao;
 
     @Override
     public Organization save(Organization element) {
@@ -24,7 +24,7 @@ public class OrganizationServiceImpl implements IService<Organization> {
 
     @Override
     public List<Organization> getAll() {
-        return this.organizationDao.getAll();
+        return this.dao.getAll();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class OrganizationServiceImpl implements IService<Organization> {
     }
 
     @Override
-    public Organization delete(Organization element) {
-        return null;
+    public Organization delete(String id) {
+        return dao.delete(id);
     }
 }

@@ -39,12 +39,12 @@ public class TechnicianHasEquipmentDaoImpl implements IDao<TechnicianHasEquipmen
     }
 
     @Override
-    public TechnicianHasEquipment edit(TechnicianHasEquipment element) {
+    public TechnicianHasEquipment edit(String id, TechnicianHasEquipment newElem) {
         return null;
     }
 
     @Override
-    public TechnicianHasEquipment delete(TechnicianHasEquipment element) {
+    public TechnicianHasEquipment delete(String id) {
         return null;
     }
 }

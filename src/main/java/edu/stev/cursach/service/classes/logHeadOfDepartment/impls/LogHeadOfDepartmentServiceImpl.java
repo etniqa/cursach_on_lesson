@@ -33,7 +33,7 @@ public class LogHeadOfDepartmentServiceImpl implements IService<LogHeadOfDepartm
     }
 
     @Override
-    public LogHeadOfDepartment delete(LogHeadOfDepartment element) {
-        return null;
+    public LogHeadOfDepartment delete(String id) {
+        return dao.delete(id);
     }
 }

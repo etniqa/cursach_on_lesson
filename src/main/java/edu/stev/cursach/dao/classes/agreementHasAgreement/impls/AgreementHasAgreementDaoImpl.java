@@ -14,14 +14,14 @@ public class AgreementHasAgreementDaoImpl implements IDao<AgreementHasAgreement>
     @Autowired
     DataSet dataSet; // connected to lists to set default values in DB
 
-    @Autowired
-    AgreementHasAgreementRepository repository;
-
-    @PostConstruct
-    void init(){
-        repository.deleteAll();
-        repository.saveAll((List<AgreementHasAgreement>)this.dataSet.getAgreementHasAgreementList());
-    }
+//    @Autowired
+//    AgreementHasAgreementRepository repository;
+//
+//    @PostConstruct
+//    void init(){
+//        repository.deleteAll();
+//        repository.saveAll((List<AgreementHasAgreement>)this.dataSet.getAgreementHasAgreementList());
+//    }
 
     @Override
     public AgreementHasAgreement save(AgreementHasAgreement element) {
@@ -30,7 +30,9 @@ public class AgreementHasAgreementDaoImpl implements IDao<AgreementHasAgreement>
 
     @Override
     public AgreementHasAgreement get(String id) {
-        return null;
+        return this.dataSet.getAgreementHasAgreementList().stream()
+                .filter(agreementHasAgreement -> agreementHasAgreement.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -39,12 +41,14 @@ public class AgreementHasAgreementDaoImpl implements IDao<AgreementHasAgreement>
     }
 
     @Override
-    public AgreementHasAgreement edit(AgreementHasAgreement element) {
+    public AgreementHasAgreement edit(String id, AgreementHasAgreement newElem) {
         return null;
     }
 
     @Override
-    public AgreementHasAgreement delete(AgreementHasAgreement element) {
-        return null;
+    public AgreementHasAgreement delete(String id) {
+        AgreementHasAgreement whichNeedToDelete = this.get(id);
+        this.dataSet.getAgreementHasAgreementList().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

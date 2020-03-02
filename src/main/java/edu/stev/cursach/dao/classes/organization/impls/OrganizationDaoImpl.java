@@ -39,12 +39,12 @@ public class OrganizationDaoImpl implements IDao<Organization> {
     }
 
     @Override
-    public Organization edit(Organization element) {
+    public Organization edit(String id, Organization newElem) {
         return null;
     }
 
     @Override
-    public Organization delete(Organization element) {
+    public Organization delete(String id) {
         return null;
     }
 }

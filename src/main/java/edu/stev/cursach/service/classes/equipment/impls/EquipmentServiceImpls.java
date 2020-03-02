@@ -33,7 +33,7 @@ public class EquipmentServiceImpls implements IService<Equipment> {
     }
 
     @Override
-    public Equipment delete(Equipment element) {
+    public Equipment delete(String id) {
         return null;
     }
 }

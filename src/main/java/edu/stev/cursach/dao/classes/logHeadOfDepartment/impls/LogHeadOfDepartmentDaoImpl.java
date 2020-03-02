@@ -38,12 +38,12 @@ public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
     }
 
     @Override
-    public LogHeadOfDepartment edit(LogHeadOfDepartment element) {
+    public LogHeadOfDepartment edit(String id, LogHeadOfDepartment newElem) {
         return null;
     }
 
     @Override
-    public LogHeadOfDepartment delete(LogHeadOfDepartment element) {
+    public LogHeadOfDepartment delete(String id) {
         return null;
     }
 }

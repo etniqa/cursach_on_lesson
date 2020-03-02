@@ -33,7 +33,7 @@ public class DepartmentServiceImpl implements IService<Department> {
     }
 
     @Override
-    public Department delete(Department element) {
+    public Department delete(String id) {
         return null;
     }
 }

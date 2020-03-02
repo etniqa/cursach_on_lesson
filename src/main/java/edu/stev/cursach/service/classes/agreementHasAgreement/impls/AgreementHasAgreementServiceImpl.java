@@ -22,6 +22,11 @@ public class AgreementHasAgreementServiceImpl implements IService<AgreementHasAg
         return null;
     }
 
+//    @Override
+//    public AgreementHasAgreement get(String id) {
+//        return dao.get(id);
+//    }
+
     @Override
     public List<AgreementHasAgreement> getAll() {
         return this.dao.getAll();
@@ -33,7 +38,8 @@ public class AgreementHasAgreementServiceImpl implements IService<AgreementHasAg
     }
 
     @Override
-    public AgreementHasAgreement delete(AgreementHasAgreement element) {
+    public AgreementHasAgreement delete(String id) {
         return null;
     }
+
 }

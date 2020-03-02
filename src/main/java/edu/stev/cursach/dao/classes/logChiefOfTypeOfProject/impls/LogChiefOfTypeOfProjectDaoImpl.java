@@ -38,12 +38,12 @@ public class LogChiefOfTypeOfProjectDaoImpl implements IDao<LogChiefOfTypeOfProj
     }
 
     @Override
-    public LogChiefOfTypeOfProject edit(LogChiefOfTypeOfProject element) {
+    public LogChiefOfTypeOfProject edit(String id, LogChiefOfTypeOfProject newElem) {
         return null;
     }
 
     @Override
-    public LogChiefOfTypeOfProject delete(LogChiefOfTypeOfProject element) {
+    public LogChiefOfTypeOfProject delete(String id) {
         return null;
     }
 }

@@ -13,14 +13,14 @@ import java.util.List;
 public class DepartmentDaoImpl implements IDao<Department> {
     @Autowired
     DataSet dataSet;
-    @Autowired
-    DepartmentRepository repository;
-
-    @PostConstruct
-    void init(){
-        repository.deleteAll();
-        repository.saveAll(dataSet.getDepartments());//create table
-    }
+//    @Autowired
+//    DepartmentRepository repository;
+//
+//    @PostConstruct
+//    void init(){
+//        repository.deleteAll();
+//        repository.saveAll(dataSet.getDepartments());//create table
+//    }
 
     @Override
     public Department save(Department element) {
@@ -38,12 +38,12 @@ public class DepartmentDaoImpl implements IDao<Department> {
     }
 
     @Override
-    public Department edit(Department element) {
+    public Department edit(String id, Department newElem) {
         return null;
     }
 
     @Override
-    public Department delete(Department element) {
+    public Department delete(String id) {
         return null;
     }
 }

@@ -38,12 +38,12 @@ public class TypeOfAgreementDaoImpl implements IDao<TypeOfAgreement> {
     }
 
     @Override
-    public TypeOfAgreement edit(TypeOfAgreement element) {
+    public TypeOfAgreement edit(String id, TypeOfAgreement newElem) {
         return null;
     }
 
     @Override
-    public TypeOfAgreement delete(TypeOfAgreement element) {
+    public TypeOfAgreement delete(String id) {
         return null;
     }
 }

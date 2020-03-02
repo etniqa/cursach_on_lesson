@@ -39,12 +39,12 @@ public class EquipmentDaoImpls implements IDao<Equipment> {
     }
 
     @Override
-    public Equipment edit(Equipment element) {
+    public Equipment edit(String id, Equipment newElem) {
         return null;
     }
 
     @Override
-    public Equipment delete(Equipment element) {
+    public Equipment delete(String id) {
         return null;
     }
 }

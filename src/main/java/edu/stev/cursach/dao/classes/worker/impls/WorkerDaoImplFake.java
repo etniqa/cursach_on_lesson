@@ -37,12 +37,12 @@ public class WorkerDaoImplFake implements IDao<Worker> {
     }
 
     @Override
-    public Worker edit(Worker element) {
+    public Worker edit(String id, Worker newElem) {
         return null;
     }
 
     @Override
-    public Worker delete(Worker element) {
+    public Worker delete(String id) {
         return null;
     }
 }
