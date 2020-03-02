@@ -5,10 +5,10 @@ import edu.stev.cursach.model.Group;
 import java.util.List;
 
 //declaration 5 meths of CRUD
-public interface IGroupService {
-    Group save (Group group); //create
-    Group get(String id); //read
-    List<Group> getAll();
-    Group edit(Group group); //update
+public interface IGroupService<T> {
+    T save(T element); //create
+    T get(String id);
+    List<T> getAll();
+    T edit(T element); //update
     boolean delete(String id); //delete
 }

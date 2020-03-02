@@ -15,8 +15,12 @@ public class GroupServiceImpl implements IGroupService {
     GroupDaoImplFake dao;
 
     @Override
-    public Group save(Group group) {
+    public Object save(Object element) {
+        return null;
+    }
 
+    @Override
+    public Object edit(Object element) {
         return null;
     }
 
@@ -28,11 +32,6 @@ public class GroupServiceImpl implements IGroupService {
     @Override
     public List<Group> getAll() {
         return dao.getAll();
-    }
-
-    @Override
-    public Group edit(Group group) {
-        return null;
     }
 
     @Override
