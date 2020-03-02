@@ -1,6 +1,6 @@
 package edu.stev.cursach.service.department.impls;
 
-import edu.stev.cursach.dao.department.impls.DepartmentDaoImpl;
+import edu.stev.cursach.dao.classes.department.impls.DepartmentDaoImpl;
 import edu.stev.cursach.model.Department;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;

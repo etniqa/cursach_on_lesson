@@ -1,6 +1,6 @@
 package edu.stev.cursach.service.typeOfAgreement.impls;
 
-import edu.stev.cursach.dao.typeOfAgreement.impls.TypeOfAgreementDaoImpl;
+import edu.stev.cursach.dao.classes.typeOfAgreement.impls.TypeOfAgreementDaoImpl;
 import edu.stev.cursach.model.TypeOfAgreement;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;

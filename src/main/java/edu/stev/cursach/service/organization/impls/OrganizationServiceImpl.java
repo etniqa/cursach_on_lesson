@@ -1,7 +1,6 @@
 package edu.stev.cursach.service.organization.impls;
 
-import edu.stev.cursach.dao.equipment.impls.EquipmentDaoImpls;
-import edu.stev.cursach.dao.organization.impls.OrganizationDaoImpl;
+import edu.stev.cursach.dao.classes.organization.impls.OrganizationDaoImpl;
 import edu.stev.cursach.model.Organization;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,13 +1,17 @@
 package edu.stev.cursach.model;
 
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
+@Document
 public class TypeOfAgreement {
     static int maxInt;
     static String maxIntString;
     static {
         maxInt = 0;
     }
+    @Id
     private String id;
     private String name;
     private String description;

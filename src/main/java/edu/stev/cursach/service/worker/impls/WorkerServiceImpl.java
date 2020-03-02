@@ -1,6 +1,6 @@
 package edu.stev.cursach.service.worker.impls;
 
-import edu.stev.cursach.dao.worker.impls.WorkerDaoImplFake;
+import edu.stev.cursach.dao.classes.worker.impls.WorkerDaoImplFake;
 import edu.stev.cursach.model.Worker;
 import edu.stev.cursach.service.worker.interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;

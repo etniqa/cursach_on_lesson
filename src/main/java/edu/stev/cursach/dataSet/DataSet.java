@@ -3,67 +3,76 @@ package edu.stev.cursach.dataSet;
 import edu.stev.cursach.model.*;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class DataSet {
-    private Organization continuumOrganization = new Organization(Organization.getMaxIntStringAndIncrement(),
+    private boolean wasInit = false;
+    private Organization continuumOrganization = new Organization(UUID.randomUUID().toString(),
             "Continuum", "from Chernivtsi. There is no head organization", LocalDateTime.now(),
             null, null);
-    private Department motorcycleRepairDepartment = new Department(Department.getMaxIntStringAndIncrement(),
+    private Department motorcycleRepairDepartment = new Department(UUID.randomUUID().toString(),
             "Department of bike`s repair", "in Continuum", LocalDateTime.now(),
-            null, continuumOrganization, null);
-    private Department carRepairDepartment = new Department(Department.getMaxIntStringAndIncrement(), "Department of car`s repair", "in Continuum",
-            LocalDateTime.now(), null, continuumOrganization, null);
-    private Contract withVolkswagenContract = new Contract(TypeOfAgreement.getMaxIntStringAndIncrement(),
-            "With Volkswagen", "in car`s repair", LocalDateTime.now(), null, null,
-            null, null, continuumOrganization, 0); //leader will be Baranov S.
-    private Contract withHondaContract = new Contract(TypeOfAgreement.getMaxIntStringAndIncrement(), "with honda",
-    "in bike`s repair", LocalDateTime.now(), null, null, null, null, continuumOrganization,
-            0);//leader will be Ghubya M.
-    private Project warrantyRepairProject = new Project(TypeOfAgreement.getMaxIntStringAndIncrement(), "Warranty repair", "with Volkswagen", LocalDateTime.now(),
-            null, LocalDateTime.now(), null, null, continuumOrganization, 0);//leader - Batyev A.
-    private Project wheelExchangeProject = new Project(TypeOfAgreement.getMaxIntStringAndIncrement(),
+            null, continuumOrganization, null);//head  = Rudyaga
+    private Department carRepairDepartment = new Department(UUID.randomUUID().toString(), "Department of car`s repair", "in Continuum",
+            LocalDateTime.now(), null, continuumOrganization, null);//head = Baranov
+    private Contract withVolkswagenContract = new Contract(UUID.randomUUID().toString(),
+            "With Volkswagen", "in car`s repair", LocalDateTime.now(), null, LocalDateTime.now(),
+            null, null, continuumOrganization, 0); //head will be Baranov S.
+    private Contract withHondaContract = new Contract(UUID.randomUUID().toString(), "with honda",
+    "in bike`s repair", LocalDateTime.now(), null, LocalDateTime.now(), null, null, continuumOrganization,
+            0);//chief will be Ghubya M.
+    private Project warrantyRepairProject = new Project(UUID.randomUUID().toString(), "Warranty repair", "with Volkswagen", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization, 0);//chief - Batyev A.
+    private Project wheelExchangeProject = new Project(UUID.randomUUID().toString(),
             "Happy wheel", "for Honda and Volkswagen", LocalDateTime.now(),
-            null, LocalDateTime.now(), null, null, continuumOrganization, 0);//leader - Rydyaga D.
-    private Organization bmxForLifeOrganization = new Organization(Organization.getMaxIntStringAndIncrement(),"bmx for life", "in Continuum", LocalDateTime.now(),
+            null, LocalDateTime.now(), null, null, continuumOrganization, 0);//chief - Rydyaga D.
+    private Organization bmxForLifeOrganization = new Organization(UUID.randomUUID().toString(),
+            "bmx for life", "in Continuum", LocalDateTime.now(),
             null, continuumOrganization);
     //workers
     //leaders
-    private Designer rydyagaDesigner = new Designer(Worker.getMaxIntStringAndIncrement(), "Rudyaga D.", "from Chernivtsi", LocalDateTime.now(),
+    private Designer rydyagaDesigner = new Designer(UUID.randomUUID().toString(), "Rudyaga D.", "from Chernivtsi", LocalDateTime.now(),
             null, motorcycleRepairDepartment, wheelExchangeProject, 3);
-    private Engineer baranovEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Baranov S.", "from Novosnistrovsk", LocalDateTime.now(),
+    private Engineer baranovEngineer = new Engineer(UUID.randomUUID().toString(), "Baranov S.", "from Novosnistrovsk", LocalDateTime.now(),
             null, carRepairDepartment, wheelExchangeProject, 1);
-    private Engineer batyevEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Batyeb A.", "from Chernivtsi", LocalDateTime.now(),
+    private Engineer batyevEngineer = new Engineer(UUID.randomUUID().toString(), "Batyeb A.", "from Chernivtsi", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject, 2);
-    private Engineer ghybyaEngineer = new Engineer(Worker.getMaxIntStringAndIncrement(), "Ghybya M.", "from Chernivtsi", LocalDateTime.now(),
+    private Engineer ghybyaEngineer = new Engineer(UUID.randomUUID().toString(), "Ghybya M.", "from Chernivtsi", LocalDateTime.now(),
             null, motorcycleRepairDepartment, wheelExchangeProject, 3);
     //just workers
-    private Assistant voznyukAssistant = new Assistant(Worker.getMaxIntStringAndIncrement(), "Voznyuk K.", "helper", LocalDateTime.now(),
+    private Assistant voznyukAssistant = new Assistant(UUID.randomUUID().toString(), "Voznyuk K.", "helper", LocalDateTime.now(),
             null, motorcycleRepairDepartment, warrantyRepairProject, 4);
-    private Designer vodyancukDesigner = new Designer(Worker.getMaxIntStringAndIncrement(), "Vodyanchuk V.", "from village", LocalDateTime.now(),
+    private Designer vodyancukDesigner = new Designer(UUID.randomUUID().toString(), "Vodyanchuk V.", "from village", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject, 5);
-    private Equipment electropumpEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "t-2000 electroppump", "", LocalDateTime.now(),
+    private Equipment electropumpEquipment = new Equipment(UUID.randomUUID().toString(), "t-2000 electroppump", "", LocalDateTime.now(),
             null, motorcycleRepairDepartment, wheelExchangeProject);
-    private Equipment diskRepairEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "Disk repair tool ALFA-tau 3.0", "", LocalDateTime.now(),
+    private Equipment diskRepairEquipment = new Equipment(UUID.randomUUID().toString(), "Disk repair tool ALFA-tau 3.0", "", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject);
-    private Technician morozTechnician = new Technician(Worker.getMaxIntStringAndIncrement(), "Moroz V.", "help to Max", LocalDateTime.now(), null,
+    private Technician morozTechnician = new Technician(UUID.randomUUID().toString(), "Moroz V.", "help to Max", LocalDateTime.now(), null,
             motorcycleRepairDepartment, wheelExchangeProject);//diskRepairEquipment, electropumpEquipment
-    private Equipment electrojackEquipment = new Equipment(Equipment.getMaxIntStringAndIncrement(), "Electrojack Braun 5645", "", LocalDateTime.now(),
+    private Equipment electrojackEquipment = new Equipment(UUID.randomUUID().toString(), "Electrojack Braun 5645", "", LocalDateTime.now(),
             null, carRepairDepartment, warrantyRepairProject);
-    private Technician andriichukTechnician = new Technician(Worker.getMaxIntStringAndIncrement(), "Andriichuk D.", "help to Max", LocalDateTime.now(), null,
+    private Technician andriichukTechnician = new Technician(UUID.randomUUID().toString(), "Andriichuk D.", "help to Max", LocalDateTime.now(), null,
             carRepairDepartment, warrantyRepairProject);//electrojackEquipment
 
-    private List<AgreementHasAgreement> agreementHasAgreementList = Arrays.asList(
-            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
+    private List<AgreementHasAgreement> agreementHasAgreementList = new ArrayList<>(Arrays.asList(
+            new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
                     "description", LocalDateTime.now(), null,  warrantyRepairProject, withVolkswagenContract),
-            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
+            new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
                     "description", LocalDateTime.now(), null,wheelExchangeProject, withVolkswagenContract),
-            new AgreementHasAgreement(AgreementHasAgreement.getMaxIntStringAndIncrement(), "name",
+            new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
                     "description", LocalDateTime.now(), null,wheelExchangeProject, withHondaContract)
-    );
+    ));
+    private List<TechnicianHasEquipment> technicianHasEquipmentsList = new ArrayList<>(Arrays.asList(
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), andriichukTechnician, electrojackEquipment),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), morozTechnician, diskRepairEquipment),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), morozTechnician, electropumpEquipment)));
     private List<Worker> workerList = Arrays.asList(
             rydyagaDesigner,
             baranovEngineer,
@@ -95,27 +104,48 @@ public class DataSet {
     );
 
 
+    private void init() {
+        if(this.wasInit){
+            this.carRepairDepartment.setHeadOfDepartment(baranovEngineer);
+            this.motorcycleRepairDepartment.setHeadOfDepartment(rydyagaDesigner);
+            this.withVolkswagenContract.setChief(baranovEngineer);
+            this.withHondaContract.setChief(ghybyaEngineer);
+            this.warrantyRepairProject.setChief(batyevEngineer);
+            this.wheelExchangeProject.setChief(rydyagaDesigner);
+        }
+    }
+
     public List<TypeOfAgreement> getTypeOfAgreements() {
+        this.init();
         return typeOfAgreements;
     }
 
     public List<AgreementHasAgreement> getAgreementHasAgreementList() {
+        this.init();
         return agreementHasAgreementList;
     }
 
     public List<Worker> getWorkerList() {
+        this.init();
         return workerList;
     }
 
     public List<Organization> getOrganizations() {
+        this.init();
         return organizations;
     }
 
     public List<Department> getDepartments() {
+        this.init();
         return departments;
     }
 
     public List<Equipment> getEquipments() {
+        this.init();
         return equipments;
+    }
+
+    public List<TechnicianHasEquipment> getTechnicianHasEquipmentsList() {
+        return technicianHasEquipmentsList;
     }
 }
