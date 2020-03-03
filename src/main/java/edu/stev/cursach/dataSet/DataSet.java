@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @Component
 public class DataSet {
-    private boolean wasInit = false;
     private Organization continuumOrganization = new Organization(UUID.randomUUID().toString(),
             "Continuum", "from Chernivtsi. There is no head organization", LocalDateTime.now(),
             null, null);
@@ -24,7 +23,7 @@ public class DataSet {
             "With Volkswagen", "in car`s repair", LocalDateTime.now(), null, LocalDateTime.now(),
             null, continuumOrganization, 0); //head will be Baranov S.
     private Contract withHondaContract = new Contract(UUID.randomUUID().toString(), "with honda",
-    "in bike`s repair", LocalDateTime.now(), null, LocalDateTime.now(), null, continuumOrganization,
+            "in bike`s repair", LocalDateTime.now(), null, LocalDateTime.now(), null, continuumOrganization,
             0);//chief will be Ghubya M.
     private Project warrantyRepairProject = new Project(UUID.randomUUID().toString(), "Warranty repair", "with Volkswagen", LocalDateTime.now(),
             null, LocalDateTime.now(), null, continuumOrganization, 0);//chief - Batyev A.
@@ -34,7 +33,6 @@ public class DataSet {
     private Project wheelExchangeProject = new Project(UUID.randomUUID().toString(),
             "Happy wheel", "for Honda and Volkswagen", LocalDateTime.now(),
             null, LocalDateTime.now(), null, bmxForLifeOrganization, 0);//chief - Rydyaga D.
-
     //workers
     //leaders
     private Designer rudyagaDesigner = new Designer(UUID.randomUUID().toString(), "Rudyaga D.", "from Chernivtsi", LocalDateTime.now(),
@@ -70,9 +68,10 @@ public class DataSet {
                     "description", LocalDateTime.now(), null, withHondaContract, wheelExchangeProject)
     ));
     private List<TechnicianHasEquipment> technicianHasEquipmentsList = new ArrayList<>(Arrays.asList(
-            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", LocalDateTime.now(), andriichukTechnician, electrojackEquipment),
-            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", LocalDateTime.now(), morozTechnician, diskRepairEquipment),
-            new TechnicianHasEquipment(UUID.randomUUID().toString(),"", LocalDateTime.now(), morozTechnician, electropumpEquipment)));
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "",  LocalDateTime.now(),
+                    null, andriichukTechnician, electrojackEquipment),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "",  LocalDateTime.now(), null, morozTechnician, diskRepairEquipment),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(),"", "", LocalDateTime.now(), null, morozTechnician, electropumpEquipment)));
     private List<LogHeadOfDepartment> logHeadOfDepartments = new ArrayList<>(Arrays.asList(
             new LogHeadOfDepartment(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
                     null, LocalDateTime.of(2020, 1,1,0,0,0,0),
@@ -96,7 +95,7 @@ public class DataSet {
                     null, wheelExchangeProject, rudyagaDesigner)
     ));
 
-    private List<Worker> workerList = Arrays.asList(
+    private List<Worker> workerList = new ArrayList<>(Arrays.asList(
             rudyagaDesigner,
             baranovEngineer,
             batyevEngineer,
@@ -105,26 +104,26 @@ public class DataSet {
             vodyancukDesigner,
             morozTechnician,
             andriichukTechnician
-            );
-    private List<TypeOfAgreement> typeOfAgreements = Arrays.asList(
+    ));
+    private List<TypeOfAgreement> typeOfAgreements = new ArrayList<>(Arrays.asList(
             withVolkswagenContract,
             withHondaContract,
             warrantyRepairProject,
             wheelExchangeProject
-    );
-    private List<Organization> organizations = Arrays.asList(
+    ));
+    private List<Organization> organizations = new ArrayList<>(Arrays.asList(
             continuumOrganization,
             bmxForLifeOrganization
-    );
-    private List<Department> departments = Arrays.asList(
+    ));
+    private List<Department> departments = new ArrayList<>(Arrays.asList(
             motorcycleRepairDepartment,
             carRepairDepartment
-    );
-    private List<Equipment> equipments = Arrays.asList(
+    ));
+    private List<Equipment> equipments = new ArrayList<>(Arrays.asList(
             diskRepairEquipment,
             electrojackEquipment,
             electropumpEquipment
-    );
+    ));
 
     public List<TypeOfAgreement> getTypeOfAgreements() {
         return typeOfAgreements;

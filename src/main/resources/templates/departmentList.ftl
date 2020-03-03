@@ -25,7 +25,10 @@
         <td>${(department.description)!"null"}</td>
         <td>${(department.creationDate)!"null"}</td>
         <td>${(department.dateModified)!"null"}</td>
+
         <td>${(department.organization.name)!"null"}</td>
+        <td><a href='/web/department/delete/${department.id}'><button>delete</button></a></td>
+
     </tr>
     </#list>
 </table>

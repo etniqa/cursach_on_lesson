@@ -27,10 +27,13 @@
             <td>${typeOfAgreement.description}</td>
             <td>${typeOfAgreement.creationDate}</td>
             <td>${(typeOfAgreement.dateModified)!"null"}</td>
+
             <td>${(typeOfAgreement.dateBeg)!"null"}</td>
             <td>${(typeOfAgreement.dateEnd)!"null"}</td>
             <td>${(typeOfAgreement.chief.name)!"null"}</td>
             <td>${(typeOfAgreement.organizationWhichSign.name)!"null"}</td>
+
+            <td><a href='/web/type_of_agreement/delete/${typeOfAgreement.id}'><button>delete</button></a></td>
         </tr>
     </#list>
 </table>

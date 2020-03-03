@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.Equipment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -24,27 +25,7 @@ public class EquipmentDaoImpls implements IDao<Equipment> {
     }
 
     @Override
-    public Equipment save(Equipment element) {
-        return null;
-    }
-
-    @Override
-    public Equipment get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<Equipment> getAll() {
-        return dataSet.getEquipments();
-    }
-
-    @Override
-    public Equipment edit(Equipment element) {
-        return null;
-    }
-
-    @Override
-    public Equipment delete(Equipment element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

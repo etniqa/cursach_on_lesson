@@ -25,8 +25,11 @@
             <td>${(worker.description)!"null"}</td>
             <td>${(worker.creationDate)!"null"}</td>
             <td>${(worker.dateModified)!"null"}</td>
+
             <td>${(worker.departmentWhereWorks.name)!"null"}</td>
             <td>${(worker.agreementWhereIsWorking.name)!"null"}</td>
+
+            <td><a href='/web/worker/delete/${worker.id}'><button>delete</button></a></td>
         </tr>
     </#list>
 </table>

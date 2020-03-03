@@ -24,7 +24,11 @@
             <td>${(organization.description)!"null"}</td>
             <td>${(organization.creationDate)!"null"}</td>
             <td>${(organization.dateModified)!"null"}</td>
+
             <td>${(organization.headOrganization.name)!"null"}</td>
+
+            <td><a href='/web/organization/delete/${organization.id}'><button>delete</button></a></td>
+
         </tr>
     </#list>
 </table>

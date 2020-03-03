@@ -1,6 +1,7 @@
 package edu.stev.cursach.service.classes.agreementHasAgreement.impls;
 
 import edu.stev.cursach.dao.classes.agreementHasAgreement.impls.AgreementHasAgreementDaoImpl;
+import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.model.AgreementHasAgreement;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,12 @@ public class AgreementHasAgreementServiceImpl implements IService<AgreementHasAg
     AgreementHasAgreementDaoImpl dao;
 
     @Override
-    public AgreementHasAgreement save(AgreementHasAgreement element) {
-        return null;
-    }
-
-    @Override
-    public AgreementHasAgreement get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<AgreementHasAgreement> getAll() {
-        return this.dao.getAll();
+    public IDao getDao() {
+        return dao;
     }
 
     @Override
     public AgreementHasAgreement edit(AgreementHasAgreement element) {
-        return null;
-    }
-
-    @Override
-    public AgreementHasAgreement delete(AgreementHasAgreement element) {
         return null;
     }
 }

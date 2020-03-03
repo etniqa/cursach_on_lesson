@@ -18,15 +18,18 @@
         <th>Header agreement</th>
         <th>other agreement</th>
     </tr>
-    <#list agreementBelongToAgreements as agreementBelongToAgreement>
+    <#list agreementBelongToAgreements as agreementHasAgreement>
     <tr>
-        <td>${(agreementBelongToAgreement.id)!"null"}</td>
-        <td>${(agreementBelongToAgreement.name)!"null"}</td>
-        <td>${(agreementBelongToAgreement.description)!"null"}</td>
-        <td>${(agreementBelongToAgreement.creationDate)!"null"}</td>
-        <td>${(agreementBelongToAgreement.dateModified)!"null"}</td>
-        <td>${(agreementBelongToAgreement.headAgreement.name)!"null"}</td>
-        <td>${(agreementBelongToAgreement.otherAgreement.name)!"null"}</td>
+        <td>${(agreementHasAgreement.id)!"null"}</td>
+        <td>${(agreementHasAgreement.name)!"null"}</td>
+        <td>${(agreementHasAgreement.description)!"null"}</td>
+        <td>${(agreementHasAgreement.creationDate)!"null"}</td>
+        <td>${(agreementHasAgreement.dateModified)!"null"}</td>
+
+        <td>${(agreementHasAgreement.headAgreement.name)!"null"}</td>
+        <td>${(agreementHasAgreement.otherAgreement.name)!"null"}</td>
+
+        <td><a href='/web/agreement_has_agreement/delete/${agreementHasAgreement.id}'><button>delete</button></a></td>
     </tr>
 </#list>
 </table>

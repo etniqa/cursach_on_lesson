@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.TypeOfAgreement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -23,27 +24,7 @@ public class TypeOfAgreementDaoImpl implements IDao<TypeOfAgreement> {
     }
 
     @Override
-    public TypeOfAgreement save(TypeOfAgreement element) {
-        return null;
-    }
-
-    @Override
-    public TypeOfAgreement get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<TypeOfAgreement> getAll() {
-        return this.dataSet.getTypeOfAgreements();
-    }
-
-    @Override
-    public TypeOfAgreement edit(TypeOfAgreement element) {
-        return null;
-    }
-
-    @Override
-    public TypeOfAgreement delete(TypeOfAgreement element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

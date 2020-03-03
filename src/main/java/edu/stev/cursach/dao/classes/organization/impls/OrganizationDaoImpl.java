@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -24,27 +25,7 @@ public class OrganizationDaoImpl implements IDao<Organization> {
     }
 
     @Override
-    public Organization save(Organization element) {
-        return null;
-    }
-
-    @Override
-    public Organization get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<Organization> getAll() {
-        return this.dataSet.getOrganizations();
-    }
-
-    @Override
-    public Organization edit(Organization element) {
-        return null;
-    }
-
-    @Override
-    public Organization delete(Organization element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

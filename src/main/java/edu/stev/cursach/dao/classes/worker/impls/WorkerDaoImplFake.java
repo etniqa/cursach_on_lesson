@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.Worker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -22,27 +23,7 @@ public class WorkerDaoImplFake implements IDao<Worker> {
     }
 
     @Override
-    public Worker save(Worker element) {
-        return null;
-    }
-
-    @Override
-    public Worker get(String id) {
-        return null;
-    }
-
-    @Override
-    public List getAll() {
-        return this.dataSet.getWorkerList();
-    }
-
-    @Override
-    public Worker edit(Worker element) {
-        return null;
-    }
-
-    @Override
-    public Worker delete(Worker element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

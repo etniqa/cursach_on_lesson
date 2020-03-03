@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.AgreementHasAgreement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,34 +18,14 @@ public class AgreementHasAgreementDaoImpl implements IDao<AgreementHasAgreement>
     @Autowired
     AgreementHasAgreementRepository repository;
 
+    @Override
+    public MongoRepository getRepository() {
+        return repository;
+    }
+
     @PostConstruct
     void init(){
         repository.deleteAll();
-        repository.saveAll((List<AgreementHasAgreement>)this.dataSet.getAgreementHasAgreementList());
-    }
-
-    @Override
-    public AgreementHasAgreement save(AgreementHasAgreement element) {
-        return null;
-    }
-
-    @Override
-    public AgreementHasAgreement get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<AgreementHasAgreement> getAll() {
-        return this.dataSet.getAgreementHasAgreementList();
-    }
-
-    @Override
-    public AgreementHasAgreement edit(AgreementHasAgreement element) {
-        return null;
-    }
-
-    @Override
-    public AgreementHasAgreement delete(AgreementHasAgreement element) {
-        return null;
+        repository.saveAll(this.dataSet.getAgreementHasAgreementList());
     }
 }

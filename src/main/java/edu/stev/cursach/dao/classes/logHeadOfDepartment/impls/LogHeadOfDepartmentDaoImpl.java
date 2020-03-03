@@ -5,6 +5,7 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.LogHeadOfDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -19,31 +20,11 @@ public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
     @PostConstruct
     void init(){
         this.repository.deleteAll();
-        this.repository.saveAll(this.getAll());
+        this.repository.saveAll(this.dataSet.getLogHeadOfDepartments());
     }
 
     @Override
-    public LogHeadOfDepartment save(LogHeadOfDepartment element) {
-        return null;
-    }
-
-    @Override
-    public LogHeadOfDepartment get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<LogHeadOfDepartment> getAll() {
-        return dataSet.getLogHeadOfDepartments();
-    }
-
-    @Override
-    public LogHeadOfDepartment edit(LogHeadOfDepartment element) {
-        return null;
-    }
-
-    @Override
-    public LogHeadOfDepartment delete(LogHeadOfDepartment element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

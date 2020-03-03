@@ -1,6 +1,7 @@
 package edu.stev.cursach.service.classes.technicianHasEquipment.impls;
 
 import edu.stev.cursach.dao.classes.technicianHasEquipment.impls.TechnicianHasEquipmentDaoImpl;
+import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.model.TechnicianHasEquipment;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,12 @@ public class TechnicianHasEquipmentServiceImpl implements IService<TechnicianHas
     TechnicianHasEquipmentDaoImpl dao;
 
     @Override
-    public TechnicianHasEquipment save(TechnicianHasEquipment element) {
-        return dao.save(element);
-    }
-
-    @Override
-    public TechnicianHasEquipment get(String id) {
-        return dao.get(id);
-    }
-
-    @Override
-    public List<TechnicianHasEquipment> getAll() {
-        return dao.getAll();
+    public IDao getDao() {
+        return dao;
     }
 
     @Override
     public TechnicianHasEquipment edit(TechnicianHasEquipment element) {
-        return dao.edit(element);
-    }
-
-    @Override
-    public TechnicianHasEquipment delete(TechnicianHasEquipment element) {
-        return dao.delete(element);
+        return null;
     }
 }

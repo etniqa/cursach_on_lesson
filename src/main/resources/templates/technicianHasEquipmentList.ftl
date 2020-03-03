@@ -11,18 +11,25 @@
 <table class="table">
     <tr>
         <th>ID</th>
+        <th>name</th>
         <th>description</th>
         <th>creationDate</th>
+        <th>dateModified</th>
         <th>technician</th>
         <th>equipment</th>
     </tr>
     <#list technicianHasEquipments as technicianHasEquipment>
     <tr>
         <td>${(technicianHasEquipment.id)!"null"}</td>
+        <td>${(technicianHasEquipment.name)!"null"}</td>
         <td>${(technicianHasEquipment.description)!"null"}</td>
         <td>${(technicianHasEquipment.creationDate)!"null"}</td>
+        <td>${(technicianHasEquipment.dateModified)!"null"}</td>
+
         <td>${(technicianHasEquipment.technician.name)!"null"}</td>
         <td>${(technicianHasEquipment.equipment.name)!"null"}</td>
+
+        <td><a href='/web/technician_has_equipment/delete/${technicianHasEquipment.id}'><button>delete</button></a></td>
     </tr>
 </#list>
 </table>

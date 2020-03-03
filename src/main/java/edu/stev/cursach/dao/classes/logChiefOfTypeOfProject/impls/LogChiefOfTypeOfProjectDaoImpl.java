@@ -5,10 +5,10 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.LogChiefOfTypeOfProject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.util.List;
 @Component
 public class LogChiefOfTypeOfProjectDaoImpl implements IDao<LogChiefOfTypeOfProject> {
     @Autowired
@@ -19,31 +19,11 @@ public class LogChiefOfTypeOfProjectDaoImpl implements IDao<LogChiefOfTypeOfProj
     @PostConstruct
     void init(){
         repository.deleteAll();
-        repository.saveAll(this.getAll());
+        repository.saveAll(this.dataSet.getLogChiefOfTypeOfProjects());
     }
 
     @Override
-    public LogChiefOfTypeOfProject save(LogChiefOfTypeOfProject element) {
-        return null;
-    }
-
-    @Override
-    public LogChiefOfTypeOfProject get(String id) {
-        return null;
-    }
-
-    @Override
-    public List<LogChiefOfTypeOfProject> getAll() {
-        return this.dataSet.getLogChiefOfTypeOfProjects();
-    }
-
-    @Override
-    public LogChiefOfTypeOfProject edit(LogChiefOfTypeOfProject element) {
-        return null;
-    }
-
-    @Override
-    public LogChiefOfTypeOfProject delete(LogChiefOfTypeOfProject element) {
-        return null;
+    public MongoRepository getRepository() {
+        return repository;
     }
 }

@@ -27,10 +27,14 @@
             <td>${(logHeadOfDepartment.description)!"null"}</td>
             <td>${(logHeadOfDepartment.creationDate)!"null"}</td>
             <td>${(logHeadOfDepartment.dateModified)!"null"}</td>
+
             <td>${(logHeadOfDepartment.begDate)!"null"}</td>
             <td>${(logHeadOfDepartment.endDate)!"null"}</td>
             <td>${(logHeadOfDepartment.headOfDepartment.name)!"null"}</td>
             <td>${(logHeadOfDepartment.department.name)!"null"}</td>
+
+            <td><a href='/web/log_head_of_department/delete/${logHeadOfDepartment.id}'><button>delete</button></a></td>
+
         </tr>
     </#list>
 </table>
