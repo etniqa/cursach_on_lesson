@@ -1,4 +1,4 @@
-package edu.stev.cursach.dataSet;
+package edu.stev.cursach.dataSet.generalDataSet;
 
 import edu.stev.cursach.model.Group;
 import org.springframework.stereotype.Component;
