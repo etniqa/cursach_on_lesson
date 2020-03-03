@@ -15,7 +15,7 @@ import java.util.List;
 public class LogChiefOfTypeOfProjectApiController {
     @Autowired
     LogChiefOfTypeOfProjectServiceImpl logChiefOfTypeOfProjectService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<LogChiefOfTypeOfProject> getAll(){
         return this.logChiefOfTypeOfProjectService.getAll();
     }

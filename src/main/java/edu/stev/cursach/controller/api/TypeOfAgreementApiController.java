@@ -14,7 +14,7 @@ public class TypeOfAgreementApiController {
     @Autowired
     TypeOfAgreementServiceImpl typeOfAgreementService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     public List<TypeOfAgreement> getAll(){
         return this.typeOfAgreementService.getAll();
     }

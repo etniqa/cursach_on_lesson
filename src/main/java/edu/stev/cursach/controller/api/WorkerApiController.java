@@ -14,7 +14,7 @@ public class WorkerApiController {
     @Autowired
     WorkerServiceImpl workerService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<Worker> getAll(){
         return workerService.getAll();
     }

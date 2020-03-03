@@ -14,6 +14,6 @@ public class OrganizationApiController {
     @Autowired
     OrganizationServiceImpl organizationService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<Organization> getAll(){return this.organizationService.getAll();}
 }

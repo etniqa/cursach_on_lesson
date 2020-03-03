@@ -13,6 +13,6 @@ public class TechnicianHasEquipmentApiController {
     @Autowired
     TechnicianHasEquipmentServiceImpl service;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<TechnicianHasEquipment> getAll(){return this.service.getAll();}
 }

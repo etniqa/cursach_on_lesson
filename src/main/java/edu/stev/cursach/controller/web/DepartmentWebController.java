@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DepartmentWebController {
     @Autowired
     DepartmentServiceImpl departmentService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("departments", departmentService.getAll());
         return "departmentList";

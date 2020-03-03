@@ -13,7 +13,7 @@ import java.util.List;
 public class LogHeadOfDepartmentApiController {
     @Autowired
     LogHeadOfDepartmentServiceImpl logHeadOfDepartmentService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<LogHeadOfDepartment> getAll(){
         return this.logHeadOfDepartmentService.getAll();
     }

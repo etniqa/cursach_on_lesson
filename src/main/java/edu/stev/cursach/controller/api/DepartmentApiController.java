@@ -13,7 +13,7 @@ import java.util.List;
 public class DepartmentApiController {
     @Autowired
     DepartmentServiceImpl departmentService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<Department> getAll(){
         return this.departmentService.getAll();
     }

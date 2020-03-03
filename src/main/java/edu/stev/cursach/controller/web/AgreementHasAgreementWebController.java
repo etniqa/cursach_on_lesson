@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AgreementHasAgreementWebController {
     @Autowired
     AgreementHasAgreementServiceImpl agreementBelongToAgreementService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("agreementBelongToAgreements", agreementBelongToAgreementService.getAll());
         return "agreementHasAgreementList";
