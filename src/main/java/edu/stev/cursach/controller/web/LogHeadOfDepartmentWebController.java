@@ -5,6 +5,7 @@ import edu.stev.cursach.service.classes.logHeadOfDepartment.impls.LogHeadOfDepar
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,5 +18,10 @@ public class LogHeadOfDepartmentWebController {
     String getAll(Model model){
         model.addAttribute("logHeadOfDepartments", logHeadOfDepartmentService.getAll());
         return "logHeadOfDepartmentList";
+    }
+    @RequestMapping("/delete/{id}")
+    String delete(@PathVariable("id") String id) {
+        logHeadOfDepartmentService.delete(id);
+        return "redirect:/web/log_head_of_department/get/list";
     }
 }

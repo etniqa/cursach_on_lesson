@@ -3,6 +3,7 @@ package edu.stev.cursach.dao.classes.department.impls;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dao.classes.department.repository.DepartmentRepository;
 import edu.stev.cursach.dataSet.DataSet;
+import edu.stev.cursach.model.AgreementHasAgreement;
 import edu.stev.cursach.model.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,9 @@ public class DepartmentDaoImpl implements IDao<Department> {
 
     @Override
     public Department get(String id) {
-        return null;
+        return this.dataSet.getDepartments().stream()
+                .filter(department -> department.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
     @Override
@@ -44,6 +47,8 @@ public class DepartmentDaoImpl implements IDao<Department> {
 
     @Override
     public Department delete(String id) {
-        return null;
+        Department whichNeedToDelete = this.get(id);
+        this.dataSet.getDepartments().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

@@ -3,6 +3,7 @@ package edu.stev.cursach.dao.classes.equipment.impls;
 import edu.stev.cursach.dao.classes.equipment.repository.EquipmentRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
+import edu.stev.cursach.model.AgreementHasAgreement;
 import edu.stev.cursach.model.Equipment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,8 @@ public class EquipmentDaoImpls implements IDao<Equipment> {
 
     @Override
     public Equipment delete(String id) {
-        return null;
+        Equipment whichNeedToDelete = this.get(id);
+        this.dataSet.getEquipments().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

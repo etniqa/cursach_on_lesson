@@ -3,6 +3,7 @@ package edu.stev.cursach.dao.classes.organization.impls;
 import edu.stev.cursach.dao.classes.organization.repository.OrganizationRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
+import edu.stev.cursach.model.Department;
 import edu.stev.cursach.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,8 @@ public class OrganizationDaoImpl implements IDao<Organization> {
 
     @Override
     public Organization delete(String id) {
-        return null;
+        Organization whichNeedToDelete = this.get(id);
+        this.dataSet.getOrganizations().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

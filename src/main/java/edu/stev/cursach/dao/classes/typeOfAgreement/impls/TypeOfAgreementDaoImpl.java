@@ -3,6 +3,7 @@ package edu.stev.cursach.dao.classes.typeOfAgreement.impls;
 import edu.stev.cursach.dao.classes.typeOfAgreement.repository.TypeOfAgreementRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
+import edu.stev.cursach.model.TechnicianHasEquipment;
 import edu.stev.cursach.model.TypeOfAgreement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,6 +45,8 @@ public class TypeOfAgreementDaoImpl implements IDao<TypeOfAgreement> {
 
     @Override
     public TypeOfAgreement delete(String id) {
-        return null;
+        TypeOfAgreement whichNeedToDelete = this.get(id);
+        this.dataSet.getTypeOfAgreements().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

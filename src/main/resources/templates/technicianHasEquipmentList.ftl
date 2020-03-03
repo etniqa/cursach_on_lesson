@@ -15,14 +15,17 @@
         <th>creationDate</th>
         <th>technician</th>
         <th>equipment</th>
+        <th>delete</th>
     </tr>
     <#list technicianHasEquipments as technicianHasEquipment>
     <tr>
         <td>${(technicianHasEquipment.id)!"null"}</td>
         <td>${(technicianHasEquipment.description)!"null"}</td>
-        <td>${(technicianHasEquipment.creationDate)!"null"}</td>
+        <td>${(v.creationDate)!"null"}</td>
         <td>${(technicianHasEquipment.technician.name)!"null"}</td>
         <td>${(technicianHasEquipment.equipment.name)!"null"}</td>
+        <td><a href='/web/technician_has_equipment/delete/${technicianHasEquipment.id}'><button>delete</button></a></td>
+
     </tr>
 </#list>
 </table>

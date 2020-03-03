@@ -17,6 +17,7 @@
         <th>dateModified</th>
         <th>depWhichResponsible</th>
         <th>projectWhereIsNowEquip</th>
+        <th>delete</th>
     </tr>
     <#list equipments as equipment>
     <tr>
@@ -27,6 +28,8 @@
         <td>${(equipment.dateModified)!"null"}</td>
         <td>${(equipment.depWhichResponsible.name)!"null"}</td>
         <td>${(equipment.projectWhereIsNowEquip.name)!"null"}</td>
+        <td><a href='/web/equipment/delete/${equipment.id}'><button>delete</button></a></td>
+
     </tr>
 </#list>
 </table>

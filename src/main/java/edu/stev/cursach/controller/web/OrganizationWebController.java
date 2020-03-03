@@ -4,6 +4,7 @@ import edu.stev.cursach.service.classes.organization.impls.OrganizationServiceIm
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,4 +17,10 @@ public class OrganizationWebController {
     String getAll(Model model){
         model.addAttribute("organizations", organizationService.getAll());
         return "organizationList";}
+
+    @RequestMapping("/delete/{id}")
+    String delete(@PathVariable("id") String id) {
+        organizationService.delete(id);
+        return "redirect:/web/organization/get/list";
+    }
 }

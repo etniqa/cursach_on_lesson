@@ -4,6 +4,7 @@ import edu.stev.cursach.service.classes.technicianHasEquipment.impls.TechnicianH
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,4 +17,10 @@ public class TechnicianHasEquipmentWebController {
     String getAll(Model model){
         model.addAttribute("technicianHasEquipments", technicianHasEquipmentService.getAll());
         return "technicianHasEquipmentList";}
+
+    @RequestMapping("/delete/{id}")
+    String delete(@PathVariable("id") String id) {
+        technicianHasEquipmentService.delete(id);
+        return "redirect:/web/technician_has_equipment/get/list";
+    }
 }

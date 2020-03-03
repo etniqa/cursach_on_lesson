@@ -20,6 +20,7 @@
         <th>endDate</th>
         <th>agreement</th>
         <th>chief</th>
+        <th>delete</th>
     </tr>
     <#list logChiefOfTypeOfProjects as logChiefOfTypeOfProject>
         <tr>
@@ -33,6 +34,8 @@
 
             <td>${(logChiefOfTypeOfProject.agreement.name)!"null"}</td>
             <td>${(logChiefOfTypeOfProject.chief.name)!"null"}</td>
+            <td><a href='/web/log_chief_type_of_project/delete/${logChiefOfTypeOfProject.id}'><button>delete</button></a></td>
+
         </tr>
     </#list>
 </table>

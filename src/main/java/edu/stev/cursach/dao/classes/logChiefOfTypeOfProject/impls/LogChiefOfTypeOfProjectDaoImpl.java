@@ -3,6 +3,7 @@ package edu.stev.cursach.dao.classes.logChiefOfTypeOfProject.impls;
 import edu.stev.cursach.dao.classes.logChiefOfTypeOfProject.repository.LogChiefOfTypeOfProjectRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
+import edu.stev.cursach.model.Department;
 import edu.stev.cursach.model.LogChiefOfTypeOfProject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -44,6 +45,8 @@ public class LogChiefOfTypeOfProjectDaoImpl implements IDao<LogChiefOfTypeOfProj
 
     @Override
     public LogChiefOfTypeOfProject delete(String id) {
-        return null;
+        LogChiefOfTypeOfProject whichNeedToDelete = this.get(id);
+        this.dataSet.getLogChiefOfTypeOfProjects().remove(this.get(id));
+        return whichNeedToDelete;
     }
 }

@@ -9,17 +9,22 @@ import java.util.List;
 
 //declaration 5 meths of CRUD
 public interface IService<T> {
-//    IDao getDao();
+    IDao getDao();
 
-    T save(T element); //create
-    T get(String id);
-//    default T get(String id){
-//        System.out.println(getDao().get(id));
-//        return (T) getDao().get(id);
-//    } //read
-    List<T> getAll();
+    default T save(T element){
+        return (T) getDao().save(element);
+    } //create
+    default T get(String id){
+        return (T) getDao().get(id);
+    } //read
+    default List<T> getAll(){
+        return getDao().getAll();
+    }
     T edit(T element); //update
-    T delete(String id); //delete
+    default T delete(String id){
+        System.out.println("delete call");
+        return (T) getDao().delete(id);
+    } //delete
 
 
 }

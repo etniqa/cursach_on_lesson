@@ -20,10 +20,9 @@ public class AgreementHasAgreementWebController {
     }
 
     @RequestMapping("/delete/{id}")
-    String delete(Model model,
-                  @PathVariable("id") String id) {
+    String delete(@PathVariable("id") String id) {
+        System.out.println("here adfjlk");
         agreementHasAgreementService.delete(id);
-        model.addAttribute("groups", agreementHasAgreementService.getAll());
-        return "groupList";
+        return "redirect:/web/agreement_has_agreement/get/list";
     }
 }
