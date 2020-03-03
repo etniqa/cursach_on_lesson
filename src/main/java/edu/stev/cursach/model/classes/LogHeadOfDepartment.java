@@ -1,11 +1,12 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 @Document
-public class LogHeadOfDepartment {
+public class LogHeadOfDepartment implements ICommonFields {
     @Id
     private String id;
     private String name;

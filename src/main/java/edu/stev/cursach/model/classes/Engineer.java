@@ -1,7 +1,6 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Engineer extends CanLead {
     private int yearsOfExpert;

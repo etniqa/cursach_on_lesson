@@ -2,12 +2,11 @@ package edu.stev.cursach.service.classes.agreementHasAgreement.impls;
 
 import edu.stev.cursach.dao.classes.agreementHasAgreement.impls.AgreementHasAgreementDaoImpl;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.model.AgreementHasAgreement;
+import edu.stev.cursach.model.classes.AgreementHasAgreement;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 public class AgreementHasAgreementServiceImpl implements IService<AgreementHasAgreement> {
     @Autowired

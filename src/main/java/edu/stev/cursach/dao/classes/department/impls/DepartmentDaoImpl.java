@@ -1,19 +1,23 @@
 package edu.stev.cursach.dao.classes.department.impls;
 
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.dao.classes.department.repository.DepartmentRepository;
-import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.AgreementHasAgreement;
-import edu.stev.cursach.model.Department;
+import edu.stev.cursach.dataSet.cmnInterfaces.IDataSet;
+import edu.stev.cursach.dataSet.impls.DepartmentDataSet;
+import edu.stev.cursach.dataSet.mainDataSet.DataSet;
+import edu.stev.cursach.model.classes.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 @Component
 public class DepartmentDaoImpl implements IDao<Department> {
     @Autowired
-    DataSet dataSet;
+    DepartmentDataSet dataSet;
+
+    @Override
+    public IDataSet getDataSet() {
+        return this.dataSet;
+    }
 //    @Autowired
 //    DepartmentRepository repository;
 //
@@ -23,7 +27,7 @@ public class DepartmentDaoImpl implements IDao<Department> {
 //        repository.saveAll(dataSet.getDepartments());//create table
 //    }
 
-    @Override
+    /*@Override
     public Department save(Department element) {
         return null;
     }
@@ -50,5 +54,5 @@ public class DepartmentDaoImpl implements IDao<Department> {
         Department whichNeedToDelete = this.get(id);
         this.dataSet.getDepartments().remove(this.get(id));
         return whichNeedToDelete;
-    }
+    }*/
 }

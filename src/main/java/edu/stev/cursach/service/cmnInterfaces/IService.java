@@ -1,9 +1,6 @@
 package edu.stev.cursach.service.cmnInterfaces;
 
-import edu.stev.cursach.dao.classes.agreementHasAgreement.impls.AgreementHasAgreementDaoImpl;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.model.AgreementHasAgreement;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -22,9 +19,7 @@ public interface IService<T> {
     }
     T edit(T element); //update
     default T delete(String id){
-        System.out.println("delete call");
+        System.out.println("delete from IService");
         return (T) getDao().delete(id);
     } //delete
-
-
 }

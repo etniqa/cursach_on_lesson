@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.api;
 
-import edu.stev.cursach.model.Organization;
+import edu.stev.cursach.model.classes.Organization;
 import edu.stev.cursach.service.classes.organization.impls.OrganizationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

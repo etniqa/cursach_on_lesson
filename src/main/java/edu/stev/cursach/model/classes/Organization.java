@@ -1,23 +1,29 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-@Document
-public class Organization{
-    static int maxInt;
-    static String maxIntString;
-    static {
-        maxInt = 0;
-    }
-    @Id
+
+public class Organization implements ICommonFields {
+
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
     private Organization headOrganization;
+
+    public Organization(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
+                        Organization headOrganization) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.dateModified = dateModified;
+        this.headOrganization = headOrganization;
+    }
 
     public String getId() {
         return id;
@@ -65,31 +71,5 @@ public class Organization{
 
     public void setHeadOrganization(Organization headOrganization) {
         this.headOrganization = headOrganization;
-    }
-
-    public Organization(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
-                        Organization headOrganization) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.creationDate = creationDate;
-        this.dateModified = dateModified;
-        this.headOrganization = headOrganization;
-    }
-
-    public static int getMaxIntAndIncrement() {
-        return maxInt++;
-    }
-
-    public static String getMaxIntStringAndIncrement() {
-        return Integer.toString(maxInt++);
-    }
-
-    public static int getMaxInt() {
-        return maxInt;
-    }
-
-    public static String getMaxIntString() {
-        return maxIntString;
     }
 }

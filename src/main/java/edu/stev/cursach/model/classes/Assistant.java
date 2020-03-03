@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import java.time.LocalDateTime;
 
@@ -11,24 +11,5 @@ public class Assistant extends Worker {
                      int maxAmountOWorkerOnProject) {
         super(id, name, description, creationDate, dateModified, departmentWhereWorks, agreementWhereIsWorking);
         this.maxAmountOWorkerOnProject = maxAmountOWorkerOnProject;
-    }
-    public static int getMaxIntAndIncrement() {
-        return maxInt++;
-    }
-
-    public static String getMaxIntStringAndIncrement() {
-        return Integer.toString(maxInt++);
-    }
-
-    public static int getMaxInt() {
-        return maxInt;
-    }
-
-    public static String getMaxIntString() {
-        return maxIntString;
-    }
-
-    public String getId() {
-        return Integer.toString(id);
     }
 }

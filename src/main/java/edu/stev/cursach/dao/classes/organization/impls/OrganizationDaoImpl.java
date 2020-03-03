@@ -2,9 +2,10 @@ package edu.stev.cursach.dao.classes.organization.impls;
 
 import edu.stev.cursach.dao.classes.organization.repository.OrganizationRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.Department;
-import edu.stev.cursach.model.Organization;
+import edu.stev.cursach.dataSet.cmnInterfaces.IDataSet;
+import edu.stev.cursach.dataSet.impls.OrganizationDataSet;
+import edu.stev.cursach.dataSet.mainDataSet.DataSet;
+import edu.stev.cursach.model.classes.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,18 +14,20 @@ import java.util.List;
 @Component
 public class OrganizationDaoImpl implements IDao<Organization> {
     @Autowired
-    DataSet dataSet;
-
-    @Autowired
-    OrganizationRepository repository;
-
-    @PostConstruct
-    void init(){
-        repository.deleteAll();
-        this.repository.saveAll(this.dataSet.getOrganizations());
-    }
+    OrganizationDataSet dataSet;
 
     @Override
+    public IDataSet getDataSet() {
+        return this.dataSet;
+    }
+
+    //    @PostConstruct
+//    void init(){
+//        repository.deleteAll();
+//        this.repository.saveAll(this.dataSet.getOrganizations());
+//    }
+
+    /*@Override
     public Organization save(Organization element) {
         return null;
     }
@@ -49,5 +52,5 @@ public class OrganizationDaoImpl implements IDao<Organization> {
         Organization whichNeedToDelete = this.get(id);
         this.dataSet.getOrganizations().remove(this.get(id));
         return whichNeedToDelete;
-    }
+    }*/
 }

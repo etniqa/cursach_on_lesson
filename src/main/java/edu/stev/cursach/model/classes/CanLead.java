@@ -1,8 +1,6 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 public class CanLead extends Worker{
     public CanLead(String id, String name, String description, LocalDateTime creationDate,

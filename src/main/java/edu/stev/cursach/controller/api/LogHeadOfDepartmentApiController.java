@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.api;
 
-import edu.stev.cursach.model.LogHeadOfDepartment;
+import edu.stev.cursach.model.classes.LogHeadOfDepartment;
 import edu.stev.cursach.service.classes.logHeadOfDepartment.impls.LogHeadOfDepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.api;
 
-import edu.stev.cursach.model.Equipment;
+import edu.stev.cursach.model.classes.Equipment;
 import edu.stev.cursach.service.classes.equipment.impls.EquipmentServiceImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

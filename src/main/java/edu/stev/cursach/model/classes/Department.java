@@ -1,16 +1,17 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 @Document
-public class Department {
-    static int maxInt;
-    static String maxIntString;
-    static {
-        maxInt = 0;
-    }
+public class Department implements ICommonFields {
+//    static int maxInt;
+//    static String maxIntString;
+//    static {
+//        maxInt = 0;
+//    }
     @Id
     private String id;
     private String name;
@@ -28,54 +29,52 @@ public class Department {
         this.dateModified = dateModified;
         this.organization = organization;
     }
-    public static int getMaxIntAndIncrement() {
-        return maxInt++;
-    }
 
-    public static String getMaxIntStringAndIncrement() {
-        return Integer.toString(maxInt++);
-    }
-
-    public static int getMaxInt() {
-        return maxInt;
-    }
-
-    public static String getMaxIntString() {
-        return maxIntString;
-    }
-
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
-
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+    @Override
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
+    @Override
     public LocalDateTime getDateModified() {
         return dateModified;
     }
 
+    @Override
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }

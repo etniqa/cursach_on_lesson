@@ -2,9 +2,10 @@ package edu.stev.cursach.dao.classes.logHeadOfDepartment.impls;
 
 import edu.stev.cursach.dao.classes.logHeadOfDepartment.repository.LogHeadOfDepartmentRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.Department;
-import edu.stev.cursach.model.LogHeadOfDepartment;
+import edu.stev.cursach.dataSet.cmnInterfaces.IDataSet;
+import edu.stev.cursach.dataSet.impls.LogHeadOfDepartmentDataSet;
+import edu.stev.cursach.dataSet.mainDataSet.DataSet;
+import edu.stev.cursach.model.classes.LogHeadOfDepartment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,17 +14,20 @@ import java.util.List;
 @Component
 public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
     @Autowired
-    DataSet dataSet;
-    @Autowired
-    LogHeadOfDepartmentRepository repository;
-
-    @PostConstruct
-    void init(){
-        this.repository.deleteAll();
-        this.repository.saveAll(this.getAll());
-    }
+    LogHeadOfDepartmentDataSet dataSet;
 
     @Override
+    public IDataSet getDataSet() {
+        return this.dataSet;
+    }
+//    @PostConstruct
+//    void init(){
+//        this.repository.deleteAll();
+//        this.repository.saveAll(this.getAll());
+//    }
+
+
+    /*@Override
     public LogHeadOfDepartment save(LogHeadOfDepartment element) {
         return null;
     }
@@ -48,5 +52,5 @@ public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
         LogHeadOfDepartment whichNeedToDelete = this.get(id);
         this.dataSet.getLogHeadOfDepartments().remove(this.get(id));
         return whichNeedToDelete;
-    }
+    }*/
 }

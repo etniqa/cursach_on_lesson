@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.api;
 
-import edu.stev.cursach.model.TechnicianHasEquipment;
+import edu.stev.cursach.model.classes.TechnicianHasEquipment;
 import edu.stev.cursach.service.classes.technicianHasEquipment.impls.TechnicianHasEquipmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

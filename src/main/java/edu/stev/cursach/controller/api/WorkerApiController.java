@@ -1,6 +1,6 @@
 package edu.stev.cursach.controller.api;
 
-import edu.stev.cursach.model.Worker;
+import edu.stev.cursach.model.classes.Worker;
 import edu.stev.cursach.service.classes.worker.impls.WorkerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

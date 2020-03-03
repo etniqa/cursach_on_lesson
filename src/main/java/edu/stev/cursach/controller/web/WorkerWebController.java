@@ -20,6 +20,7 @@ public class WorkerWebController {
     }
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
+        System.out.println("here");
         workerService.delete(id);
         return "redirect:/web/worker/get/list";
     }

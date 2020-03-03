@@ -18,6 +18,12 @@ public class LogChiefOfTypeOfProjectWebController {
         model.addAttribute("logChiefOfTypeOfProjects", logChiefOfTypeOfProjectService.getAll());
         return "logChiefOfTypeOfProjectList";
     }
+    /*@RequestMapping("/delete/{id}")
+    String delete(@PathVariable("id") String id) {
+        System.out.println("delete from Controller for log chief of department");
+        logChiefOfTypeOfProjectService.delete(id);
+        return "redirect:/web/log_chief_of_type_of_project/get/list";
+    }*/
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
         logChiefOfTypeOfProjectService.delete(id);

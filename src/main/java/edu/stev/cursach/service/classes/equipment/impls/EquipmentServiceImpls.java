@@ -2,12 +2,11 @@ package edu.stev.cursach.service.classes.equipment.impls;
 
 import edu.stev.cursach.dao.classes.equipment.impls.EquipmentDaoImpls;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.model.Equipment;
+import edu.stev.cursach.model.classes.Equipment;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 public class EquipmentServiceImpls implements IService<Equipment> {
     @Autowired

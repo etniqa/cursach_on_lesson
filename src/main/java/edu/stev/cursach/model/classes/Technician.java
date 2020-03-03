@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import java.time.LocalDateTime;
 

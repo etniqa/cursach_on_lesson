@@ -2,9 +2,10 @@ package edu.stev.cursach.dao.classes.technicianHasEquipment.impls;
 
 import edu.stev.cursach.dao.classes.technicianHasEquipment.repository.TechnicianHasEquipmentRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.Department;
-import edu.stev.cursach.model.TechnicianHasEquipment;
+import edu.stev.cursach.dataSet.cmnInterfaces.IDataSet;
+import edu.stev.cursach.dataSet.impls.TechnicianHasEquipmentDataSet;
+import edu.stev.cursach.dataSet.mainDataSet.DataSet;
+import edu.stev.cursach.model.classes.TechnicianHasEquipment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,18 +14,19 @@ import java.util.List;
 @Component
 public class TechnicianHasEquipmentDaoImpl implements IDao<TechnicianHasEquipment> {
     @Autowired
-    DataSet dataSet;
-
-    @Autowired
-    TechnicianHasEquipmentRepository repository;
-
-    @PostConstruct
-    void init(){
-        repository.deleteAll();
-        this.repository.saveAll(this.dataSet.getTechnicianHasEquipmentsList());
-    }
+    TechnicianHasEquipmentDataSet dataSet;
 
     @Override
+    public IDataSet getDataSet() {
+        return this.dataSet;
+    }
+//    @PostConstruct
+//    void init(){
+//        repository.deleteAll();
+//        this.repository.saveAll(this.dataSet.getTechnicianHasEquipmentsList());
+//    }
+
+    /*@Override
     public TechnicianHasEquipment save(TechnicianHasEquipment element) {
         return null;
     }
@@ -49,5 +51,5 @@ public class TechnicianHasEquipmentDaoImpl implements IDao<TechnicianHasEquipmen
         TechnicianHasEquipment whichNeedToDelete = this.get(id);
         this.dataSet.getTechnicianHasEquipmentsList().remove(this.get(id));
         return whichNeedToDelete;
-    }
+    }*/
 }

@@ -1,22 +1,19 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-@Document
-public class TypeOfAgreement {
-    static int maxInt;
-    static String maxIntString;
-    static {
-        maxInt = 0;
-    }
-    @Id
+
+public class TypeOfAgreement implements ICommonFields {
+
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private LocalDateTime dateBeg;
     private LocalDateTime dateEnd;
     private Organization organizationWhichSign;
@@ -36,46 +33,52 @@ public class TypeOfAgreement {
         this.cost = cost;
     }
 
-    public static int getMaxIntAndIncrement() {
-        return maxInt++;
-    }
-
-    public static String getMaxIntStringAndIncrement() {
-        return Integer.toString(maxInt++);
-    }
-
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+    @Override
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
+    @Override
     public LocalDateTime getDateModified() {
         return dateModified;
     }
 
+    @Override
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }

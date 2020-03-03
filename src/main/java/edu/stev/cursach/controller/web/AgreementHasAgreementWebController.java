@@ -1,6 +1,5 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.model.AgreementHasAgreement;
 import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +20,6 @@ public class AgreementHasAgreementWebController {
 
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
-        System.out.println("here adfjlk");
         agreementHasAgreementService.delete(id);
         return "redirect:/web/agreement_has_agreement/get/list";
     }

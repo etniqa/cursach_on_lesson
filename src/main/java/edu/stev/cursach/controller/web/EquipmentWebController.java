@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/web/equipment")
+    @RequestMapping("/web/equipment")
 public class EquipmentWebController {
     @Autowired
     EquipmentServiceImpls equipmentServiceImpls;

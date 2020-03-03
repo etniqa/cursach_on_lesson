@@ -1,15 +1,10 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
+
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 
 import java.time.LocalDateTime;
 
-public class LogOfChangesOfWorker {
-
-    static int maxId;
-    static String maxIdStr;
-    static {
-        maxId = 0;
-    }
-
+public class LogOfChangesOfWorker implements ICommonFields {
     private String id;
     private String name;
     private String description;
@@ -34,19 +29,54 @@ public class LogOfChangesOfWorker {
         this.dateTimeOfChange = dateTimeOfChange;
     }
 
-    public static int getMaxIdAndIncrement() {
-        return maxId++;
+
+    @Override
+    public void setId(String id) {
+
     }
 
-    public static String getMaxIdStrAndIncrement() {
-        return Integer.toString(maxId++);
+    @Override
+    public String getId() {
+        return null;
     }
 
-    public static int getMaxId() {
-        return maxId;
+    @Override
+    public void setName(String name) {
+
     }
 
-    public static String getMaxIdStr() {
-        return maxIdStr;
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public void setDescription(String description) {
+
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
+    @Override
+    public LocalDateTime getCreationDate() {
+        return null;
+    }
+
+    @Override
+    public void setCreationDate(LocalDateTime creationDate) {
+
+    }
+
+    @Override
+    public LocalDateTime getDateModified() {
+        return null;
+    }
+
+    @Override
+    public void setDateModified(LocalDateTime dateModified) {
+
     }
 }

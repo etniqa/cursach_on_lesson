@@ -1,6 +1,6 @@
-package edu.stev.cursach.dataSet;
+package edu.stev.cursach.dataSet.mainDataSet;
 
-import edu.stev.cursach.model.*;
+import edu.stev.cursach.model.classes.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -96,7 +96,7 @@ public class DataSet {
                     null, wheelExchangeProject, rudyagaDesigner)
     ));
 
-    private List<Worker> workerList = Arrays.asList(
+    private List<Worker> workerList = new ArrayList<>(Arrays.asList(
             rudyagaDesigner,
             baranovEngineer,
             batyevEngineer,
@@ -105,26 +105,26 @@ public class DataSet {
             vodyancukDesigner,
             morozTechnician,
             andriichukTechnician
-            );
-    private List<TypeOfAgreement> typeOfAgreements = Arrays.asList(
+    ));
+    private List<TypeOfAgreement> typeOfAgreements = new ArrayList<>(Arrays.asList(
             withVolkswagenContract,
             withHondaContract,
             warrantyRepairProject,
             wheelExchangeProject
-    );
-    private List<Organization> organizations = Arrays.asList(
+    ));
+    private List<Organization> organizations = new ArrayList<>(Arrays.asList(
             continuumOrganization,
             bmxForLifeOrganization
-    );
-    private List<Department> departments = Arrays.asList(
+    ));
+    private List<Department> departments = new ArrayList<>(Arrays.asList(
             motorcycleRepairDepartment,
             carRepairDepartment
-    );
-    private List<Equipment> equipments = Arrays.asList(
+    ));
+    private List<Equipment> equipments = new ArrayList<>(Arrays.asList(
             diskRepairEquipment,
             electrojackEquipment,
             electropumpEquipment
-    );
+    ));
 
     public List<TypeOfAgreement> getTypeOfAgreements() {
         return typeOfAgreements;

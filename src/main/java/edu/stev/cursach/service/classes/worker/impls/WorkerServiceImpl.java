@@ -2,12 +2,11 @@ package edu.stev.cursach.service.classes.worker.impls;
 
 import edu.stev.cursach.dao.classes.worker.impls.WorkerDaoImplFake;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
-import edu.stev.cursach.model.Worker;
+import edu.stev.cursach.model.classes.Worker;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 public class WorkerServiceImpl implements IService<Worker> {
     @Autowired
