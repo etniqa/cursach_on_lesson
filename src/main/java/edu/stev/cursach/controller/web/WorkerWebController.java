@@ -12,7 +12,7 @@ public class WorkerWebController {
     @Autowired
     WorkerServiceImpl workerService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("workers", workerService.getAll());
         return "workerList";

@@ -12,7 +12,7 @@ public class OrganizationWebController {
     @Autowired
     OrganizationServiceImpl organizationService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("organizations", organizationService.getAll());
         return "organizationList";}

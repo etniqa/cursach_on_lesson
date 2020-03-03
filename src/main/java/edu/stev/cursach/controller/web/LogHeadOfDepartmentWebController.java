@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LogHeadOfDepartmentWebController {
     @Autowired
     LogHeadOfDepartmentServiceImpl logHeadOfDepartmentService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("logHeadOfDepartments", logHeadOfDepartmentService.getAll());
         return "logHeadOfDepartmentList";

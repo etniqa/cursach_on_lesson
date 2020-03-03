@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AgreementHasAgreementWebController {
     @Autowired
     AgreementHasAgreementServiceImpl agreementHasAgreementService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("agreementHasAgreements", agreementHasAgreementService.getAll());
         return "agreementHasAgreementList";
     }
 
-//    @RequestMapping("/delete/{id}")
-//    String delete(Model model,
-//                  @PathVariable("id") String id) {
-//        agreementHasAgreementService.delete(id);
-//        model.addAttribute("groups", agreementHasAgreementService.getAll());
-//        return "groupList";
-//    }
+    @RequestMapping("/delete/{id}")
+    String delete(Model model,
+                  @PathVariable("id") String id) {
+        agreementHasAgreementService.delete(id);
+        model.addAttribute("groups", agreementHasAgreementService.getAll());
+        return "groupList";
+    }
 }

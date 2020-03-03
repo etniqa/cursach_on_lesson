@@ -29,7 +29,6 @@
             <td>${(typeOfAgreement.dateModified)!"null"}</td>
             <td>${(typeOfAgreement.dateBeg)!"null"}</td>
             <td>${(typeOfAgreement.dateEnd)!"null"}</td>
-            <td>${(typeOfAgreement.chief.name)!"null"}</td>
             <td>${(typeOfAgreement.organizationWhichSign.name)!"null"}</td>
         </tr>
     </#list>

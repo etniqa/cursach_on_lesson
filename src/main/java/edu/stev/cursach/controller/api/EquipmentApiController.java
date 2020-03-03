@@ -14,7 +14,7 @@ public class EquipmentApiController {
     @Autowired
     EquipmentServiceImpls equipmentServiceImpls;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     public List<Equipment> getAll(){
         return this.equipmentServiceImpls.getAll();
     }

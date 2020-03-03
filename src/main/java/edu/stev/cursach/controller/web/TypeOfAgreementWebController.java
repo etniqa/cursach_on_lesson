@@ -12,7 +12,7 @@ public class TypeOfAgreementWebController {
     @Autowired
     TypeOfAgreementServiceImpl typeOfAgreementService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("typeOfAgreements", typeOfAgreementService.getAll());
         return "typeOfAgreement";

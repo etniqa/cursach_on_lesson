@@ -15,7 +15,7 @@ import java.util.List;
 public class AgreementHasAgreementApiController {
     @Autowired
     AgreementHasAgreementServiceImpl agreementBelongToAgreementService;
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     List<AgreementHasAgreement> getAll(){
         return this.agreementBelongToAgreementService.getAll();
     }

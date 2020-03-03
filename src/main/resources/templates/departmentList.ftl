@@ -16,7 +16,6 @@
         <th>creationDate</th>
         <th>dateModified</th>
         <th>organization</th>
-        <th>headOfDepartment</th>
     </tr>
     <#list departments as department>
     <tr>

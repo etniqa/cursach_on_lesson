@@ -25,7 +25,7 @@
         <td>${(equipment.description)!"null"}</td>
         <td>${(equipment.creationDate)!"null"}</td>
         <td>${(equipment.dateModified)!"null"}</td>
-        <td>${(equipment.depWhichResponsible)!"null"}</td>
+        <td>${(equipment.depWhichResponsible.name)!"null"}</td>
         <td>${(equipment.projectWhereIsNowEquip.name)!"null"}</td>
     </tr>
 </#list>

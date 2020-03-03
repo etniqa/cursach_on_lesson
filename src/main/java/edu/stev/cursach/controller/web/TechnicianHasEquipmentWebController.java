@@ -12,7 +12,7 @@ public class TechnicianHasEquipmentWebController {
     @Autowired
     TechnicianHasEquipmentServiceImpl technicianHasEquipmentService;
 
-    @RequestMapping("/list")
+    @RequestMapping("/get/list")
     String getAll(Model model){
         model.addAttribute("technicianHasEquipments", technicianHasEquipmentService.getAll());
         return "technicianHasEquipmentList";}
