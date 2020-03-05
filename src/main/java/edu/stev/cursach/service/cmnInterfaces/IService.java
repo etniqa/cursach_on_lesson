@@ -12,6 +12,7 @@ public interface IService<T> {
         return (T) getDao().save(element);
     } //create
     default T get(String id){
+        System.out.println("get form IService");
         return (T) getDao().get(id);
     } //read
     default List<T> getAll(){
