@@ -4,11 +4,12 @@ import edu.stev.cursach.dao.cmnInterfaces.IDao;
 
 import java.util.List;
 
-//declaration 5 meths of CRUD
+//declaration 5 methods of CRUD
 public interface IService<T> {
     IDao getDao();
 
     default T save(T element){
+
         return (T) getDao().save(element);
     } //create
     default T get(String id){
@@ -17,10 +18,10 @@ public interface IService<T> {
     } //read
     default List<T> getAll(){
         return getDao().getAll();
-    }
-    T edit(T element); //update
-    default void delete(String id){
+    } //update
+    T edit(T element);
+    default void delete(String id){ //delete
         System.out.println("delete from IService");
         getDao().delete(id);
-    } //delete
+    }
 }

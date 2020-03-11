@@ -1,4 +1,4 @@
-package edu.stev.cursach.controller.api;
+package edu.stev.cursach.controller.api.interfaces;
 
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.web.bind.annotation.PathVariable;
