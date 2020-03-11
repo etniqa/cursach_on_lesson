@@ -1,9 +1,9 @@
-package edu.stev.cursach.dao.pojos.agreementHasAgreement.impls;
+package edu.stev.cursach.dao.classes.agreementHasAgreement.impls;
 
 import edu.stev.cursach.dao.classes.agreementHasAgreement.repository.AgreementHasAgreementRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.classes.AgreementHasAgreement;
+import edu.stev.cursach.model.pojos.AgreementHasAgreement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;

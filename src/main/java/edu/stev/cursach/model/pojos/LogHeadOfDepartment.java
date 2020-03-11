@@ -1,4 +1,4 @@
-package edu.stev.cursach.model.classes;
+package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;

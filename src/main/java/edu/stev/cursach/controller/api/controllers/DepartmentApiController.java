@@ -1,7 +1,7 @@
 package edu.stev.cursach.controller.api.controllers;
 
-import edu.stev.cursach.controller.api.interfaces.ICommonApiController;
-import edu.stev.cursach.model.Department;
+import edu.stev.cursach.controller.api.cmnInterface.ICommonApiController;
+import edu.stev.cursach.model.pojos.Department;
 import edu.stev.cursach.service.classes.department.impls.DepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

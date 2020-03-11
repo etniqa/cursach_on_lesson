@@ -1,7 +1,7 @@
 package edu.stev.cursach.controller.api.controllers;
 
-import edu.stev.cursach.controller.api.interfaces.ICommonApiController;
-import edu.stev.cursach.model.LogChiefOfTypeOfProject;
+import edu.stev.cursach.controller.api.cmnInterface.ICommonApiController;
+import edu.stev.cursach.model.pojos.LogChiefOfTypeOfProject;
 import edu.stev.cursach.service.classes.logChiefOfTypeOfProject.impls.LogChiefOfTypeOfProjectServiceImpl;
 import edu.stev.cursach.service.cmnInterfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;

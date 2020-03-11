@@ -3,7 +3,7 @@ package edu.stev.cursach.dao.classes.typeOfAgreement.impls;
 import edu.stev.cursach.dao.classes.typeOfAgreement.repository.TypeOfAgreementRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
-import edu.stev.cursach.model.classes.TypeOfAgreement;
+import edu.stev.cursach.model.pojos.TypeOfAgreement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;

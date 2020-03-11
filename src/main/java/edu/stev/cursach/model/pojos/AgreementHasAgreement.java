@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
@@ -8,11 +8,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 @Document
 public class AgreementHasAgreement implements ICommonFields {
-//    static int maxInt;
-//    static String maxIntString;
-//    static {
-//        maxInt = 0;
-//    }
+
     @Id
     private String id;
     private String name;
@@ -22,6 +18,11 @@ public class AgreementHasAgreement implements ICommonFields {
 
     private TypeOfAgreement headAgreement;
     private TypeOfAgreement otherAgreement;
+
+    public AgreementHasAgreement() {
+
+    }
+
     public TypeOfAgreement getHeadAgreement() {
         return headAgreement;
     }

@@ -1,4 +1,4 @@
-package edu.stev.cursach.controller.web;
+package edu.stev.cursach.controller.web.controllers;
 
 import edu.stev.cursach.service.classes.organization.impls.OrganizationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

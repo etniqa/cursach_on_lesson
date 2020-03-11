@@ -17,21 +17,26 @@
         <th>dateModified</th>
         <th>Header agreement</th>
         <th>other agreement</th>
-    </tr>
-    <#list agreementBelongToAgreements as agreementHasAgreement>
-    <tr>
-        <td>${(agreementHasAgreement.id)!"null"}</td>
-        <td>${(agreementHasAgreement.name)!"null"}</td>
-        <td>${(agreementHasAgreement.description)!"null"}</td>
-        <td>${(agreementHasAgreement.creationDate)!"null"}</td>
-        <td>${(agreementHasAgreement.dateModified)!"null"}</td>
 
-        <td>${(agreementHasAgreement.headAgreement.name)!"null"}</td>
-        <td>${(agreementHasAgreement.otherAgreement.name)!"null"}</td>
-
-        <td><a href='/web/agreement_has_agreement/delete/${agreementHasAgreement.id}'><button>delete</button></a></td>
+        <th>delete</th>
+        <th>edit</th>
     </tr>
-</#list>
+    <#list agreementHasAgreements as agreementHasAgreement>
+        <tr>
+            <td>${(agreementHasAgreement.id)!"null"}</td>
+            <td>${(agreementHasAgreement.name)!"null"} </td>
+            <td>${(agreementHasAgreement.description)!"null"}</td>
+            <td>${(agreementHasAgreement.creationDate)!"null"}</td>
+            <td>${(agreementHasAgreement.dateModified)!"null"}</td>
+
+            <td>${(agreementHasAgreement.headAgreement.name)!"null"}</td>
+            <td>${(agreementHasAgreement.otherAgreement.name)!"null"}</td>
+
+            <td><a href='/web/agreement_has_agreement/delete/${agreementHasAgreement.id}'><button>delete</button></a></td>
+            <td><a href='/web/agreement_has_agreement/edit/${agreementHasAgreement.id}'><button>edit</button></a></td>
+        </tr>
+    </#list>
 </table>
+<a href='/web/agreement_has_agreement/add'><button>create</button></a>
 </body>
 </html>

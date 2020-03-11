@@ -1,15 +1,18 @@
 package edu.stev.cursach.service.cmnInterfaces;
 
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
+import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 //declaration 5 methods of CRUD
-public interface IService<T> {
+public interface IService<T extends ICommonFields> {
     IDao getDao();
 
     default T save(T element){
-
+        element.setCreationDate(LocalDateTime.now());
+        element.setDateModified(LocalDateTime.now());
         return (T) getDao().save(element);
     } //create
     default T get(String id){

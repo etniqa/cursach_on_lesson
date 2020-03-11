@@ -1,6 +1,6 @@
-package edu.stev.cursach.controller.web;
+package edu.stev.cursach.controller.web.controllers;
 
-import edu.stev.cursach.service.classes.department.impls.DepartmentServiceImpl;
+import edu.stev.cursach.service.classes.equipment.impls.EquipmentServiceImpls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/web/department")
-public class DepartmentWebController {
+@RequestMapping("/web/equipment")
+public class EquipmentWebController {
     @Autowired
-    DepartmentServiceImpl departmentService;
+    EquipmentServiceImpls equipmentServiceImpls;
+
     @RequestMapping("/get/list")
     String getAll(Model model){
-        model.addAttribute("departments", departmentService.getAll());
-        return "departmentList";
+        model.addAttribute("equipments", equipmentServiceImpls.getAll());
+        return "equipmentList";
     }
 
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
-        departmentService.delete(id);
-        return "redirect:/web/department/get/list";
+        equipmentServiceImpls.delete(id);
+        return "redirect:/web/equipment/get/list";
     }
 }
-

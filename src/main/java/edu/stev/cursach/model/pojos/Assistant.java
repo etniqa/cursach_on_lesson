@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.pojos;
 
 import java.time.LocalDateTime;
 
