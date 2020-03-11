@@ -1,107 +1,100 @@
-package edu.stev.cursach.model;
-
+package edu.stev.cursach.model.classes;
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 @Document
-public class LogHeadOfDepartment implements ICommonFields {
+public class Department implements ICommonFields {
+//    static int maxInt;
+//    static String maxIntString;
+//    static {
+//        maxInt = 0;
+//    }
     @Id
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+    private Organization organization;
 
-    private LocalDateTime begDate;
-    private LocalDateTime endDate;
-    private CanLead headOfDepartment;
-    private Department department;
-
-    public LogHeadOfDepartment(String id, String name, String description, LocalDateTime creationDate,
-                               LocalDateTime dateModified, LocalDateTime begDate, LocalDateTime endDate,
-                               CanLead headOfDepartment, Department department) {
+    public Department(String id, String name, String description, LocalDateTime creationDate,
+                      LocalDateTime dateModified, Organization organization) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
-        this.begDate = begDate;
-        this.endDate = endDate;
-        this.headOfDepartment = headOfDepartment;
-        this.department = department;
+        this.organization = organization;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public void setId(String id) {
         this.id = id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
-
+    @Override
     public void setDescription(String description) {
         this.description = description;
     }
 
+    @Override
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
+    @Override
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
+    @Override
     public LocalDateTime getDateModified() {
         return dateModified;
     }
 
+    @Override
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }
 
-    public LocalDateTime getBegDate() {
-        return begDate;
+    public Organization getOrganization() {
+        return organization;
     }
 
-    public void setBegDate(LocalDateTime begDate) {
-        this.begDate = begDate;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public CanLead getHeadOfDepartment() {
-        return headOfDepartment;
-    }
-
-    public void setHeadOfDepartment(CanLead headOfDepartment) {
-        this.headOfDepartment = headOfDepartment;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", dateModified=" + dateModified +
+                ", organization=" + organization +
+                '}';
     }
 }

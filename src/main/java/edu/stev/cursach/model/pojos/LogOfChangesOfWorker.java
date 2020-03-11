@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 

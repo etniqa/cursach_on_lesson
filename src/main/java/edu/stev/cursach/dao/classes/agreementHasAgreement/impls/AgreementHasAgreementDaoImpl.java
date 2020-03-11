@@ -1,4 +1,4 @@
-package edu.stev.cursach.dao.classes.agreementHasAgreement.impls;
+package edu.stev.cursach.dao.pojos.agreementHasAgreement.impls;
 
 import edu.stev.cursach.dao.classes.agreementHasAgreement.repository.AgreementHasAgreementRepository;
 import edu.stev.cursach.dao.cmnInterfaces.IDao;

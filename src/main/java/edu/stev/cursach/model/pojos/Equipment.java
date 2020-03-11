@@ -1,4 +1,4 @@
-package edu.stev.cursach.model;
+package edu.stev.cursach.model.classes;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
@@ -6,28 +6,41 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 @Document
-public class Department implements ICommonFields {
-//    static int maxInt;
-//    static String maxIntString;
-//    static {
-//        maxInt = 0;
-//    }
+public class Equipment implements ICommonFields {
     @Id
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
-    private Organization organization;
+    private Department depWhichResponsible;
+    private Project projectWhereIsNowEquip;
 
-    public Department(String id, String name, String description, LocalDateTime creationDate,
-                      LocalDateTime dateModified, Organization organization) {
+    public Equipment(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
+                     Department depWhichResponsible, Project projectWhereIsNowEquip) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
-        this.organization = organization;
+        this.depWhichResponsible = depWhichResponsible;
+        this.projectWhereIsNowEquip = projectWhereIsNowEquip;
+    }
+
+    public Department getDepWhichResponsible() {
+        return depWhichResponsible;
+    }
+
+    public void setDepWhichResponsible(Department depWhichResponsible) {
+        this.depWhichResponsible = depWhichResponsible;
+    }
+
+    public Project getProjectWhereIsNowEquip() {
+        return projectWhereIsNowEquip;
+    }
+
+    public void setProjectWhereIsNowEquip(Project projectWhereIsNowEquip) {
+        this.projectWhereIsNowEquip = projectWhereIsNowEquip;
     }
 
     @Override
@@ -54,6 +67,7 @@ public class Department implements ICommonFields {
     public String getDescription() {
         return description;
     }
+
     @Override
     public void setDescription(String description) {
         this.description = description;
@@ -77,25 +91,5 @@ public class Department implements ICommonFields {
     @Override
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
-    }
-
-    public Organization getOrganization() {
-        return organization;
-    }
-
-    public void setOrganization(Organization organization) {
-        this.organization = organization;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", creationDate=" + creationDate +
-                ", dateModified=" + dateModified +
-                ", organization=" + organization +
-                '}';
     }
 }
