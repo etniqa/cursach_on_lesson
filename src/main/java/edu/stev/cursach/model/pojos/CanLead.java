@@ -8,4 +8,8 @@ public class CanLead extends Worker {
                    TypeOfAgreement agreementWhereIsWorking) {
         super(id, name, description, creationDate, dateModified, departmentWhereWorks, agreementWhereIsWorking);
     }
+
+    public CanLead() {
+        super();
+    }
 }

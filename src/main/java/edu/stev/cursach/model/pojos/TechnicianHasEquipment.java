@@ -1,10 +1,14 @@
 package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
+@Document
 public class TechnicianHasEquipment implements ICommonFields {
+    @Id
     private String id;
     private String name;
     private String description;

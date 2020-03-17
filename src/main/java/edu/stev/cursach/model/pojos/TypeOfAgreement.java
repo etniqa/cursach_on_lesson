@@ -1,24 +1,28 @@
 package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+@Document
 public class TypeOfAgreement implements ICommonFields {
-
+    @Id
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
 
-    private LocalDateTime dateBeg;
-    private LocalDateTime dateEnd;
+    private LocalDate dateBeg;
+    private LocalDate dateEnd;
     private Organization organizationWhichSign;
+    private String fullName;
     private int cost; //counting at the end
 
     public TypeOfAgreement(String id, String name, String description, LocalDateTime creationDate,
-                           LocalDateTime dateModified, LocalDateTime dateBeg, LocalDateTime dateEnd,
+                           LocalDateTime dateModified, LocalDate dateBeg, LocalDate dateEnd,
                            Organization organizationWhichSign, int cost) {
         this.id = id;
         this.name = name;
@@ -28,6 +32,8 @@ public class TypeOfAgreement implements ICommonFields {
         this.dateBeg = dateBeg;
         this.dateEnd = dateEnd;
         this.organizationWhichSign = organizationWhichSign;
+        int indexOfLastDot = this.getClass().toString().lastIndexOf(".");
+        this.fullName = "(" + this.getClass().toString().substring(indexOfLastDot + 1) + ") " + this.name;
         this.cost = cost;
     }
 
@@ -45,6 +51,8 @@ public class TypeOfAgreement implements ICommonFields {
     public String getName() {
         return name;
     }
+
+    public String getFullName() {return this.fullName;}
 
     @Override
     public void setName(String name) {
@@ -81,20 +89,24 @@ public class TypeOfAgreement implements ICommonFields {
         this.dateModified = dateModified;
     }
 
-    public LocalDateTime getDateBeg() {
+    public LocalDate getDateBeg() {
         return dateBeg;
     }
 
-    public void setDateBeg(LocalDateTime dateBeg) {
+    public void setDateBeg(LocalDate dateBeg) {
         this.dateBeg = dateBeg;
     }
 
-    public LocalDateTime getDateEnd() {
+    public LocalDate getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDateTime dateEnd) {
+    public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Organization getOrganizationWhichSign() {

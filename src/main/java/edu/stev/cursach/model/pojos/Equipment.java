@@ -13,6 +13,7 @@ public class Equipment implements ICommonFields {
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private Department depWhichResponsible;
     private Project projectWhereIsNowEquip;
 

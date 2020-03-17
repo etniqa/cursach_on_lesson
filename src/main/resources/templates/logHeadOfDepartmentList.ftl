@@ -15,10 +15,14 @@
         <th>description</th>
         <th>creationDate</th>
         <th>dateModified</th>
+
         <th>begDate</th>
         <th>endDate</th>
         <th>headOfDepartment</th>
         <th>department</th>
+
+        <th>delete</th>
+        <th>edit</th>
     </tr>
     <#list logHeadOfDepartments as logHeadOfDepartment>
         <tr>
@@ -34,9 +38,11 @@
             <td>${(logHeadOfDepartment.department.name)!"null"}</td>
 
             <td><a href='/web/log_head_of_department/delete/${logHeadOfDepartment.id}'><button>delete</button></a></td>
-
+            <td><a href='/web/log_head_of_department/edit/${logHeadOfDepartment.id}'><button>edit</button></a></td>
         </tr>
     </#list>
 </table>
+<td><a href='/web/log_head_of_department/add'><button>create</button></a></td>
+
 </body>
 </html>

@@ -15,8 +15,12 @@
         <th>description</th>
         <th>creationDate</th>
         <th>dateModified</th>
+
         <th>technician</th>
         <th>equipment</th>
+
+        <th>delete</th>
+        <th>edit</th>
     </tr>
     <#list technicianHasEquipments as technicianHasEquipment>
     <tr>
@@ -30,8 +34,11 @@
         <td>${(technicianHasEquipment.equipment.name)!"null"}</td>
 
         <td><a href='/web/technician_has_equipment/delete/${technicianHasEquipment.id}'><button>delete</button></a></td>
+        <td><a href='/web/technician_has_equipment/edit/${technicianHasEquipment.id}'><button>edit</button></a></td>
     </tr>
 </#list>
 </table>
+<a href='/web/technician_has_equipment/add'><button>create</button></a>
+
 </body>
 </html>

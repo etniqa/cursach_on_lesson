@@ -15,8 +15,12 @@
         <th>description</th>
         <th>creationDate</th>
         <th>dateModified</th>
+
         <th>depWhichResponsible</th>
         <th>projectWhereIsNowEquip</th>
+
+        <th>delete</th>
+        <th>edit</th>
     </tr>
     <#list equipments as equipment>
     <tr>
@@ -25,12 +29,14 @@
         <td>${(equipment.description)!"null"}</td>
         <td>${(equipment.creationDate)!"null"}</td>
         <td>${(equipment.dateModified)!"null"}</td>
-        <td>${(equipment.depWhichResponsible)!"null"}</td>
-        <td>${(equipment.projectWhereIsNowEquip.name)!"null"}</td>
-        <td><a href='/web/equipment/delete/${equipment.id}'><button>delete</button></a></td>
+        <td>${(equipment.depWhichResponsible.name)!"in common using"}</td>
+        <td>${(equipment.projectWhereIsNowEquip.name)!"free"}</td>
 
+        <td><a href='/web/equipment/delete/${equipment.id}'><button>delete</button></a></td>
+        <td><a href='/web/equipment/edit/${equipment.id}'><button>edit</button></a></td>
     </tr>
 </#list>
 </table>
+<a href="/web/equipment/add"><button>create</button></a>
 </body>
 </html>

@@ -11,6 +11,7 @@ public class LogOfChangesOfEquipment implements ICommonFields {
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private Equipment equipWhichChangeField;
     private Department possibleNewDepartment;
     private Project possibleNewProject;

@@ -12,7 +12,6 @@ public interface IService<T extends ICommonFields> {
 
     default T save(T element){
         element.setCreationDate(LocalDateTime.now());
-        element.setDateModified(LocalDateTime.now());
         return (T) getDao().save(element);
     } //create
     default T get(String id){
@@ -22,7 +21,11 @@ public interface IService<T extends ICommonFields> {
     default List<T> getAll(){
         return getDao().getAll();
     } //update
-    T edit(T element);
+    default T edit(T element){
+        System.out.println("edit in IService for " + element.getClass().toString());
+        element.setDateModified(LocalDateTime.now());
+        return (T) getDao().edit(element);
+    }
     default void delete(String id){ //delete
         System.out.println("delete from IService");
         getDao().delete(id);

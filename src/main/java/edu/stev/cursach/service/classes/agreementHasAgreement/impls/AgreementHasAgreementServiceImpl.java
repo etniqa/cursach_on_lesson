@@ -17,8 +17,4 @@ public class AgreementHasAgreementServiceImpl implements IService<AgreementHasAg
         return dao;
     }
 
-    @Override
-    public AgreementHasAgreement edit(AgreementHasAgreement element) {
-        return null;
-    }
 }

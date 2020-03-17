@@ -11,6 +11,7 @@ public class Organization implements ICommonFields {
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private Organization headOrganization;
 
     public Organization(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,

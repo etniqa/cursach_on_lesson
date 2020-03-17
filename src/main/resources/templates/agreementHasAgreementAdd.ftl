@@ -8,10 +8,14 @@
 <body>
 <fieldset>
     <legend>Add student</legend>
-    <form name="agreementHasAgreement" action="" method="POST">
-        name:<@spring.formInput "agreementHasAgreementForm.name" "" "text"/>
+    <form name="agreementHasAgreement" method="POST">
+        name:<@spring.formInput "agreementHasAgreementForm.name", "", "text"/>
         <br>
         description:<@spring.formInput "agreementHasAgreementForm.description", "", "text"/>
+        <br>
+        head agreement:<@spring.formSingleSelect "agreementHasAgreementForm.headAgreementId", mapHeadAgreement, ""/>
+        <br>
+        other agreement:<@spring.formSingleSelect "agreementHasAgreementForm.otherAgreementId", mapOtherAgreement, ""/>
         <br>
         <input type="submit" value="Create"/>
     </form>

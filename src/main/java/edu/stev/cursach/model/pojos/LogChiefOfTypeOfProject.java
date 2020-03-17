@@ -4,6 +4,7 @@ import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Document
 public class LogChiefOfTypeOfProject implements ICommonFields {
@@ -14,14 +15,13 @@ public class LogChiefOfTypeOfProject implements ICommonFields {
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
 
-    private LocalDateTime begDate;
-    private LocalDateTime endDate;
+    private LocalDate begDate;
+    private LocalDate endDate;
     private TypeOfAgreement agreement;
     private CanLead chief;
 
     public LogChiefOfTypeOfProject(String id, String name, String description, LocalDateTime creationDate,
-                                   LocalDateTime dateModified, LocalDateTime begDate, LocalDateTime endDate,
-                                   TypeOfAgreement agreement, CanLead chief) {
+                                   LocalDateTime dateModified, LocalDate begDate, LocalDate endDate, TypeOfAgreement agreement, CanLead chief) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -73,19 +73,19 @@ public class LogChiefOfTypeOfProject implements ICommonFields {
         this.dateModified = dateModified;
     }
 
-    public LocalDateTime getBegDate() {
+    public LocalDate getBegDate() {
         return begDate;
     }
 
-    public void setBegDate(LocalDateTime begDate) {
+    public void setBegDate(LocalDate begDate) {
         this.begDate = begDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 

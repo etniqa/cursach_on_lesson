@@ -6,17 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 @Document
 public class Department implements ICommonFields {
-//    static int maxInt;
-//    static String maxIntString;
-//    static {
-//        maxInt = 0;
-//    }
+
     @Id
     private String id;
     private String name;
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private Organization organization;
 
     public Department(String id, String name, String description, LocalDateTime creationDate,

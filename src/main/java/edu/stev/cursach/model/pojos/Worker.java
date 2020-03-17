@@ -7,11 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 @Document
 public class Worker implements ICommonFields {
-//    static int maxInt;
-//    static String maxIntString;
-//    static {
-//        maxInt = 0;
-//    }
+
     @Id
     private String id;
     private String name;
@@ -20,6 +16,14 @@ public class Worker implements ICommonFields {
     private LocalDateTime dateModified;
     private Department departmentWhereWorks;
     private TypeOfAgreement agreementWhereIsWorking;
+
+    private String shortClassName;
+    private String shortClassnameWithName;
+    public Worker() {
+        int indexOfLastDot = this.getClass().toString().lastIndexOf(".");
+        this.shortClassName = this.getClass().toString().substring(indexOfLastDot + 1);
+        this.shortClassnameWithName = "(" + this.shortClassName + ") " + this.name;
+    }
 
     public Worker(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
                   Department departmentWhereWorks, TypeOfAgreement agreementWhereIsWorking) {
@@ -30,6 +34,7 @@ public class Worker implements ICommonFields {
         this.dateModified = dateModified;
         this.departmentWhereWorks = departmentWhereWorks;
         this.agreementWhereIsWorking = agreementWhereIsWorking;
+        this.resetShortClassnameWithName();
     }
 
     public Department getDepartmentWhereWorks() {
@@ -66,6 +71,13 @@ public class Worker implements ICommonFields {
     @Override
     public void setName(String name) {
         this.name = name;
+        this.resetShortClassnameWithName();
+    }
+
+    private void resetShortClassnameWithName() {
+        int indexOfLastDot = this.getClass().toString().lastIndexOf(".");
+        this.shortClassName = this.getClass().toString().substring(indexOfLastDot + 1);
+        this.shortClassnameWithName = "(" + this.shortClassName + ") " + this.name;
     }
 
     @Override
@@ -95,5 +107,13 @@ public class Worker implements ICommonFields {
 
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
+    }
+
+    public String getShortClassName() {
+        return shortClassName;
+    }
+
+    public String getShortClassnameWithName() {
+        return shortClassnameWithName;
     }
 }

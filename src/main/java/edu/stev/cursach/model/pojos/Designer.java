@@ -10,4 +10,16 @@ public class Designer extends CanLead {
         super(id, name, description, creationDate, dateModified, departmentWhereWorks, agreementWhereIsWorking);
         this.numberOfLicences = numberOfLicences;
     }
+
+    public Designer() {
+        super();
+    }
+
+    public int getNumberOfLicences() {
+        return numberOfLicences;
+    }
+
+    public void setNumberOfLicences(int numberOfLicences) {
+        this.numberOfLicences = numberOfLicences;
+    }
 }

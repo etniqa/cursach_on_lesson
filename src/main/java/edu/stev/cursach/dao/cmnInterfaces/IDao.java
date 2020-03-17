@@ -20,9 +20,10 @@ public interface IDao<T extends ICommonFields> {
     default List<T> getAll(){
         return getRepository().findAll();
     }
-    default T edit(T element){
-        return null;
-    } //update
+    default T edit(T element){ //update
+        System.out.println("edit in IDao for " + element.getClass().toString());
+        return (T) getRepository().save(element);
+    }
     default void delete(String id){
         getRepository().deleteById(id);
     } //delete

@@ -16,9 +16,4 @@ public class LogChiefOfTypeOfProjectServiceImpl implements IService<LogChiefOfTy
     public IDao getDao() {
         return dao;
     }
-
-    @Override
-    public LogChiefOfTypeOfProject edit(LogChiefOfTypeOfProject element) {
-        return null;
-    }
 }

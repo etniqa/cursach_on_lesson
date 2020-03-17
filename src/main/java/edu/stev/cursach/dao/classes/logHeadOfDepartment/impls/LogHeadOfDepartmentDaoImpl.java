@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
@@ -26,5 +28,14 @@ public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
     @Override
     public MongoRepository getRepository() {
         return repository;
+    }
+
+    public LogHeadOfDepartment removeFromHead(String idCanLeadWhichRemoving){
+        LogHeadOfDepartment logHeadOfDepartmentWhichNeedToSetEndDate = repository.findAll().stream()
+                .filter(logHeadOfDepartment -> logHeadOfDepartment.getDepartment().getId().equals(idCanLeadWhichRemoving) &&
+                        logHeadOfDepartment.getEndDate() == null)
+                .findFirst().orElse(null);
+        logHeadOfDepartmentWhichNeedToSetEndDate.setEndDate(LocalDate.now());
+        return this.save(logHeadOfDepartmentWhichNeedToSetEndDate);
     }
 }

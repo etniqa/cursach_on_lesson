@@ -17,8 +17,4 @@ public class EquipmentServiceImpls implements IService<Equipment> {
         return dao;
     }
 
-    @Override
-    public Equipment edit(Equipment element) {
-        return null;
-    }
 }

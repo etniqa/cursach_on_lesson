@@ -17,8 +17,4 @@ public class DepartmentServiceImpl implements IService<Department> {
         return this.dao;
     }
 
-    @Override
-    public Department edit(Department element) {
-        return null;
-    }
 }

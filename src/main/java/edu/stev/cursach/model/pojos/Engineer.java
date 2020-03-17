@@ -3,19 +3,23 @@ package edu.stev.cursach.model.pojos;
 import java.time.LocalDateTime;
 
 public class Engineer extends CanLead {
-    private int yearsOfExpert;
+    private int yearsOfExperience;
 
     public Engineer(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
-                    Department departmentWhereWorks, TypeOfAgreement agreementWhereIsWorking, int yearsOfExpert) {
+                    Department departmentWhereWorks, TypeOfAgreement agreementWhereIsWorking, int yearsOfExperience) {
         super(id, name, description, creationDate, dateModified, departmentWhereWorks, agreementWhereIsWorking);
-        this.yearsOfExpert = yearsOfExpert;
+        this.yearsOfExperience = yearsOfExperience;
     }
 
-    public int getYearsOfExpert() {
-        return yearsOfExpert;
+    public Engineer() {
+        super();
     }
 
-    public void setYearsOfExpert(int yearsOfExpert) {
-        this.yearsOfExpert = yearsOfExpert;
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        this.yearsOfExperience = yearsOfExperience;
     }
 }

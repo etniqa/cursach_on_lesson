@@ -16,6 +16,9 @@
         <th>creationDate</th>
         <th>dateModified</th>
         <th>headOrganization</th>
+
+        <th>delete</th>
+        <th>edit</th>
     </tr>
     <#list organizations as organization>
         <tr>
@@ -28,9 +31,10 @@
             <td>${(organization.headOrganization.name)!"null"}</td>
 
             <td><a href='/web/organization/delete/${organization.id}'><button>delete</button></a></td>
-
+            <td><a href='/web/organization/edit/${organization.id}'><button>edit</button></a></td>
         </tr>
     </#list>
 </table>
+<a href='/web/organization/add'><button>create</button></a>
 </body>
 </html>

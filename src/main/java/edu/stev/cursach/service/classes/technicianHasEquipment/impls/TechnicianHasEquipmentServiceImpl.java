@@ -16,9 +16,4 @@ public class TechnicianHasEquipmentServiceImpl implements IService<TechnicianHas
     public IDao getDao() {
         return dao;
     }
-
-    @Override
-    public TechnicianHasEquipment edit(TechnicianHasEquipment element) {
-        return null;
-    }
 }

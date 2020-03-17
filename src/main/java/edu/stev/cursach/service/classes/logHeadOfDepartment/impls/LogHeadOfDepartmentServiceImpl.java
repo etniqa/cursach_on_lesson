@@ -17,8 +17,7 @@ public class LogHeadOfDepartmentServiceImpl implements IService<LogHeadOfDepartm
         return dao;
     }
 
-    @Override
-    public LogHeadOfDepartment edit(LogHeadOfDepartment element) {
-        return null;
+    public LogHeadOfDepartment removeFromHead(String canLeadIdWhichRemoving){
+        return dao.removeFromHead(canLeadIdWhichRemoving);
     }
 }

@@ -16,9 +16,4 @@ public class TypeOfAgreementServiceImpl implements IService<TypeOfAgreement> {
     public IDao getDao() {
         return dao;
     }
-
-    @Override
-    public TypeOfAgreement edit(TypeOfAgreement element) {
-        return null;
-    }
 }

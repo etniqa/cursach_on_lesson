@@ -16,9 +16,4 @@ public class OrganizationServiceImpl implements IService<Organization> {
     public IDao getDao() {
         return dao;
     }
-
-    @Override
-    public Organization edit(Organization element) {
-        return null;
-    }
 }

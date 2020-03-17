@@ -16,9 +16,4 @@ public class WorkerServiceImpl implements IService<Worker> {
     public IDao getDao() {
         return dao;
     }
-
-    @Override
-    public Worker edit(Worker element) {
-        return null;
-    }
 }

@@ -10,6 +10,7 @@ public class LogOfChangesOfWorker implements ICommonFields {
     private String description;
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
+
     private Equipment equipWhichChangeField;
     private Department possibleNewDepartment;
     private Project possibleNewProject;
@@ -29,45 +30,76 @@ public class LogOfChangesOfWorker implements ICommonFields {
         this.dateTimeOfChange = dateTimeOfChange;
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
 
     @Override
     public void setId(String id) {
-
-    }
-
-    @Override
-    public String getId() {
-        return null;
-    }
-
-    @Override
-    public void setName(String name) {
-
+        this.id = id;
     }
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
-    public void setDescription(String description) {
-
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return description;
+    }
+
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public LocalDateTime getCreationDate() {
-        return null;
+        return creationDate;
     }
 
     @Override
     public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
 
+    public Equipment getEquipWhichChangeField() {
+        return equipWhichChangeField;
+    }
+
+    public void setEquipWhichChangeField(Equipment equipWhichChangeField) {
+        this.equipWhichChangeField = equipWhichChangeField;
+    }
+
+    public Department getPossibleNewDepartment() {
+        return possibleNewDepartment;
+    }
+
+    public void setPossibleNewDepartment(Department possibleNewDepartment) {
+        this.possibleNewDepartment = possibleNewDepartment;
+    }
+
+    public Project getPossibleNewProject() {
+        return possibleNewProject;
+    }
+
+    public void setPossibleNewProject(Project possibleNewProject) {
+        this.possibleNewProject = possibleNewProject;
+    }
+
+    public LocalDateTime getDateTimeOfChange() {
+        return dateTimeOfChange;
+    }
+
+    public void setDateTimeOfChange(LocalDateTime dateTimeOfChange) {
+        this.dateTimeOfChange = dateTimeOfChange;
     }
 
     @Override
