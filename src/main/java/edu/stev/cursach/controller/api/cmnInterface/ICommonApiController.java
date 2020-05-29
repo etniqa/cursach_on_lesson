@@ -13,13 +13,13 @@ public interface ICommonApiController<T extends ICommonFields> {
     Logger getLogger();
     IService getService();
 
-    @RequestMapping(value = "/search_by_name/{partOfName}", method = RequestMethod.GET)
-    default List<T> searchByName(@PathVariable("partOfName") String partOfName){
-        getLogger().setLevel(Level.ALL);
-        getLogger().logp(Level.FINE, this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1),
-                Thread.currentThread().getStackTrace()[1].getMethodName(), "searchin by name...");
-        return getService().searchByName(partOfName);
-    }
+//    @RequestMapping(value = "/search_by_name/{partOfName}", method = RequestMethod.GET)
+//    default List<T> searchByName(@PathVariable("partOfName") String partOfName){
+//        getLogger().setLevel(Level.ALL);
+//        getLogger().logp(Level.FINE, this.getClass().getName().substring(this.getClass().getName().lastIndexOf(".") + 1),
+//                Thread.currentThread().getStackTrace()[1].getMethodName(), "searchin by name...");
+//        return getService().searchByName(partOfName);
+//    }
 
     @RequestMapping(value = "/get/list", method = RequestMethod.GET)
     default List<T> getAll(){
