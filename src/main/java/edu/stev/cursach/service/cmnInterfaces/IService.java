@@ -60,7 +60,6 @@ public interface IService<T extends ICommonFields> {
         return sorted;
     }
 
-
     class MyComparatorByDate<T extends ICommonFields> implements Comparator<T> {
         @Override
         public int compare(T o1, T o2) {

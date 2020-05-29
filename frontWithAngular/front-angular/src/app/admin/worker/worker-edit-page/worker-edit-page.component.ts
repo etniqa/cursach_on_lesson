@@ -46,9 +46,11 @@ export class WorkerEditPageComponent implements OnInit {
         }
         this.workerService.getById(this.id).subscribe(respWorker => {
           this.worker = respWorker;
-          console.log(this.worker);
-          console.log(this.mapNameOfAdditionalField[this.worker.shortClassName.toLowerCase()]);
-          console.log((this.worker as Designer)[this.mapNameOfAdditionalField[this.worker.shortClassName.toLowerCase()]]);
+          if (this.pageMode === 'edit') {
+            console.log(this.worker);
+            console.log(this.mapNameOfAdditionalField[this.worker.shortClassName.toLowerCase()]);
+            console.log((this.worker as Designer)[this.mapNameOfAdditionalField[this.worker.shortClassName.toLowerCase()]]);
+          }
           this.departmentService.getAll().subscribe(respDeps => {
             this.departments = respDeps;
             this.agreementService.getProjects().subscribe(respProjs => {
@@ -72,20 +74,18 @@ export class WorkerEditPageComponent implements OnInit {
   }
 
   edit() {
-    // let newAgreem: Agreement = {};
-    // if (this.pageMode === 'edit') {
-    //   newAgreem = {...this.worker};
-    // }
-    // newAgreem.name = this.form.get('name').value;
-    // newAgreem.description = this.form.get('description').value;
-    // newAgreem.dateBeg = this.form.get('dateBeg').value;
-    // newAgreem.dateEnd = this.form.get('dateEnd').value;
-    // newAgreem.organizationWhichSign = this.organizations.find(org => org.id === this.form.get('organization').value);
-    // console.log(newAgreem);
-    // if (this.pageMode === 'create') {
-    //   this.agreementService.save(newAgreem, this.form.get('type').value).subscribe(success => this.router.navigate(['/admin', 'agreement', 'list']));
-    // } else {
-    //   this.agreementService.edit(newAgreem).subscribe(success => this.router.navigate(['/admin', 'agreement', 'list']));
-    // }
+    let newWorker: Worker = {};
+    if (this.pageMode === 'edit') {
+      newWorker = {...this.worker};
+    }
+    newWorker.name = this.form.get('name').value;
+    newWorker.description = this.form.get('description').value;
+    newWorker.departmentWhereWorks = this.departments.find(dep => dep.id === this.form.get('department').value);
+    newWorker.agreementWhereIsWorking = this.agreements.find(agr => agr.id === this.form.get('agreement').value);
+    if (this.pageMode === 'create') {
+      this.agreementService.save(newWorker, this.form.get('type').value).subscribe(success => this.router.navigate(['/admin', 'agreement', 'list']));
+    } else {
+      this.agreementService.edit(newWorker).subscribe(success => this.router.navigate(['/admin', 'agreement', 'list']));
+    }
   }
 }

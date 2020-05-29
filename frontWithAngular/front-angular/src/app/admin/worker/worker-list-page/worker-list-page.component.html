@@ -26,26 +26,26 @@
     <th>Modified</th>
     <th>Department where is working</th>
     <th>Agreement where is working</th>
-    <th>Additional field</th>
+<!--    <th>Additional field</th>-->
     <th>Delete</th>
     <th>Edit</th>
   </tr>
   </thead>
   <tbody>
   <tr
-    *ngFor="let department of workers | searchByName:searchStr"
+    *ngFor="let worker of workers | searchByName:searchStr"
   >
-    <td>{{department.shortClassnameWithName}}</td>
-    <td>{{department.description}}</td>
-    <td>{{department.creationDate | date:'short'}}</td>
-    <td>{{department.dateModified! | date:'short'}}</td>
-    <td>{{department.departmentWhereWorks!.name}}</td>
-    <td>{{department.agreementWhereIsWorking!.name}}</td>
+    <td>{{worker.shortClassnameWithName}}</td>
+    <td>{{worker.description}}</td>
+    <td>{{worker.creationDate | date:'short'}}</td>
+    <td>{{worker.dateModified! | date:'short'}}</td>
+    <td>{{worker.departmentWhereWorks!.name}}</td>
+    <td>{{worker.agreementWhereIsWorking!.name}}</td>
     <td>
-      <button (click)="delete(department)" class="btn btn-minor">Delete</button>
+      <button (click)="delete(worker)" class="btn btn-minor">Delete</button>
     </td>
     <td>
-      <button [routerLink]="['/admin', 'worker', 'edit', department.id]" class="btn btn-minor">Edit</button>
+      <button [routerLink]="['/admin', 'worker', 'edit', worker.id]" class="btn btn-minor">Edit</button>
     </td>
   </tr>
   </tbody>
