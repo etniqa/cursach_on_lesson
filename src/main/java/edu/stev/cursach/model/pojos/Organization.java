@@ -71,4 +71,16 @@ public class Organization implements ICommonFields {
     public void setHeadOrganization(Organization headOrganization) {
         this.headOrganization = headOrganization;
     }
+
+    @Override
+    public String toString() {
+        return "Organization{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", dateModified=" + dateModified +
+                ", headOrganization=" + headOrganization +
+                '}';
+    }
 }

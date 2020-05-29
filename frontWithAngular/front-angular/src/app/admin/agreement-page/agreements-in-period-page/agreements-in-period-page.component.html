@@ -1,0 +1,72 @@
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="form-control">
+    <label for="dateFrom">Date beginning: </label>
+    <input id="dateFrom" type="date" formControlName="dateFrom">
+    <div class="validation" *ngIf="this.form.get('dateFrom').invalid && this.form.get('dateFrom').touched">
+      <small *ngIf="this.form.get('dateFrom').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="dateTo">Date ending: </label>
+    <input id="dateTo" type="date" formControlName="dateTo">
+    <div class="validation" *ngIf="this.form.get('dateTo').invalid && this.form.get('dateTo').touched">
+      <small *ngIf="this.form.get('dateTo').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+
+  <input
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+  <div class="validation">
+    <p [ngStyle]="{fontSize: '20px'}" *ngIf="this.error">{{this.error}}</p>
+  </div>
+</form>
+
+<div *ngIf="isLoaded;">
+  <table *ngIf="agreements.length !== 0; else noElements">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Chief</th>
+      <th>Organization which sign</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let agreement of agreements; let ind = index"
+    >
+      <td>{{agreement.fullName}}</td>
+      <td>{{agreement.description}}</td>
+      <td>{{agreement.creationDate | date:'short'}}</td>
+      <td>{{agreement.dateModified! | date:'short'}}</td>
+      <td>{{agreement.dateBeg! | date:'short'}}</td>
+      <td>{{agreement.dateEnd! | date:'short'}}</td>
+      <td>{{agreement.cost}}</td>
+      <td></td>
+      <td>{{agreement.organizationWhichSign!.name}}</td>
+      <td><button (click)="delete(agreement)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'agreement', 'edit', agreement.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'agreement', 'edit', 'create'.toString()]" class="btn btn-primary">Create</button>
+</div>
+
+<ng-template #noElements>
+  <p class="text-center">No agreements</p>
+</ng-template>

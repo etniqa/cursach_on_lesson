@@ -47,16 +47,6 @@
         </tr>
         </#list>
     </table>
-<#--<table class="table">
-    <tr>
-        <th>head of department</th>
-    </tr>
-    <#list headsOfDepartment as headOfDepartment>
-        <tr>
-            <td>${headOfDepartment.name}</td>
-        </tr>
-    </#list>
-</table>-->
 <a href="/web/department/add"><button>create</button></a>
 </body>
 </html>

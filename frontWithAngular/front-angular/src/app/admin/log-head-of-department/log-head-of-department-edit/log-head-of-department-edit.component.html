@@ -1,0 +1,52 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="save()"
+  >
+    <div class="form-control">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+      <div class="validation" *ngIf="this.form.get('description').invalid && this.form.get('description').touched">
+        <small *ngIf="this.form.get('description').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <!--    beginDate-->
+    <!--    endDate-->
+    <div class="form-control">
+      <label for="department">Department which change head: </label>
+      <select id="department" class="custom-select" formControlName="department"
+              (change)="changeDepartment($event.target.value)"
+              [disabled]="this.pageMode === 'edit'"
+      >
+        <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('department').invalid && this.form.get('department').touched">
+        <small *ngIf="this.form.get('department').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="headOfDepartment">New head of department: </label>
+      <select id="headOfDepartment" class="custom-select" formControlName="headOfDepartment">
+        <option [value]="'none'">noone</option>
+        <option *ngFor="let canLead of canLeads" [value]="canLead.id">{{canLead.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('headOfDepartment').invalid && this.form.get('headOfDepartment').touched">
+        <small *ngIf="this.form.get('headOfDepartment').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <input
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || isThisIsLastLogOnForm()"
+      [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+    >
+    <div class="validation">
+      <p [ngStyle]="{fontSize: '20px'}" *ngIf="this.error">{{this.error}}</p>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

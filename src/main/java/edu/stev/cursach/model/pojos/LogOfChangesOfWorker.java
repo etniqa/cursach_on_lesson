@@ -2,6 +2,7 @@ package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LogOfChangesOfWorker implements ICommonFields {
@@ -11,22 +12,36 @@ public class LogOfChangesOfWorker implements ICommonFields {
     private LocalDateTime creationDate;
     private LocalDateTime dateModified;
 
-    private Equipment equipWhichChangeField;
+    private Worker workerWhoChangeSmth;
     private Department possibleNewDepartment;
-    private Project possibleNewProject;
-    private LocalDateTime dateTimeOfChange;
+    private Project possibleNewProj;
+    private LocalDate dateTimeOfChange;
+    private LocalDate dateTimeBeforeNewChange;
 
-    public LogOfChangesOfWorker(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
-                     Equipment equipWhichChangeField, Department possibleNewDepartment,
-                     Project possibleNewProject, LocalDateTime dateTimeOfChange) {
+    public LogOfChangesOfWorker() {
+    }
+
+    public LogOfChangesOfWorker(String id, String description, LocalDateTime creationDate, LocalDateTime dateModified, Worker workerWhoChangeSmth, Department possibleNewDepartment, Project possibleNewProj, LocalDate dateTimeOfChange, LocalDate dateTimeBeforeNewChange) {
+        this.id = id;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.dateModified = dateModified;
+        this.workerWhoChangeSmth = workerWhoChangeSmth;
+        this.possibleNewDepartment = possibleNewDepartment;
+        this.possibleNewProj = possibleNewProj;
+        this.dateTimeOfChange = dateTimeOfChange;
+        this.dateTimeBeforeNewChange = dateTimeBeforeNewChange;
+    }
+
+    public LogOfChangesOfWorker(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified, Worker workerWhoChangeSmth, Department possibleNewDepartment, Project possibleNewProj, LocalDate dateTimeOfChange) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.creationDate = creationDate;
         this.dateModified = dateModified;
-        this.equipWhichChangeField = equipWhichChangeField;
+        this.workerWhoChangeSmth = workerWhoChangeSmth;
         this.possibleNewDepartment = possibleNewDepartment;
-        this.possibleNewProject = possibleNewProject;
+        this.possibleNewProj = possibleNewProj;
         this.dateTimeOfChange = dateTimeOfChange;
     }
 
@@ -70,12 +85,22 @@ public class LogOfChangesOfWorker implements ICommonFields {
         this.creationDate = creationDate;
     }
 
-    public Equipment getEquipWhichChangeField() {
-        return equipWhichChangeField;
+    @Override
+    public LocalDateTime getDateModified() {
+        return dateModified;
     }
 
-    public void setEquipWhichChangeField(Equipment equipWhichChangeField) {
-        this.equipWhichChangeField = equipWhichChangeField;
+    @Override
+    public void setDateModified(LocalDateTime dateModified) {
+        this.dateModified = dateModified;
+    }
+
+    public Worker getWorkerWhoChangeSmth() {
+        return workerWhoChangeSmth;
+    }
+
+    public void setWorkerWhoChangeSmth(Worker workerWhoChangeSmth) {
+        this.workerWhoChangeSmth = workerWhoChangeSmth;
     }
 
     public Department getPossibleNewDepartment() {
@@ -86,29 +111,27 @@ public class LogOfChangesOfWorker implements ICommonFields {
         this.possibleNewDepartment = possibleNewDepartment;
     }
 
-    public Project getPossibleNewProject() {
-        return possibleNewProject;
+    public TypeOfAgreement getPossibleNewProj() {
+        return possibleNewProj;
     }
 
-    public void setPossibleNewProject(Project possibleNewProject) {
-        this.possibleNewProject = possibleNewProject;
+    public void setPossibleNewProj(Project possibleNewProj) {
+        this.possibleNewProj = possibleNewProj;
     }
 
-    public LocalDateTime getDateTimeOfChange() {
+    public LocalDate getDateTimeOfChange() {
         return dateTimeOfChange;
     }
 
-    public void setDateTimeOfChange(LocalDateTime dateTimeOfChange) {
+    public void setDateTimeOfChange(LocalDate dateTimeOfChange) {
         this.dateTimeOfChange = dateTimeOfChange;
     }
 
-    @Override
-    public LocalDateTime getDateModified() {
-        return null;
+    public LocalDate getDateTimeBeforeNewChange() {
+        return dateTimeBeforeNewChange;
     }
 
-    @Override
-    public void setDateModified(LocalDateTime dateModified) {
-
+    public void setDateTimeBeforeNewChange(LocalDate dateTimeBeforeNewChange) {
+        this.dateTimeBeforeNewChange = dateTimeBeforeNewChange;
     }
 }

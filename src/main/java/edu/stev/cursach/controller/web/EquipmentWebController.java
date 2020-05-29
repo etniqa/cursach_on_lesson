@@ -1,10 +1,8 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.form.DepartmentForm;
 import edu.stev.cursach.form.EquipmentForm;
 import edu.stev.cursach.model.pojos.Department;
 import edu.stev.cursach.model.pojos.Equipment;
-import edu.stev.cursach.model.pojos.Organization;
 import edu.stev.cursach.model.pojos.Project;
 import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
 import edu.stev.cursach.service.classes.department.impls.DepartmentServiceImpl;
@@ -56,7 +54,7 @@ public class EquipmentWebController {
     //linking all fields in form to my ObjectForm class
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(@PathVariable("id") String id, Model model){
-        Equipment equipmentWhichEdit = equipmentService.get(id);
+        Equipment equipmentWhichEdit = equipmentService.getById(id);
         EquipmentForm equipmentForm = new EquipmentForm(equipmentWhichEdit.getName(), equipmentWhichEdit.getDescription(),
                 equipmentWhichEdit.getDepWhichResponsible().getId(), equipmentWhichEdit.getProjectWhereIsNowEquip().getId());
         model.addAttribute("equipmentForm", equipmentForm);
@@ -78,10 +76,10 @@ public class EquipmentWebController {
    //after submit on form of editing
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("equipmentForm") EquipmentForm equipmentForm){
-        Equipment equipmentWhichEdit = equipmentService.get(id);
+        Equipment equipmentWhichEdit = equipmentService.getById(id);
         equipmentWhichEdit = new Equipment(equipmentWhichEdit.getId(), equipmentForm.getName(), equipmentForm.getDescription(),
                 equipmentWhichEdit.getCreationDate(), equipmentWhichEdit.getDateModified(),
-                this.departmentService.get(equipmentForm.getDepWhichResponsibleId()), (Project) typeOfAgreementService.get(equipmentForm.getProjectWhereIsNowEquipId()));
+                this.departmentService.getById(equipmentForm.getDepWhichResponsibleId()), (Project) typeOfAgreementService.getById(equipmentForm.getProjectWhereIsNowEquipId()));
         equipmentService.edit(equipmentWhichEdit);
         return "redirect:/web/equipment/get/list";
     }
@@ -110,7 +108,7 @@ public class EquipmentWebController {
     String add(@ModelAttribute("equipmentForm") EquipmentForm equipmentForm){
         Equipment equipmentWhichEdit = new Equipment(null, equipmentForm.getName(), equipmentForm.getDescription(),
                 null, null,
-                this.departmentService.get(equipmentForm.getDepWhichResponsibleId()), (Project) typeOfAgreementService.get(equipmentForm.getProjectWhereIsNowEquipId()));
+                this.departmentService.getById(equipmentForm.getDepWhichResponsibleId()), (Project) typeOfAgreementService.getById(equipmentForm.getProjectWhereIsNowEquipId()));
         equipmentService.save(equipmentWhichEdit);
         return "redirect:/web/equipment/get/list";
     }

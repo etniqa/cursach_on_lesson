@@ -1,0 +1,43 @@
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  *ngIf="isLoaded; else loadingBlock"
+>
+  <div class="form-control">
+    <label for="description">Description: </label>
+    <input id="description" type="text" formControlName="description">
+    <div class="validation" *ngIf="this.form.get('description').invalid && this.form.get('description').touched">
+      <small *ngIf="this.form.get('description').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="technician">Technician who can use: </label>
+    <select (change)="changeTechnician($event.target.value)" id="technician" class="custom-select" formControlName="technician">
+      <option *ngFor="let availableTechn of availableTechnsForThisEquip" [value]="availableTechn.id">{{availableTechn.name}}</option>
+    </select>
+    <div class="validation" *ngIf="this.form.get('technician').invalid && this.form.get('technician').touched">
+      <small *ngIf="this.form.get('technician').errors.required">You have to choose</small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="equipment">Equipment: </label>
+    <select (change)="changeEquipment($event.target.value)" id="equipment" class="custom-select" formControlName="equipment">
+      <option *ngFor="let availableEquip of availableEquipsForThisTechn" [value]="availableEquip.id">{{availableEquip.name}}</option>
+    </select>
+    <div class="validation" *ngIf="this.form.get('equipment').invalid && this.form.get('equipment').touched">
+      <small *ngIf="this.form.get('equipment').errors.required">You have to choose</small>
+    </div>
+  </div>
+  <input
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="form.invalid"
+    [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+  >
+</form>
+
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

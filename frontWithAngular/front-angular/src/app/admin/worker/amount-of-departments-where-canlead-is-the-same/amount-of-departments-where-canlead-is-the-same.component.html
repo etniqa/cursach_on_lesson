@@ -1,0 +1,22 @@
+<table *ngIf="isLoaded; else loadingBlock">
+  <thead>
+  <tr>
+    <th>Name of canLead</th>
+    <th>Amount of departments where is this canLead is head</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let pair of pairsCanleadAndAmount;"
+  >
+    <td>{{pair.first.name}}</td>
+    <td>{{pair.second}}</td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

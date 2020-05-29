@@ -93,4 +93,17 @@ public class Equipment implements ICommonFields {
     public void setDateModified(LocalDateTime dateModified) {
         this.dateModified = dateModified;
     }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", dateModified=" + dateModified +
+                ", depWhichResponsible=" + depWhichResponsible +
+                ", projectWhereIsNowEquip=" + projectWhereIsNowEquip +
+                '}';
+    }
 }

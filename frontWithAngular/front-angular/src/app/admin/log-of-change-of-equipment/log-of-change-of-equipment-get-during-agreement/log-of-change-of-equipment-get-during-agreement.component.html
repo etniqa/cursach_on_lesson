@@ -1,0 +1,90 @@
+<div *ngIf="isLoaded">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Chief (request)</th>
+      <th>Organization which sign</th>
+      <th>Choose</th>
+
+    </tr>
+    </thead>
+    <tbody
+    >
+    <tr
+      *ngFor="let agreement of agreements;"
+      [ngClass]="{'inactive-agreement': checkIsNeedToAddInactiveClass(agreement)}"
+    >
+      <td>{{agreement.fullName}}</td>
+      <td>{{agreement.description}}</td>
+      <td>{{agreement.creationDate | date:'short'}}</td>
+      <td>{{agreement.dateModified! | date:'short'}}</td>
+      <td>{{agreement.dateBeg! | date:'short'}}</td>
+      <td>{{agreement.dateEnd! | date:'short'}}</td>
+      <td>{{agreement.cost}}</td>
+      <td></td>
+      <td>{{agreement.organizationWhichSign!.name}}</td>
+      <td><button (click)="choose(agreement)" class="btn btn-minor">Choose</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+</div>
+
+<div *ngIf="isGetResp">
+  <table>
+    <thead>
+    <tr>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+
+      <th>Equipment</th>
+      <th>Department</th>
+      <th>Project</th>
+      <th>date beg after change</th>
+      <th>date end before new change</th>
+
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let logOfChangeOfEquipment of respLogsDuringAgreem"
+    >
+      <td>{{logOfChangeOfEquipment.description}}</td>
+      <td>{{logOfChangeOfEquipment.creationDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{logOfChangeOfEquipment.dateModified! | date:'dd/MM/yyyy'}}</td>
+      <td>{{logOfChangeOfEquipment.equipWhichChangeField?.name}}</td>
+      <td>{{logOfChangeOfEquipment.possibleNewDepartment?.name}}</td>
+      <td>{{logOfChangeOfEquipment.possibleNewProject?.name}}</td>
+      <td>{{logOfChangeOfEquipment.dateBegAfterChange | date:'dd/MM/yyyy'}}</td>
+      <td>{{logOfChangeOfEquipment.dateEndBeforeNewChange | date:'dd/MM/yyyy'}}</td>
+      <td>
+        <button (click)="delete(logOfChangeOfEquipment)" class="btn btn-minor">Delete</button>
+      </td>
+      <td>
+        <button [routerLink]="['/admin', 'log_of_change_of_equipment', 'edit', logOfChangeOfEquipment.id]"
+                class="btn btn-minor">Edit
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}"
+          [routerLink]="['/admin', 'log_of_change_of_equipment', 'edit', 'create'.toString()]" class="btn btn-primary">
+    Create
+  </button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

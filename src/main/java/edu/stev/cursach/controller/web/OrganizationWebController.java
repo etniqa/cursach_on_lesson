@@ -1,6 +1,5 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.form.LogHeadOfDepartmentForm;
 import edu.stev.cursach.form.OrganizationForm;
 import edu.stev.cursach.model.pojos.*;
 import edu.stev.cursach.service.classes.organization.impls.OrganizationServiceImpl;
@@ -48,14 +47,14 @@ public class OrganizationWebController {
                 organizationForm.getName(),
                 organizationForm.getDescription(),
                 null, null,
-                organizationService.get(organizationForm.getHeadOrganizationId()));
+                organizationService.getById(organizationForm.getHeadOrganizationId()));
         organizationService.save(newOrganization);
         return "redirect:/web/organization/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        Organization organizationWhichEdit = organizationService.get(id);
+        Organization organizationWhichEdit = organizationService.getById(id);
         OrganizationForm organizationForm = new OrganizationForm(
                 organizationWhichEdit.getName(),
                 organizationWhichEdit.getDescription(),
@@ -69,13 +68,13 @@ public class OrganizationWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("organizationForm") OrganizationForm organizationForm) {
-        Organization organizationWhichEdit = organizationService.get(id);
+        Organization organizationWhichEdit = organizationService.getById(id);
         organizationWhichEdit = new Organization(
                 id,
                 organizationForm.getName(),
                 organizationForm.getDescription(),
                 organizationWhichEdit.getCreationDate(), null,
-                organizationService.get(organizationForm.getHeadOrganizationId()));
+                organizationService.getById(organizationForm.getHeadOrganizationId()));
         organizationService.edit(organizationWhichEdit);
         return "redirect:/web/organization/get/list";
     }

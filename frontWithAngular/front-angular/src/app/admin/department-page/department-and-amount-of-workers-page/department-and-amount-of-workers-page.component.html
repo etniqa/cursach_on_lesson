@@ -1,0 +1,26 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <table>
+    <thead>
+    <tr>
+      <th>Department</th>
+      <th>Amount of workers</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let depAndAmount of depAndAmountList;"
+    >
+      <td>{{depAndAmount.first.name}}</td>
+      <td>{{depAndAmount.second}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'department', 'edit', 'create'.toString()]"
+          class="btn btn-primary">Create
+  </button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

@@ -1,6 +1,5 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.form.OrganizationForm;
 import edu.stev.cursach.form.TechnicianHasEquipmentForm;
 import edu.stev.cursach.model.pojos.*;
 import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
@@ -74,8 +73,8 @@ public class TechnicianHasEquipmentWebController {
                 technicianHasEquipmentForm.getName(),
                 technicianHasEquipmentForm.getDescription(),
                 null, null,
-                (Technician) workerService.get(technicianHasEquipmentForm.getTechnicianId()),
-                equipmentService.get(technicianHasEquipmentForm.getEquipmentId())
+                (Technician) workerService.getById(technicianHasEquipmentForm.getTechnicianId()),
+                equipmentService.getById(technicianHasEquipmentForm.getEquipmentId())
         );
         technicianHasEquipmentService.save(newTechnicianHasEquipment);
         return "redirect:/web/technician_has_equipment/get/list";
@@ -83,7 +82,7 @@ public class TechnicianHasEquipmentWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        TechnicianHasEquipment technicianHasEquipmentWhichEdit = technicianHasEquipmentService.get(id);
+        TechnicianHasEquipment technicianHasEquipmentWhichEdit = technicianHasEquipmentService.getById(id);
         TechnicianHasEquipmentForm technicianHasEquipmentForm = new TechnicianHasEquipmentForm(
                 technicianHasEquipmentWhichEdit.getName(),
                 technicianHasEquipmentWhichEdit.getDescription(),
@@ -105,15 +104,15 @@ public class TechnicianHasEquipmentWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("technicianHasEquipmentForm") TechnicianHasEquipmentForm technicianHasEquipmentForm) {
-        TechnicianHasEquipment technicianHasEquipmentWhichEdit = technicianHasEquipmentService.get(id);
+        TechnicianHasEquipment technicianHasEquipmentWhichEdit = technicianHasEquipmentService.getById(id);
         technicianHasEquipmentWhichEdit = new TechnicianHasEquipment(
                 id,
                 technicianHasEquipmentForm.getName(),
                 technicianHasEquipmentForm.getDescription(),
                 technicianHasEquipmentWhichEdit.getCreationDate(),
                 LocalDateTime.now(),
-                (Technician) workerService.get(technicianHasEquipmentForm.getTechnicianId()),
-                equipmentService.get(technicianHasEquipmentForm.getEquipmentId())
+                (Technician) workerService.getById(technicianHasEquipmentForm.getTechnicianId()),
+                equipmentService.getById(technicianHasEquipmentForm.getEquipmentId())
         );
         technicianHasEquipmentService.edit(technicianHasEquipmentWhichEdit);
         return "redirect:/web/technician_has_equipment/get/list";

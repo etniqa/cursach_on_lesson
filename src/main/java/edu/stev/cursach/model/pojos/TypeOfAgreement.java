@@ -37,6 +37,10 @@ public class TypeOfAgreement implements ICommonFields {
         this.cost = cost;
     }
 
+    public TypeOfAgreement() {
+        this.fullName = "(" + this.getClass().toString().substring(this.getClass().toString().lastIndexOf(".") + 1) + ") ";
+    }
+
     @Override
     public String getId() {
         return id;
@@ -57,6 +61,8 @@ public class TypeOfAgreement implements ICommonFields {
     @Override
     public void setName(String name) {
         this.name = name;
+        int indexOfLastDot = this.getClass().toString().lastIndexOf(".");
+        this.fullName = "(" + this.getClass().toString().substring(indexOfLastDot + 1) + ") " + this.name;
     }
 
     @Override
@@ -123,5 +129,21 @@ public class TypeOfAgreement implements ICommonFields {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    @Override
+    public String toString() {
+        return "TypeOfAgreement{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                ", dateModified=" + dateModified +
+                ", dateBeg=" + dateBeg +
+                ", dateEnd=" + dateEnd +
+                ", organizationWhichSign=" + organizationWhichSign +
+                ", fullName='" + fullName + '\'' +
+                ", cost=" + cost +
+                '}';
     }
 }

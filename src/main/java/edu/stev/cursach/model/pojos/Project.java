@@ -8,4 +8,8 @@ public class Project extends TypeOfAgreement {
                    LocalDate dateBeg, LocalDate dateEnd, Organization organizationWhichSign, int cost) {
         super(id, name, description, creationDate, dateModified, dateBeg, dateEnd, organizationWhichSign, cost);
     }
+
+    public Project() {
+        super();
+    }
 }

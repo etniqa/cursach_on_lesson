@@ -41,6 +41,10 @@ public class Worker implements ICommonFields {
         return departmentWhereWorks;
     }
 
+    public String getDepartmentId() {
+        return departmentWhereWorks.getId();
+    }
+
     public void setDepartmentWhereWorks(Department departmentWhereWorks) {
         this.departmentWhereWorks = departmentWhereWorks;
     }
@@ -116,4 +120,6 @@ public class Worker implements ICommonFields {
     public String getShortClassnameWithName() {
         return shortClassnameWithName;
     }
+
+
 }

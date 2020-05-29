@@ -1,0 +1,63 @@
+<div class="form-control">
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇑ (name)'"
+    (click)="getAllSortedByName()"
+  >
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇓ (name)'"
+    (click)="getAllReverseSortedByName()"
+  >
+</div>
+
+<div class="form-control">
+  <input type="text" placeholder="Find using name" [(ngModel)]="searchStr">
+</div>
+
+<div *ngIf="isLoaded; else loadingBlock">
+  <table *ngIf="isLoaded; else loadingBlock">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Organization which sign</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody
+    >
+    <tr
+      *ngFor="let agreement of agreements | searchByName:searchStr"
+      [ngClass]="{'inactive-agreement': checkIsNeedToAddInactiveClass(agreement)}"
+    >
+      <td>{{agreement.fullName}}</td>
+      <td>{{agreement.description}}</td>
+      <td>{{agreement.creationDate | date:'short'}}</td>
+      <td>{{agreement.dateModified! | date:'short'}}</td>
+      <td>{{agreement.dateBeg! | date:'short'}}</td>
+      <td>{{agreement.dateEnd! | date:'short'}}</td>
+      <td>{{agreement.cost}}</td>
+      <td>{{agreement.organizationWhichSign!.name}}</td>
+      <td><button (click)="delete(agreement)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'agreement', 'edit', agreement.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'agreement', 'edit', 'create'.toString()]" class="btn btn-primary">Create</button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

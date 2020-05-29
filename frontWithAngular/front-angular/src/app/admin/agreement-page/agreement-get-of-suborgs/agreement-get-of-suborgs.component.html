@@ -1,0 +1,74 @@
+<div *ngIf="isLoadedForm; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="search()"
+  >
+    <div class="form-control">
+      <label for="organization">Firstly choose organization: </label>
+      <select id="organization" class="custom-select" formControlName="organization">
+        <option *ngFor="let subOrg of subOrgs" [value]="subOrg.id">{{subOrg.name}}</option>
+      </select>
+    </div>
+    <input
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+  </form>
+</div>
+
+<div *ngIf="isLoadedResp === true; else loadingBlockForResp">
+  <div class="text-center">
+    <div class="form-control">
+      <h2>
+        Cost: {{this.pairListAndInt.totalCost}}
+      </h2>
+    </div>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Chief</th>
+      <th>Organization which sign</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let agreem of pairListAndInt.list"
+    >
+      <td>{{agreem.fullName}}</td>
+      <td>{{agreem.description}}</td>
+      <td>{{agreem.creationDate | date:'short'}}</td>
+      <td>{{agreem.dateModified! | date:'short'}}</td>
+      <td>{{agreem.dateBeg! | date:'short'}}</td>
+      <td>{{agreem.dateEnd! | date:'short'}}</td>
+      <td>{{agreem.cost}}</td>
+      <td></td>
+      <td>{{agreem.organizationWhichSign!.name}}</td>
+      <td><button (click)="delete(agreem)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'agreement', 'edit', agreem.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'agreement', 'edit', 'create'.toString()]" class="btn btn-primary">Create</button>
+</div>
+
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>
+
+<ng-template #loadingBlockForResp>
+  <p *ngIf="isLoadedResp === false" class="text-center">Loading...</p>
+</ng-template>

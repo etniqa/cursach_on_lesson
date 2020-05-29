@@ -23,6 +23,7 @@
 
         <th>delete</th>
         <th>edit</th>
+        <th>remove from position</th>
     </tr>
     <#list logHeadOfDepartments as logHeadOfDepartment>
         <tr>
@@ -39,10 +40,10 @@
 
             <td><a href='/web/log_head_of_department/delete/${logHeadOfDepartment.id}'><button>delete</button></a></td>
             <td><a href='/web/log_head_of_department/edit/${logHeadOfDepartment.id}'><button>edit</button></a></td>
+            <td><a href='/web/log_head_of_department/remove_from_position/${logHeadOfDepartment.id}'><button>remove form position</button></a></td>
         </tr>
     </#list>
 </table>
 <td><a href='/web/log_head_of_department/add'><button>create</button></a></td>
-
 </body>
 </html>

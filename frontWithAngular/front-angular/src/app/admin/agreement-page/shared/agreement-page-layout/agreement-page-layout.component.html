@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <ul>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['list']">All</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['projects']">Projects</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['contracts']">Contracts</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['get_in_period']">Get in period (request)</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['projs_in_contract']">Projects in contract (request)</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['calculate_cost']">Calculate cost of agreements in period (request)</a></li>
+    <li routerLinkActive="custom-active"><a class="custom-small-menu" [routerLink]="['get_of_suborgs']">Get where is suborg is head (request)</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

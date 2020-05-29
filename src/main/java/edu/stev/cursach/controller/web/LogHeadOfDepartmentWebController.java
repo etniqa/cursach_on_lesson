@@ -68,15 +68,15 @@ public class LogHeadOfDepartmentWebController {
         LogHeadOfDepartment newLogHeadOfDepartment = new LogHeadOfDepartment(null,
                 logHeadOfDepartmentForm.getName(), logHeadOfDepartmentForm.getDescription(),
                 null, null, logHeadOfDepartmentForm.getBegDateParsed(),
-                logHeadOfDepartmentForm.getEndDateParsed(), (CanLead) workerService.get(logHeadOfDepartmentForm.getHeadOfDepartmentId()),
-                departmentService.get(logHeadOfDepartmentForm.getDepartmentId()));
+                logHeadOfDepartmentForm.getEndDateParsed(), (CanLead) workerService.getById(logHeadOfDepartmentForm.getHeadOfDepartmentId()),
+                departmentService.getById(logHeadOfDepartmentForm.getDepartmentId()));
         logHeadOfDepartmentService.save(newLogHeadOfDepartment);
         return "redirect:/web/log_head_of_department/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        LogHeadOfDepartment logHeadOfDepartmentWhichEdit = logHeadOfDepartmentService.get(id);
+        LogHeadOfDepartment logHeadOfDepartmentWhichEdit = logHeadOfDepartmentService.getById(id);
         LogHeadOfDepartmentForm logHeadOfDepartmentForm = new LogHeadOfDepartmentForm(
                 logHeadOfDepartmentWhichEdit.getName(),
                 logHeadOfDepartmentWhichEdit.getDescription(),
@@ -97,7 +97,7 @@ public class LogHeadOfDepartmentWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("logHeadOfDepartmentForm") LogHeadOfDepartmentForm logHeadOfDepartmentForm) {
-        LogHeadOfDepartment logHeadOfDepartmentWhichEdit = logHeadOfDepartmentService.get(id);
+        LogHeadOfDepartment logHeadOfDepartmentWhichEdit = logHeadOfDepartmentService.getById(id);
         logHeadOfDepartmentWhichEdit = new LogHeadOfDepartment(
                 id,
                 logHeadOfDepartmentForm.getName(),
@@ -106,9 +106,15 @@ public class LogHeadOfDepartmentWebController {
                 null,
                 logHeadOfDepartmentForm.getBegDateParsed(),
                 logHeadOfDepartmentForm.getEndDateParsed(),
-                (CanLead) workerService.get(logHeadOfDepartmentForm.getHeadOfDepartmentId()),
-                departmentService.get(logHeadOfDepartmentForm.getDepartmentId()));
+                (CanLead) workerService.getById(logHeadOfDepartmentForm.getHeadOfDepartmentId()),
+                departmentService.getById(logHeadOfDepartmentForm.getDepartmentId()));
         logHeadOfDepartmentService.edit(logHeadOfDepartmentWhichEdit);
+        return "redirect:/web/log_head_of_department/get/list";
+    }
+
+    @RequestMapping(value = "/remove_from_position/{id}", method = RequestMethod.GET)
+    String removeFromPosition(@PathVariable("id") String id){
+        this.logHeadOfDepartmentService.removeFromPosition(id);
         return "redirect:/web/log_head_of_department/get/list";
     }
 }

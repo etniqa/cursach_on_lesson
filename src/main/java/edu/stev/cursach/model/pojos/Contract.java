@@ -8,4 +8,7 @@ public class Contract extends TypeOfAgreement {
                     LocalDate dateBeg, LocalDate dateEnd, Organization organizationWhichSign, int cost) {
         super(id, name, description, creationDate, dateModified, dateBeg, dateEnd, organizationWhichSign, cost);
     }
+    public Contract() {
+        super();
+    }
 }

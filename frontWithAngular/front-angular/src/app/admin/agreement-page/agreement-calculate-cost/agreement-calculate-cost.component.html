@@ -1,0 +1,94 @@
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="form-control">
+    <label for="dateFrom">Date from: </label>
+    <input id="dateFrom" type="date" formControlName="dateFrom">
+    <div class="validation" *ngIf="this.form.get('dateFrom').invalid && this.form.get('dateFrom').touched">
+      <small *ngIf="this.form.get('dateFrom').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="dateTo">Date to: </label>
+    <input id="dateTo" type="date" formControlName="dateTo">
+    <div class="validation" *ngIf="this.form.get('dateTo').invalid && this.form.get('dateTo').touched">
+      <small *ngIf="this.form.get('dateTo').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+
+  <input
+    class="btn btn-primary"
+    type="submit"
+    title="You have to fill required fields"
+    [disabled]="form.invalid || isDatesAreWrong()"
+  >
+  <input
+    class="btn btn-primary"
+    type="submit"
+    style="width: 330px"
+    (click)="clickCalculateOfCompleted()"
+    value="Calculate cost of completed agreements"
+  >
+  <div class="validation">
+    <p [ngStyle]="{fontSize: '20px'}" *ngIf="isDatesAreWrong()">{{this.error}}</p>
+  </div>
+</form>
+
+<div *ngIf="isLoaded !== null">
+  <div class="text-center">
+    <div class="form-control">
+      <h2>
+        Cost: {{this.listAgrsAndCost.totalCost}}
+      </h2>
+    </div>
+  </div>
+  <table *ngIf="isLoaded; else loadingBlock">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Chief</th>
+      <th>Organization which sign</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let agreem of listAgrsAndCost.list;"
+      [ngClass]="{'inactive-agreement': checkIsNeedToAddInactiveClass(agreem)}"
+    >
+      <td>{{agreem.fullName}}</td>
+      <td>{{agreem.description}}</td>
+      <td>{{agreem.creationDate | date:'short'}}</td>
+      <td>{{agreem.dateModified! | date:'short'}}</td>
+      <td>{{agreem.dateBeg! | date:'short'}}</td>
+      <td>{{agreem.dateEnd! | date:'short'}}</td>
+      <td>{{agreem.cost}}</td>
+      <td></td>
+      <td>{{agreem.organizationWhichSign!.name}}</td>
+      <td>
+        <button (click)="delete(agreem)" class="btn btn-minor">Delete</button>
+      </td>
+      <td>
+        <button [routerLink]="['/admin', 'agreement', 'edit', agreem.id]" class="btn btn-minor">Edit</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'agreement', 'edit', 'create'.toString()]"
+          class="btn btn-primary">Create
+  </button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

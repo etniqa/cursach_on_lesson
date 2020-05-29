@@ -1,0 +1,62 @@
+<div class="form-control">
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇑ (creation date)'"
+    (click)="getAllSortedByCreationDate()"
+  >
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇓ (creation date)'"
+    (click)="getAllReverseSortedByCreationDate()"
+  >
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Description</th>
+    <th>Creation</th>
+    <th>Modified</th>
+
+    <th>Worker</th>
+    <th>Department</th>
+    <th>Project</th>
+    <th>date beg after change</th>
+    <th>date end before new change</th>
+
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let logOfChangeOfWorker of logOfChangesOfWorker"
+  >
+    <td>{{logOfChangeOfWorker.description}}</td>
+    <td>{{logOfChangeOfWorker.creationDate | date:'short'}}</td>
+    <td>{{logOfChangeOfWorker.dateModified! | date:'short'}}</td>
+    <td>{{logOfChangeOfWorker.workerWhoChangeSmth?.name}}</td>
+    <td>{{logOfChangeOfWorker.possibleNewDepartment?.name}}</td>
+    <td>{{logOfChangeOfWorker.possibleNewProj?.name}}</td>
+    <td>{{logOfChangeOfWorker.dateTimeOfChange | date:'dd/MM/yyyy'}}</td>
+    <td>{{logOfChangeOfWorker.dateTimeBeforeNewChange | date:'dd/MM/yyyy'}}</td>
+    <td>
+      <button (click)="delete(logOfChangeOfWorker)" class="btn btn-minor">Delete</button>
+    </td>
+    <td>
+      <button [routerLink]="['/admin', 'log_of_changes_of_worker', 'edit', logOfChangeOfWorker.id]"
+              class="btn btn-minor">Edit
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<button [ngStyle]="{marginTop: '10px'}"
+        [routerLink]="['/admin', 'log_of_changes_of_worker', 'edit', 'create'.toString()]" class="btn btn-primary">
+  Create
+</button>

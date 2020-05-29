@@ -1,0 +1,59 @@
+<div class="form-control">
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇑ (creation date)'"
+    (click)="getAllSortedByCreationDate()"
+  >
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇓ (creation date)'"
+    (click)="getAllReverseSortedByCreationDate()"
+  >
+</div>
+
+<div *ngIf="isLoaded; else loadingBlock">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+
+      <th>Begin date</th>
+      <th>End date</th>
+      <th>Agreement</th>
+      <th>Chief</th>
+
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let logChiefOfAgreement of logChiefOfAgreementList"
+    >
+      <td>{{logChiefOfAgreement.name}}</td>
+      <td>{{logChiefOfAgreement.description}}</td>
+      <td>{{logChiefOfAgreement.creationDate | date:'short'}}</td>
+      <td>{{logChiefOfAgreement.dateModified | date:'short'}}</td>
+      <td>{{logChiefOfAgreement.begDate! | date:'dd/MM/yyyy'}}</td>
+      <td>{{logChiefOfAgreement.endDate! | date:'dd/MM/yyyy'}}</td>
+      <td>{{logChiefOfAgreement.agreement?.name}}</td>
+      <td>{{logChiefOfAgreement.chief?.name}}</td>
+      <td><button (click)="delete(logChiefOfAgreement)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'log_chief_of_agreement', 'edit', logChiefOfAgreement.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'log_chief_of_agreement', 'edit', 'create']" class="btn btn-primary">Create</button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

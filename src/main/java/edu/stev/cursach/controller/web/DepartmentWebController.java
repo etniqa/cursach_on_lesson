@@ -67,7 +67,6 @@ public class DepartmentWebController {
 
         model.addAttribute("departmentsForListOnFTL", departmentsForListOnFTL);
 
-
         model.addAttribute("headsOfDepartment", canLeadsOrderlyAccordingToDepartmentList);
         return "departmentList";
     }
@@ -75,8 +74,7 @@ public class DepartmentWebController {
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
         //set end date to head of deleted department
-        logHeadOfDepartmentService.removeFromHead(id);
-
+        logHeadOfDepartmentService.delete(id);
         departmentService.delete(id);
         return "redirect:/web/department/get/list";
     }
@@ -85,7 +83,7 @@ public class DepartmentWebController {
     //linking all fields in form to my ObjectForm class
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(@PathVariable("id") String id, Model model){
-        Department departmentWhichEdit = departmentService.get(id);
+        Department departmentWhichEdit = departmentService.getById(id);
         DepartmentForm departmentForm = new DepartmentForm(departmentWhichEdit.getName(), departmentWhichEdit.getDescription(),
                 departmentWhichEdit.getOrganization().getId());
 
@@ -98,9 +96,9 @@ public class DepartmentWebController {
     //after submit on form of editing
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("departmentForm") DepartmentForm departmentForm){
-        Department departmentWhichEdit = departmentService.get(id);
+        Department departmentWhichEdit = departmentService.getById(id);
         departmentWhichEdit = new Department(departmentWhichEdit.getId(), departmentForm.getName(), departmentForm.getDescription(),
-                departmentWhichEdit.getCreationDate(), departmentWhichEdit.getDateModified(), organizationService.get(departmentForm.getOrganizationId()));
+                departmentWhichEdit.getCreationDate(), departmentWhichEdit.getDateModified(), organizationService.getById(departmentForm.getOrganizationId()));
 
         departmentService.edit(departmentWhichEdit);
         return "redirect:/web/department/get/list";
@@ -121,9 +119,8 @@ public class DepartmentWebController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     String add(@ModelAttribute("departmentForm") DepartmentForm departmentForm){
         this.departmentService.save(new Department(null, departmentForm.getName(), departmentForm.getDescription(),
-                null, null, organizationService.get(departmentForm.getOrganizationId())));
+                null, null, organizationService.getById(departmentForm.getOrganizationId())));
         return "redirect:/web/department/get/list";
     }
-
 }
 

@@ -71,8 +71,8 @@ public class AgreementHasAgreementWebController {
 
         newAgreementHasAgreement.setName(agreementHasAgreementForm.getName());
         newAgreementHasAgreement.setDescription(agreementHasAgreementForm.getDescription());
-        newAgreementHasAgreement.setHeadAgreement(typeOfAgreementService.get(agreementHasAgreementForm.getHeadAgreementId()));
-        newAgreementHasAgreement.setOtherAgreement(typeOfAgreementService.get(agreementHasAgreementForm.getOtherAgreementId()));
+        newAgreementHasAgreement.setHeadAgreement(typeOfAgreementService.getById(agreementHasAgreementForm.getHeadAgreementId()));
+        newAgreementHasAgreement.setOtherAgreement(typeOfAgreementService.getById(agreementHasAgreementForm.getOtherAgreementId()));
 
         agreementHasAgreementService.save(newAgreementHasAgreement);
         return "redirect:/web/agreement_has_agreement/get/list";
@@ -80,7 +80,7 @@ public class AgreementHasAgreementWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        AgreementHasAgreement agreementHasAgreementWhichEdit = this.agreementHasAgreementService.get(id);
+        AgreementHasAgreement agreementHasAgreementWhichEdit = this.agreementHasAgreementService.getById(id);
 
         AgreementHasAgreementForm agreementHasAgreementForm = new AgreementHasAgreementForm(agreementHasAgreementWhichEdit.getName(),
                 agreementHasAgreementWhichEdit.getDescription(), agreementHasAgreementWhichEdit.getHeadAgreement().getId(),
@@ -97,10 +97,10 @@ public class AgreementHasAgreementWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("agreementHasAgreementForm") AgreementHasAgreementForm agreementHasAgreementForm) {
-        AgreementHasAgreement agreementHasAgreementWhichEdit = agreementHasAgreementService.get(id);
+        AgreementHasAgreement agreementHasAgreementWhichEdit = agreementHasAgreementService.getById(id);
         agreementHasAgreementWhichEdit = new AgreementHasAgreement(agreementHasAgreementWhichEdit.getId(), agreementHasAgreementForm.getName(),
                 agreementHasAgreementForm.getDescription(), agreementHasAgreementWhichEdit.getCreationDate(), LocalDateTime.now(),
-                typeOfAgreementService.get(agreementHasAgreementForm.getHeadAgreementId()), typeOfAgreementService.get(agreementHasAgreementForm.getOtherAgreementId()));
+                typeOfAgreementService.getById(agreementHasAgreementForm.getHeadAgreementId()), typeOfAgreementService.getById(agreementHasAgreementForm.getOtherAgreementId()));
         agreementHasAgreementService.edit(agreementHasAgreementWhichEdit);
         return "redirect:/web/agreement_has_agreement/get/list";
     }

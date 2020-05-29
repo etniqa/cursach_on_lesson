@@ -1,6 +1,5 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.form.TechnicianHasEquipmentForm;
 import edu.stev.cursach.form.TypeOfAgreementForm;
 import edu.stev.cursach.model.pojos.*;
 import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
@@ -79,7 +78,7 @@ public class TypeOfAgreementWebController {
                     null,
                     typeOfAgreementForm.getBegDateParsed(),
                     typeOfAgreementForm.getEndDateParsed(),
-                    organizationService.get(typeOfAgreementForm.getOrganizationWhichSignId()),
+                    organizationService.getById(typeOfAgreementForm.getOrganizationWhichSignId()),
                     typeOfAgreementForm.getCost()
         );
         } else {
@@ -91,7 +90,7 @@ public class TypeOfAgreementWebController {
                     null,
                     typeOfAgreementForm.getBegDateParsed(),
                     typeOfAgreementForm.getEndDateParsed(),
-                    organizationService.get(typeOfAgreementForm.getOrganizationWhichSignId()),
+                    organizationService.getById(typeOfAgreementForm.getOrganizationWhichSignId()),
                     typeOfAgreementForm.getCost()
             );
         }
@@ -101,7 +100,7 @@ public class TypeOfAgreementWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        TypeOfAgreement typeOfAgreementWhichEdit = typeOfAgreementService.get(id);
+        TypeOfAgreement typeOfAgreementWhichEdit = typeOfAgreementService.getById(id);
         TypeOfAgreementForm typeOfAgreementForm = new TypeOfAgreementForm(
                 typeOfAgreementWhichEdit.getName(),
                 typeOfAgreementWhichEdit.getDescription(),
@@ -128,7 +127,7 @@ public class TypeOfAgreementWebController {
                 LocalDateTime.now(),
                 typeOfAgreementForm.getBegDateParsed(),
                 typeOfAgreementForm.getEndDateParsed(),
-                organizationService.get(typeOfAgreementForm.getOrganizationWhichSignId()),
+                organizationService.getById(typeOfAgreementForm.getOrganizationWhichSignId()),
                 typeOfAgreementForm.getCost()
         );
         typeOfAgreementService.edit(newTypeOfAgreement);

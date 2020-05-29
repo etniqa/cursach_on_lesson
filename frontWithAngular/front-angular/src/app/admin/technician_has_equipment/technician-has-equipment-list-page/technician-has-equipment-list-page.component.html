@@ -1,0 +1,56 @@
+<div class="form-control">
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇑ (creation date)'"
+    (click)="getAllSortedByCreationDate()"
+  >
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇓ (creation date)'"
+    (click)="getAllReverseSortedByCreationDate()"
+  >
+</div>
+
+<table *ngIf="isLoaded; else loadingBlock">
+  <thead>
+  <tr>
+    <th>Description</th>
+    <th>Creation</th>
+    <th>Modified</th>
+    <th>Technician who can use</th>
+    <th>Equipment</th>
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let technHasEquip of technHasEquips;"
+  >
+    <td>{{technHasEquip.description}}</td>
+    <td>{{technHasEquip.creationDate | date:'short'}}</td>
+    <td>{{technHasEquip.dateModified! | date:'short'}}</td>
+    <td>{{technHasEquip.technician!.name}}</td>
+    <td>{{technHasEquip.equipment!.name}}</td>
+    <td>
+      <button (click)="delete(technHasEquip)" class="btn btn-minor">Delete</button>
+    </td>
+    <td>
+      <button [routerLink]="['/admin', 'technician_has_equipment', 'edit', technHasEquip.id]" class="btn btn-minor">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'technician_has_equipment', 'edit', 'create'.toString()]"
+        class="btn btn-primary">Create
+</button>
+
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

@@ -1,6 +1,5 @@
 package edu.stev.cursach.controller.web;
 
-import edu.stev.cursach.form.TypeOfAgreementForm;
 import edu.stev.cursach.form.WorkerForm;
 import edu.stev.cursach.model.pojos.*;
 import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
@@ -20,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -84,8 +81,8 @@ public class WorkerWebController {
                 workerForm.getDescription(),
                 LocalDateTime.now(),
                 null,
-                departmentService.get(workerForm.getDepartmentWhereWorksId()),
-                typeOfAgreementService.get(workerForm.getAgreementWhereIsWorkingId())
+                departmentService.getById(workerForm.getDepartmentWhereWorksId()),
+                typeOfAgreementService.getById(workerForm.getAgreementWhereIsWorkingId())
         );
         switch (typeOfWorker){
             case "assistant": {
@@ -129,7 +126,7 @@ public class WorkerWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        Worker workerWhichEdit = workerService.get(id);
+        Worker workerWhichEdit = workerService.getById(id);
         WorkerForm workerForm = new WorkerForm(
                 workerWhichEdit.getName(),
                 workerWhichEdit.getDescription(),
@@ -139,23 +136,23 @@ public class WorkerWebController {
         );
         switch (workerWhichEdit.getShortClassName().toLowerCase()){
             case "assistant":{
-                workerForm.setAdditionalField(((Assistant)workerService.get(id)).getRate());
+                workerForm.setAdditionalField(((Assistant)workerService.getById(id)).getRate());
                 break;
             }
             case "designer":{
-                workerForm.setAdditionalField(((Designer)workerService.get(id)).getNumberOfLicences());
+                workerForm.setAdditionalField(((Designer)workerService.getById(id)).getNumberOfLicences());
                 break;
             }
             case "engineer":{
-                workerForm.setAdditionalField(((Engineer)workerService.get(id)).getYearsOfExperience());
+                workerForm.setAdditionalField(((Engineer)workerService.getById(id)).getYearsOfExperience());
                 break;
             }
             case "staff":{
-                workerForm.setAdditionalField(((Staff)workerService.get(id)).getRang());
+                workerForm.setAdditionalField(((Staff)workerService.getById(id)).getRang());
                 break;
             }
             case "technician":{
-                workerForm.setAdditionalField(((Technician)workerService.get(id)).getYearsOfExperience());
+                workerForm.setAdditionalField(((Technician)workerService.getById(id)).getYearsOfExperience());
                 break;
             }
         }
@@ -173,18 +170,18 @@ public class WorkerWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("workerForm") WorkerForm workerForm) {
-        Worker workerWhichEditWithCmnFieldsOnly = workerService.get(id);
+        Worker workerWhichEditWithCmnFieldsOnly = workerService.getById(id);
         workerWhichEditWithCmnFieldsOnly = new Worker(
                 workerWhichEditWithCmnFieldsOnly.getId(),
                 workerForm.getName(),
                 workerForm.getDescription(),
                 workerWhichEditWithCmnFieldsOnly.getCreationDate(),
                 LocalDateTime.now(),
-                departmentService.get(workerForm.getDepartmentWhereWorksId()),
-                typeOfAgreementService.get(workerForm.getAgreementWhereIsWorkingId())
+                departmentService.getById(workerForm.getDepartmentWhereWorksId()),
+                typeOfAgreementService.getById(workerForm.getAgreementWhereIsWorkingId())
         );
 
-        switch (workerService.get(id).getShortClassName().toLowerCase()){
+        switch (workerService.getById(id).getShortClassName().toLowerCase()){
             case "assistant":{
                 Assistant workerWhichEdit = new Assistant();
                 BeanUtils.copyProperties(workerWhichEditWithCmnFieldsOnly, workerWhichEdit);

@@ -1,0 +1,43 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <table *ngIf="isLoaded; else loadingBlock">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Date beginning</th>
+      <th>Date ending</th>
+      <th>Cost</th>
+      <th>Chief</th>
+      <th>Organization which sign</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let project of projects"
+      [ngClass]="{'inactive-agreement': checkIsNeedToAddInactiveClass(project)}"
+    >
+      <td>{{project.fullName}}</td>
+      <td>{{project.description}}</td>
+      <td>{{project.creationDate | date:'short'}}</td>
+      <td>{{project.dateModified! | date:'short'}}</td>
+      <td>{{project.dateBeg! | date:'short'}}</td>
+      <td>{{project.dateEnd! | date:'short'}}</td>
+      <td>{{project.cost}}</td>
+      <td></td>
+      <td>{{project.organizationWhichSign!.name}}</td>
+      <td><button (click)="delete(project)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'agreement', 'edit', project.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'agreement', 'edit', 'create'.toString()]" class="btn btn-primary">Create</button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

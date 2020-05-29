@@ -1,0 +1,55 @@
+<div class="form-control">
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇑ (name)'"
+    (click)="getAllSortedByName()"
+  >
+  <input
+    [ngStyle]="{fontSize: 50}"
+    class="btn btn-primary"
+    type="submit"
+    [value]="'⇓ (name)'"
+    (click)="getAllReverseSortedByName()"
+  >
+</div>
+<div class="form-control">
+  <input type="text" placeholder="Find using name" [(ngModel)]="searchStr">
+</div>
+<div *ngIf="isLoaded; else loadingBlock">
+  <table *ngIf="isLoaded; else loadingBlock">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Creation</th>
+      <th>Modified</th>
+      <th>Dep which responsible</th>
+      <th>Project where is now</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr
+      *ngFor="let equipment of equipments | searchByName:searchStr"
+    >
+      <td>{{equipment.name}}</td>
+      <td>{{equipment.description}}</td>
+      <td>{{equipment.creationDate | date:'short'}}</td>
+      <td>{{equipment.dateModified! | date:'short'}}</td>
+      <td>{{equipment.depWhichResponsible!.name}}</td>
+      <td>{{equipment.projectWhereIsNowEquip!.name}}</td>
+      <td><button (click)="delete(equipment)" class="btn btn-minor">Delete</button></td>
+      <td><button [routerLink]="['/admin', 'equipment', 'edit', equipment.id]" class="btn btn-minor">Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <hr>
+  <button [ngStyle]="{marginTop: '10px'}" [routerLink]="['/admin', 'equipment', 'edit', 'create'.toString()]" class="btn btn-primary">Create</button>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

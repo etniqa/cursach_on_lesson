@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,19 +19,23 @@ public class DataSet {
     private Department motorcycleRepairDepartment = new Department(UUID.randomUUID().toString(),
             "Department of motorcycle`s repair", "in Continuum", LocalDateTime.now(),
             null, continuumOrganization);//head  = Rudyaga
+    private Department forCheckDepartment = new Department(UUID.randomUUID().toString(),
+            "Head - Steve", "in Continuum", LocalDateTime.now(),
+            null, continuumOrganization);//head  = Rudyaga
     private Department carRepairDepartment = new Department(UUID.randomUUID().toString(), "Department of car`s repair", "in Continuum",
             LocalDateTime.now(), null, continuumOrganization);//head = Baranov
+
     private Contract withVolkswagenContract = new Contract(UUID.randomUUID().toString(),
-            "With Volkswagen", "", LocalDateTime.now(), null, LocalDate.now(),
-            null, continuumOrganization, 0); //head will be Baranov S.
+            "With Volkswagen", "", LocalDateTime.now(), null, LocalDate.parse("2019-01-01"),
+            LocalDate.parse("2020-01-01"), continuumOrganization, 100); //head will be Baranov S.
     private Contract withHondaContract = new Contract(UUID.randomUUID().toString(), "with honda",
-            "", LocalDateTime.now(), null, LocalDate.now(), null, continuumOrganization,
-            0);//chief will be Ghubya M.
+            "", LocalDateTime.now(), null, LocalDate.parse("2019-06-01"), LocalDate.parse("2020-01-01"), continuumOrganization,
+            100);//chief will be Ghubya M.
     private Project warrantyRepairProject = new Project(UUID.randomUUID().toString(), "Warranty repair", "with Volkswagen", LocalDateTime.now(),
-            null, LocalDate.now(), null, continuumOrganization, 0);//chief - Batyev A.
+            null, LocalDate.parse("2020-01-01"), LocalDate.now(), continuumOrganization, 100);//chief - Batyev A.
     private Project wheelExchangeProject = new Project(UUID.randomUUID().toString(),
             "Happy wheel", "for Honda and Volkswagen", LocalDateTime.now(),
-            null, LocalDate.now(), null, continuumOrganization, 0);//chief - Rydyaga D.
+            null, LocalDate.now(), LocalDate.parse("2021-01-01"), continuumOrganization, 100);//chief - Rydyaga D.
 
     private Organization bmxForLifeOrganization = new Organization(UUID.randomUUID().toString(),
             "bmx for life", "in Continuum", LocalDateTime.now(),
@@ -39,11 +44,11 @@ public class DataSet {
             "Department of bicycle", "in Bmx For Life", LocalDateTime.now(),
             null, bmxForLifeOrganization);//head  = Tymofiichuk
     private Contract withSundayContract = new Contract(UUID.randomUUID().toString(), "with bmx Sunday brand",
-            "in paint project", LocalDateTime.now(), null, LocalDate.now(), null, bmxForLifeOrganization,
-            0);//chief will be Tymofiichuk
+            "in paint project", LocalDateTime.now(), null, LocalDate.now(), LocalDate.parse("2020-07-01"), bmxForLifeOrganization,
+            100);//chief will be Tymofiichuk
     private Project paintProject = new Project(UUID.randomUUID().toString(),
             "rainbow", "", LocalDateTime.now(),
-            null, LocalDate.now(), null, bmxForLifeOrganization, 0);//chief - Tymofiichuk
+            null, LocalDate.now(), LocalDate.parse("2021-12-12"), bmxForLifeOrganization, 100);//chief - Tymofiichuk
 
 
     //equipments
@@ -81,47 +86,125 @@ public class DataSet {
 
     private List<AgreementHasAgreement> agreementHasAgreementList = new ArrayList<>(Arrays.asList(
             new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
-                    "description", LocalDateTime.now(), null,  withVolkswagenContract, warrantyRepairProject),
+                    "description", LocalDateTime.now(), null, withVolkswagenContract, warrantyRepairProject),
             new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
                     "description", LocalDateTime.now(), null, withVolkswagenContract, wheelExchangeProject),
             new AgreementHasAgreement(UUID.randomUUID().toString(), "name",
                     "description", LocalDateTime.now(), null, withHondaContract, wheelExchangeProject),
             new AgreementHasAgreement(UUID.randomUUID().toString(), "from bmx for life",
-                    "", LocalDateTime.now(), null,  paintProject, withSundayContract)
+                    "", LocalDateTime.now(), null, paintProject, withSundayContract)
     ));
 
     private List<TechnicianHasEquipment> technicianHasEquipmentsList = new ArrayList<>(Arrays.asList(
-            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "",  LocalDateTime.now(),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(),
                     null, andriichukTechnician, electrojackEquipment),
-            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "",  LocalDateTime.now(), null, morozTechnician, diskRepairEquipment),
-            new TechnicianHasEquipment(UUID.randomUUID().toString(),"", "", LocalDateTime.now(), null, morozTechnician, electropumpEquipment)));
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(), null, morozTechnician, diskRepairEquipment),
+            new TechnicianHasEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(), null, morozTechnician, electropumpEquipment)));
     private List<LogHeadOfDepartment> logHeadOfDepartments = new ArrayList<>(Arrays.asList(
             new LogHeadOfDepartment(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 1,1),
+                    null, LocalDate.of(2020, 1, 1),
                     null,
                     baranovEngineer, carRepairDepartment),
             new LogHeadOfDepartment(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 1,10),
+                    null, LocalDate.of(2020, 1, 1),
+                    null,
+                    baranovEngineer, forCheckDepartment),
+            new LogHeadOfDepartment(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
+                    null, LocalDate.of(2020, 1, 10),
                     null, rudyagaDesigner, motorcycleRepairDepartment),
             new LogHeadOfDepartment(UUID.randomUUID().toString(), "", "from bmx for life", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 01,10),
+                    null, LocalDate.of(2020, 01, 10),
                     null, tymofEngineer, bicycleDepartment)));
     private List<LogChiefOfTypeOfProject> logChiefOfTypeOfProjects = new ArrayList<>(Arrays.asList(
             new LogChiefOfTypeOfProject(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 2,3),
+                    null, LocalDate.of(2020, 2, 3),
                     null, withVolkswagenContract, baranovEngineer),
             new LogChiefOfTypeOfProject(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2019, 12,25),
+                    null, LocalDate.of(2019, 12, 25),
                     null, warrantyRepairProject, batyevEngineer),
             new LogChiefOfTypeOfProject(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 1,15),
+                    null, LocalDate.of(2020, 1, 15),
                     null, withHondaContract, ghybyaEngineer),
             new LogChiefOfTypeOfProject(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 2,3),
+                    null, LocalDate.of(2020, 2, 3),
                     null, wheelExchangeProject, rudyagaDesigner),
             new LogChiefOfTypeOfProject(UUID.randomUUID().toString(), "name", "", LocalDateTime.now(),
-                    null, LocalDate.of(2020, 2,3),
+                    null, LocalDate.of(2020, 2, 3),
                     null, paintProject, tymofEngineer)
+    ));
+    private List<LogOfChangesOfWorker> logOfChangesOfWorkerList = new ArrayList<>(Arrays.asList(
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, rudyagaDesigner, motorcycleRepairDepartment, null, LocalDate.parse("2018-01-01"), LocalDate.parse("2020-05-24")),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job",LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, baranovEngineer, carRepairDepartment, null, LocalDate.parse("2018-01-01"), LocalDate.parse("2020-05-24")),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, batyevEngineer, carRepairDepartment, null, LocalDate.parse("2018-01-01"), LocalDate.parse("2020-01-01")),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, ghybyaEngineer, motorcycleRepairDepartment, null, LocalDate.parse("2018-01-01"), LocalDate.parse("2020-05-24")),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, voznyukAssistant, motorcycleRepairDepartment, null, LocalDate.parse("2018-01-01"), LocalDate.parse("2020-01-01")),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, vodyancukDesigner, carRepairDepartment, null, LocalDate.parse("2018-01-01"), this.warrantyRepairProject.getDateBeg()),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, morozTechnician, motorcycleRepairDepartment, null, LocalDate.parse("2018-01-01"), this.wheelExchangeProject.getDateBeg()),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, andriichukTechnician, carRepairDepartment, null, LocalDate.parse("2018-01-01"), this.warrantyRepairProject.getDateBeg()),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), "getting on job", LocalDateTime.of(LocalDate.parse("2018-01-01"), LocalTime.MIN),
+                    null, tymofEngineer, bicycleDepartment, null, LocalDate.parse("2018-01-01"), this.paintProject.getDateBeg()),
+
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.wheelExchangeProject.getDateBeg().atStartOfDay(),
+                    null, rudyagaDesigner, motorcycleRepairDepartment, this.wheelExchangeProject, this.wheelExchangeProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.wheelExchangeProject.getDateBeg().atStartOfDay(),
+                    null, baranovEngineer, carRepairDepartment, this.wheelExchangeProject, this.wheelExchangeProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.warrantyRepairProject.getDateBeg().atStartOfDay(),
+                    null, batyevEngineer, carRepairDepartment, this.warrantyRepairProject, this.warrantyRepairProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.wheelExchangeProject.getDateBeg().atStartOfDay(),
+                    null, ghybyaEngineer, motorcycleRepairDepartment, this.wheelExchangeProject, this.wheelExchangeProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.warrantyRepairProject.getDateBeg().atStartOfDay(),
+                    null, voznyukAssistant, motorcycleRepairDepartment, this.warrantyRepairProject, this.warrantyRepairProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.warrantyRepairProject.getDateBeg().atStartOfDay(),
+                    null, vodyancukDesigner, carRepairDepartment, this.warrantyRepairProject, this.warrantyRepairProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.wheelExchangeProject.getDateBeg().atStartOfDay(),
+                    null, morozTechnician, motorcycleRepairDepartment, this.wheelExchangeProject, this.wheelExchangeProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null,this.warrantyRepairProject.getDateBeg().atStartOfDay(),
+                    null, andriichukTechnician, carRepairDepartment, this.warrantyRepairProject, this.warrantyRepairProject.getDateBeg(), null),
+            new LogOfChangesOfWorker(UUID.randomUUID().toString(), null, this.paintProject.getDateBeg().atStartOfDay(),
+                    null, tymofEngineer, bicycleDepartment, this.paintProject, this.paintProject.getDateBeg(), null)
+            ));
+
+    public List<LogOfChangesOfWorker> getLogOfChangesOfWorkerList() {
+        return logOfChangesOfWorkerList;
+    }
+
+    public List<LogOfChangesOfEquipment> getLogOfChangesOfEquipments() {
+        return logOfChangesOfEquipments;
+    }
+
+    private List<LogOfChangesOfEquipment> logOfChangesOfEquipments = new ArrayList<>(Arrays.asList(
+            // get all equipments
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "getting", LocalDateTime.now(),
+                    null, electropumpEquipment, this.carRepairDepartment, null,
+                    LocalDate.parse("2017-01-01"), LocalDate.parse("2020-01-01")),
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "getting", LocalDateTime.now(),
+                    null, electrojackEquipment, this.carRepairDepartment, null,
+                    LocalDate.parse("2017-01-01"), LocalDate.parse("2020-01-01")),
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "getting", LocalDateTime.now(),
+                    null, diskRepairEquipment, this.carRepairDepartment, null,
+                    LocalDate.parse("2017-01-01"), LocalDate.parse("2019-01-01")),
+
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "between departments", LocalDateTime.now(),
+                    null, electrojackEquipment, null, warrantyRepairProject,
+                    LocalDate.parse("2019-01-01"), LocalDate.parse("2020-01-01")),
+
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(),
+                    null, diskRepairEquipment, null, wheelExchangeProject,
+                    LocalDate.parse("2020-01-01"), null),
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(),
+                    null, electropumpEquipment, null, wheelExchangeProject,
+                    LocalDate.parse("2020-01-01"), null),
+            new LogOfChangesOfEquipment(UUID.randomUUID().toString(), "", "", LocalDateTime.now(),
+                    null, electrojackEquipment, null, warrantyRepairProject,
+                    LocalDate.parse("2020-01-01"), null)
     ));
 
     private List<Worker> workerList = new ArrayList<>(Arrays.asList(
@@ -150,7 +233,8 @@ public class DataSet {
     private List<Department> departments = new ArrayList<>(Arrays.asList(
             motorcycleRepairDepartment,
             carRepairDepartment,
-            bicycleDepartment
+            bicycleDepartment,
+            forCheckDepartment
     ));
     private List<Equipment> equipments = new ArrayList<>(Arrays.asList(
             diskRepairEquipment,

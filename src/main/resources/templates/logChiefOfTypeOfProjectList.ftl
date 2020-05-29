@@ -23,6 +23,7 @@
 
         <th>delete</th>
         <th>edit</th>
+        <th>remove from position</th>
     </tr>
     <#list logChiefOfTypeOfProjects as logChiefOfTypeOfProject>
         <tr>
@@ -39,6 +40,7 @@
 
             <td><a href='/web/log_chief_of_type_of_project/delete/${logChiefOfTypeOfProject.id}'><button>delete</button></a></td>
             <td><a href='/web/log_chief_of_type_of_project/edit/${logChiefOfTypeOfProject.id}'><button>edit</button></a></td>
+            <td><a href='/web/log_chief_of_type_of_project/remove_from_position/${logChiefOfTypeOfProject.id}'><button>edit</button></a></td>
         </tr>
     </#list>
 </table>

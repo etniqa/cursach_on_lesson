@@ -1,0 +1,44 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="edit()"
+  >
+    <div class="form-control">
+      <label for="name">Name: </label>
+      <input id="name" type="text" formControlName="name">
+      <div class="validation" *ngIf="this.form.get('name').invalid && this.form.get('name').touched">
+        <small *ngIf="this.form.get('name').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+      <div class="validation" *ngIf="this.form.get('description').invalid && this.form.get('description').touched">
+        <small *ngIf="this.form.get('description').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="department">Department which responsible: </label>
+      <select id="department" class="custom-select" formControlName="department">
+        <option *ngFor="let department of departments" [ngValue]="department.id">{{department.name}}</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="project">Project where is now: </label>
+      <select id="project" class="custom-select" formControlName="project">
+        <option *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+      </select>
+    </div>
+    <input
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid"
+      [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+    >
+  </form>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

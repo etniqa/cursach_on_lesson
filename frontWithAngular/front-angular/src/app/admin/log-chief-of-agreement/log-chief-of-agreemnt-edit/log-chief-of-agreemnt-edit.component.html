@@ -1,0 +1,52 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="save()"
+  >
+    <div class="form-control">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+      <div class="validation" *ngIf="this.form.get('description').invalid && this.form.get('description').touched">
+        <small *ngIf="this.form.get('description').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+<!--    beginDate-->
+<!--    endDate-->
+    <div class="form-control">
+      <label for="agreement">Agreement which change chief: </label>
+      <select id="agreement" class="custom-select" formControlName="agreement"
+              (change)="changeAgreem($event.target.value)"
+              [disabled]="this.pageMode === 'edit'"
+      >
+        <option *ngFor="let agreem of agreements" [value]="agreem.id">{{agreem.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('agreement').invalid && this.form.get('agreement').touched">
+        <small *ngIf="this.form.get('agreement').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="chief">New chief: </label>
+      <select id="chief" class="custom-select" formControlName="chief">
+        <option [value]="'none'">noone</option>
+        <option *ngFor="let canLead of canLeads" [value]="canLead.id">{{canLead.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('chief').invalid && this.form.get('chief').touched">
+        <small *ngIf="this.form.get('chief').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <input
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || isThisIsLastLogOnForm()"
+      [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+    >
+    <div class="validation">
+      <p [ngStyle]="{fontSize: '20px'}" *ngIf="this.error">{{this.error}}</p>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

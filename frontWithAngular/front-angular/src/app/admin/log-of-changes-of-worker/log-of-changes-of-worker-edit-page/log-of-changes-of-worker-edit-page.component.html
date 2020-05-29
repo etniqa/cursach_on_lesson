@@ -1,0 +1,57 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="edit()"
+  >
+    <div class="form-control">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+    </div>
+    <div class="form-control">
+      <label for="worker">Worker which change smth: </label>
+      <select id="worker" class="custom-select" formControlName="worker"
+              (change)="changeWorker(this.form.get('worker').value)"
+              [disabled]="this.pageMode === 'edit'"
+      >
+        <option *ngFor="let worker of workers" [ngValue]="worker.id">{{worker.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('worker').invalid && this.form.get('worker').touched">
+        <small *ngIf="this.form.get('worker').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="department">Department where will be equipment: </label>
+      <select id="department" class="custom-select" formControlName="department">
+        <option [value]="'none'">nowhere</option>
+        <option *ngFor="let dep of departments" [ngValue]="dep.id">{{dep.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('department').invalid && this.form.get('department').touched">
+        <small *ngIf="this.form.get('department').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="project">Project where will be equipment: </label>
+      <select id="project" class="custom-select" formControlName="project">
+        <option [value]="'none'">nowhere</option>
+        <option *ngFor="let project of projects" [ngValue]="project.id">{{project.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('project').invalid && this.form.get('project').touched">
+        <small *ngIf="this.form.get('project').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <input
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="form.invalid || (isThisIsLastLogOnForm() && this.pageMode === 'create')"
+      [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+    >
+    <div class="validation">
+      <p [ngStyle]="{fontSize: '20px'}" *ngIf="this.error && this.pageMode === 'create'">{{this.error}}</p>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

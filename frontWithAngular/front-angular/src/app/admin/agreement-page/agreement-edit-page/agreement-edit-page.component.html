@@ -1,0 +1,72 @@
+<div *ngIf="isLoaded; else loadingBlock">
+  <form
+    class="card"
+    [formGroup]="form"
+    (ngSubmit)="edit()"
+  >
+    <div class="form-control">
+      <label for="name">Name: </label>
+      <input id="name" type="text" formControlName="name">
+      <div class="validation" *ngIf="this.form.get('name').invalid && this.form.get('name').touched">
+        <small *ngIf="this.form.get('name').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="description">Description: </label>
+      <input id="description" type="text" formControlName="description">
+      <div class="validation" *ngIf="this.form.get('description').invalid && this.form.get('description').touched">
+        <small *ngIf="this.form.get('description').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="dateBeg">Date beginning: </label>
+      <input id="dateBeg" type="date" formControlName="dateBeg">
+      <div class="validation" *ngIf="this.form.get('dateBeg').invalid && this.form.get('dateBeg').touched">
+        <small *ngIf="this.form.get('dateBeg').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="dateEnd">Date ending: </label>
+      <input id="dateEnd" type="date" formControlName="dateEnd">
+      <div class="validation" *ngIf="this.form.get('dateEnd').invalid && this.form.get('dateEnd').touched">
+        <small *ngIf="this.form.get('dateEnd').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <div class="form-control">
+      <select class="custom-select" formControlName="organization">
+        <option *ngFor="let organization of organizations" [ngValue]="organization.id">{{organization.name}}</option>
+      </select>
+      <div class="validation" *ngIf="this.form.get('organization').invalid && this.form.get('organization').touched">
+        <small *ngIf="this.form.get('organization').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+
+    <div class="form-control" *ngIf="pageMode === 'create'">
+      <mat-radio-group formControlName="type">
+        <mat-radio-button class="mat-radio-button" value="project">Project</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value="contract">Contract</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="form-control">
+      <label for="cost">Cost: </label>
+      <input id="cost" type="number" formControlName="cost">
+      <div class="validation" *ngIf="this.form.get('cost').invalid && this.form.get('cost').touched">
+        <small *ngIf="this.form.get('cost').errors.required">You have to fill this field</small>
+      </div>
+    </div>
+    <input
+      class="btn btn-primary"
+      type="submit"
+      [title]="'You need to fill all fields'"
+      [disabled]="form.invalid || isDatesAreWrong()"
+      [value]="pageMode === 'create' ? 'Create' : 'Edit'"
+    >
+    <div class="validation">
+      <p [ngStyle]="{fontSize: '20px'}" *ngIf="isDatesAreWrong()">{{this.error}}</p>
+    </div>
+  </form>
+</div>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>

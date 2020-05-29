@@ -1,0 +1,83 @@
+<form
+  class="card"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <div class="form-control">
+    <label for="fromDate">Date beginning: </label>
+    <input id="fromDate" type="date" formControlName="dateFrom">
+    <div class="validation" *ngIf="this.form.get('dateFrom').invalid && this.form.get('dateFrom').touched">
+      <small *ngIf="this.form.get('dateFrom').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+  <div class="form-control">
+    <label for="dateTo">Date ending: </label>
+    <input id="dateTo" type="date" formControlName="dateTo">
+    <div class="validation" *ngIf="this.form.get('dateTo').invalid && this.form.get('dateTo').touched">
+      <small *ngIf="this.form.get('dateTo').errors.required">You have to fill this field</small>
+    </div>
+  </div>
+
+  <input
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="form.invalid || !isInOrderDatesInForm()"
+  >
+  <div class="validation" *ngIf="this.errors">
+    <p>{{this.errors}}</p>
+  </div>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th>Description</th>
+    <th>Creation</th>
+    <th>Modified</th>
+
+    <th>Worker</th>
+    <th>Department</th>
+    <th>Project</th>
+    <th>date beg after change</th>
+    <th>date end before new change</th>
+
+    <th>Delete</th>
+    <th>Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let logOfChangeOfEquipment of logsOfChangeOfWorkerInPeriod"
+  >
+    <td>{{logOfChangeOfEquipment.description}}</td>
+    <td>{{logOfChangeOfEquipment.creationDate | date:'dd/MM/yyyy'}}</td>
+    <td>{{logOfChangeOfEquipment.dateModified! | date:'dd/MM/yyyy'}}</td>
+    <td>{{logOfChangeOfEquipment.workerWhoChangeSmth?.name}}</td>
+    <td>{{logOfChangeOfEquipment.possibleNewDepartment?.name}}</td>
+    <td>{{logOfChangeOfEquipment.possibleNewProj?.name}}</td>
+    <td>{{logOfChangeOfEquipment.dateTimeOfChange | date:'dd/MM/yyyy'}}</td>
+    <td>{{logOfChangeOfEquipment.dateTimeBeforeNewChange | date:'dd/MM/yyyy'}}</td>
+    <td>
+      <button (click)="delete(logOfChangeOfEquipment)" class="btn btn-minor">Delete</button>
+    </td>
+    <td>
+      <button [routerLink]="['/admin', 'log_of_change_of_equipment', 'edit', logOfChangeOfEquipment.id]"
+              class="btn btn-minor">Edit
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<hr>
+<button [ngStyle]="{marginTop: '10px'}"
+        [routerLink]="['/admin', 'log_of_change_of_equipment', 'edit', 'create'.toString()]" class="btn btn-primary">
+  Create
+</button>
+
+<ng-template #loadingBlock>
+  <p class="text-center">Loading...</p>
+</ng-template>
+
+<ng-template #noElements>
+  <p class="text-center">No agreements</p>
+</ng-template>

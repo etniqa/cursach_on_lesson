@@ -2,10 +2,11 @@ package edu.stev.cursach.model.pojos;
 
 import edu.stev.cursach.model.cmnInterfaces.ICommonFields;
 
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LogOfChangesOfEquipment implements ICommonFields {
-
     private String id;
     private String name;
     private String description;
@@ -15,11 +16,10 @@ public class LogOfChangesOfEquipment implements ICommonFields {
     private Equipment equipWhichChangeField;
     private Department possibleNewDepartment;
     private Project possibleNewProject;
-    private LocalDateTime dateTimeOfChange;
+    private LocalDate dateBegAfterChange;
+    private LocalDate dateEndBeforeNewChange;   // if null, then new change wasn`t and this is final shoot
 
-    public LogOfChangesOfEquipment(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified,
-                     Equipment equipWhichChangeField, Department possibleNewDepartment,
-                     Project possibleNewProject, LocalDateTime dateTimeOfChange) {
+    public LogOfChangesOfEquipment(String id, String name, String description, LocalDateTime creationDate, LocalDateTime dateModified, Equipment equipWhichChangeField, Department possibleNewDepartment, Project possibleNewProject, LocalDate dateBegAfterChange, LocalDate dateEndBeforeNewChange) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -28,7 +28,8 @@ public class LogOfChangesOfEquipment implements ICommonFields {
         this.equipWhichChangeField = equipWhichChangeField;
         this.possibleNewDepartment = possibleNewDepartment;
         this.possibleNewProject = possibleNewProject;
-        this.dateTimeOfChange = dateTimeOfChange;
+        this.dateBegAfterChange = dateBegAfterChange;
+        this.dateEndBeforeNewChange = dateEndBeforeNewChange;
     }
 
     @Override
@@ -105,12 +106,20 @@ public class LogOfChangesOfEquipment implements ICommonFields {
         this.possibleNewProject = possibleNewProject;
     }
 
-    public LocalDateTime getDateTimeOfChange() {
-        return dateTimeOfChange;
+    public LocalDate getDateBegAfterChange() {
+        return dateBegAfterChange;
     }
 
-    public void setDateTimeOfChange(LocalDateTime dateTimeOfChange) {
-        this.dateTimeOfChange = dateTimeOfChange;
+    public void setDateBegAfterChange(LocalDate dateBegAfterChange) {
+        this.dateBegAfterChange = dateBegAfterChange;
+    }
+
+    public LocalDate getDateEndBeforeNewChange() {
+        return dateEndBeforeNewChange;
+    }
+
+    public void setDateEndBeforeNewChange(LocalDate dateEndBeforeNewChange) {
+        this.dateEndBeforeNewChange = dateEndBeforeNewChange;
     }
 }
 

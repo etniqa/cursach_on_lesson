@@ -4,6 +4,7 @@ import edu.stev.cursach.dao.classes.logHeadOfDepartment.repository.LogHeadOfDepa
 import edu.stev.cursach.dao.cmnInterfaces.IDao;
 import edu.stev.cursach.dataSet.DataSet;
 import edu.stev.cursach.model.pojos.LogHeadOfDepartment;
+import edu.stev.cursach.service.classes.agreementHasAgreement.impls.AgreementHasAgreementServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
@@ -11,9 +12,24 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
+    private Logger logger = Logger.getLogger(LogHeadOfDepartmentDaoImpl.class.getName());
+
+    @PostConstruct
+    void initialize() {
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler.setLevel(Level.ALL);
+        this.logger.addHandler(consoleHandler);
+    }
+    @Override
+    public Logger getLogger() {
+        return this.logger;
+    }
     @Autowired
     DataSet dataSet;
     @Autowired
@@ -30,12 +46,4 @@ public class LogHeadOfDepartmentDaoImpl implements IDao<LogHeadOfDepartment> {
         return repository;
     }
 
-    public LogHeadOfDepartment removeFromHead(String idCanLeadWhichRemoving){
-        LogHeadOfDepartment logHeadOfDepartmentWhichNeedToSetEndDate = repository.findAll().stream()
-                .filter(logHeadOfDepartment -> logHeadOfDepartment.getDepartment().getId().equals(idCanLeadWhichRemoving) &&
-                        logHeadOfDepartment.getEndDate() == null)
-                .findFirst().orElse(null);
-        logHeadOfDepartmentWhichNeedToSetEndDate.setEndDate(LocalDate.now());
-        return this.save(logHeadOfDepartmentWhichNeedToSetEndDate);
-    }
 }

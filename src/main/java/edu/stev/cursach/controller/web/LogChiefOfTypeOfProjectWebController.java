@@ -40,10 +40,11 @@ public class LogChiefOfTypeOfProjectWebController {
     LogChiefOfTypeOfProjectServiceImpl logChiefOfTypeOfProjectService;
 
     @RequestMapping("/get/list")
-    String getAll(Model model){
+    String getAll(Model model) {
         model.addAttribute("logChiefOfTypeOfProjects", logChiefOfTypeOfProjectService.getAll());
         return "logChiefOfTypeOfProjectList";
     }
+
     @RequestMapping("/delete/{id}")
     String delete(@PathVariable("id") String id) {
         logChiefOfTypeOfProjectService.delete(id);
@@ -70,15 +71,15 @@ public class LogChiefOfTypeOfProjectWebController {
     String add(@ModelAttribute("logChiefOfTypeOfAgreementForm") LogChiefOfTypeOfAgreementForm logChiefOfTypeOfAgreementForm) {
         LogChiefOfTypeOfProject newLogChiefOfTypeOfProject = new LogChiefOfTypeOfProject(null,
                 logChiefOfTypeOfAgreementForm.getName(), logChiefOfTypeOfAgreementForm.getDescription(), null,
-                null,  logChiefOfTypeOfAgreementForm.getBegDateParsed(), logChiefOfTypeOfAgreementForm.getEndDateParsed(),
-                typeOfAgreementService.get(logChiefOfTypeOfAgreementForm.getAgreementId()), (CanLead) workerService.get(logChiefOfTypeOfAgreementForm.getChiefId()));
+                null, logChiefOfTypeOfAgreementForm.getBegDateParsed(), logChiefOfTypeOfAgreementForm.getEndDateParsed(),
+                typeOfAgreementService.getById(logChiefOfTypeOfAgreementForm.getAgreementId()), (CanLead) workerService.getById(logChiefOfTypeOfAgreementForm.getChiefId()));
         logChiefOfTypeOfProjectService.save(newLogChiefOfTypeOfProject);
         return "redirect:/web/log_chief_of_type_of_project/get/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     String edit(Model model, @PathVariable("id") String id) {
-        LogChiefOfTypeOfProject logChiefOfTypeOfProjectWhichEdit = logChiefOfTypeOfProjectService.get(id);
+        LogChiefOfTypeOfProject logChiefOfTypeOfProjectWhichEdit = logChiefOfTypeOfProjectService.getById(id);
 
         LogChiefOfTypeOfAgreementForm logChiefOfTypeOfAgreementForm = new LogChiefOfTypeOfAgreementForm(logChiefOfTypeOfProjectWhichEdit.getName(),
                 logChiefOfTypeOfProjectWhichEdit.getDescription(),
@@ -100,13 +101,14 @@ public class LogChiefOfTypeOfProjectWebController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     String edit(@PathVariable("id") String id, @ModelAttribute("logChiefOfTypeOfAgreementForm") LogChiefOfTypeOfAgreementForm logChiefOfTypeOfAgreementForm) {
-        LogChiefOfTypeOfProject logChiefOfTypeOfProjectWhichEdit = logChiefOfTypeOfProjectService.get(id);
+        LogChiefOfTypeOfProject logChiefOfTypeOfProjectWhichEdit = logChiefOfTypeOfProjectService.getById(id);
         logChiefOfTypeOfProjectWhichEdit = new LogChiefOfTypeOfProject(id, logChiefOfTypeOfAgreementForm.getName(),
                 logChiefOfTypeOfAgreementForm.getDescription(), logChiefOfTypeOfProjectWhichEdit.getCreationDate(),
                 null, logChiefOfTypeOfAgreementForm.getBegDateParsed(), logChiefOfTypeOfAgreementForm.getEndDateParsed(),
-                typeOfAgreementService.get(logChiefOfTypeOfAgreementForm.getAgreementId()), (CanLead) workerService.get(logChiefOfTypeOfAgreementForm.getChiefId()));
+                typeOfAgreementService.getById(logChiefOfTypeOfAgreementForm.getAgreementId()), (CanLead) workerService.getById(logChiefOfTypeOfAgreementForm.getChiefId()));
 
         logChiefOfTypeOfProjectService.edit(logChiefOfTypeOfProjectWhichEdit);
         return "redirect:/web/log_chief_of_type_of_project/get/list";
     }
+
 }

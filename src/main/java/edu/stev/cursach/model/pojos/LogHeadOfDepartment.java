@@ -92,6 +92,9 @@ public class LogHeadOfDepartment implements ICommonFields {
     public CanLead getHeadOfDepartment() {
         return headOfDepartment;
     }
+    public String getHeadOfDepartmentId() {
+        return headOfDepartment.getId();
+    }
 
     public void setHeadOfDepartment(CanLead headOfDepartment) {
         this.headOfDepartment = headOfDepartment;
